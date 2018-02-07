@@ -38,11 +38,12 @@ end
   end
 
   def score_with_multipliers(word, multiplier_array, multiplier = 1)
+    word = seperated_word(word)
     word_position = 0
     multiplier_position = 0
     result = []
     while word_position < word.length
-      result << word[word_position] * multiplier_array[multiplier_position]
+      result << @letters[word[word_position]] * multiplier_array[multiplier_position]
       word_position += 1
       multiplier_position += 1
       end

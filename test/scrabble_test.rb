@@ -10,6 +10,9 @@ class ScrabbleTest < Minitest::Test
     assert_equal 4, Scrabble.new.score("f")
     assert_equal 2, Scrabble.new.score("G")
     assert_equal 10, Scrabble.new.score("z")
+  end
+
+  def test_score_with_multipliers
 
   end
 end

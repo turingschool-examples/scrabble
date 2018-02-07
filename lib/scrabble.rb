@@ -20,5 +20,11 @@ end
     }
   end
 end
+
+  def score_with_multipliers
+
+  end
+
+  
 scrabble = Scrabble.new
 p scrabble.score("George")

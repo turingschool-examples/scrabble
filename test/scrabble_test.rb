@@ -12,7 +12,9 @@ class ScrabbleTest < Minitest::Test
     assert_equal 10, Scrabble.new.score("z")
   end
 
-  def test_score_with_multipliers
-
+  def test_it_can_score_a_multiple_letters
+    assert_equal 2, Scrabble.new.score("eo")
+    assert_equal 7, Scrabble.new.score("kio")
   end
+
 end

@@ -21,10 +21,9 @@ end
   end
 end
 
-  def score_with_multipliers
-
+  def score_with_multipliers(word, point_values)
   end
 
-  
+
 scrabble = Scrabble.new
-p scrabble.score("George")
+p scrabble.score("kio")

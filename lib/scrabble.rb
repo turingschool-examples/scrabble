@@ -1,8 +1,5 @@
+require 'pry'
 class Scrabble
-
-  def score(word)
-    1
-  end
 
   def point_values
     {
@@ -14,5 +11,33 @@ class Scrabble
       "U"=>1, "V"=>4, "W"=>4, "X"=>8,
       "Y"=>4, "Z"=>10
     }
+  end
+
+  def score(word)
+    total_score = 0
+    if word.nil?
+      total_score
+    elsif word == ''
+      total_score
+    else
+      word.each_char do |letter|
+        total_score += point_values[letter.upcase]
+      end
+      total_score
+    end
+  end
+
+  def score_with_multipliers(word, multiplier)
+    binding.pry
+    # break "word" apart into "W","O","R","D"
+    word.upcase.each_char do |letter|
+      binding.pry
+    # find score of each letter
+      letter_scores = score(letter)
+    end
+    # make zipped array of letter_scores and multiplier
+    # bonus = points.zip(multiplier)
+    # multiply [0][0]and[0][1] of zipped array
+    binding.pry
   end
 end

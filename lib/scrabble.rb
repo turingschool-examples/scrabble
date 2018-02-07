@@ -12,10 +12,18 @@ class Scrabble
   end
 
   def score(word)
-    words = word.upcase.chars
-    letter_scores = words.map do |letter|
-      point_values[letter]
+    if word.nil?
+      0
+    else
+      words = word.upcase.chars
+      letter_scores = words.map do |letter|
+        point_values[letter]
+      end
+      letter_scores.inject { |sum, n| sum + n }
     end
-    letter_scores.inject { |sum, n| sum + n }
+  end
+
+  def score_with_multipliers(word, letter_multiplier)
+    score(word) * letter_multiplier[0]
   end
 end

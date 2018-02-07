@@ -16,7 +16,14 @@ class ScrabbleTest < Minitest::Test
   end
 
   def test_it_can_score_an_empty_string
-    assert_equal 10, Scrabble.new.score("alpha")
-    assert_equal 10, Scrabble.new.score("forget")
+    assert_nil Scrabble.new.score("")
+  end
+
+  def test_it_can_score_nil
+    assert_equal 0, Scrabble.new.score(nil)
+  end
+
+  def test_it_can_score_a_letter_with_a_multiplier
+    assert_equal 8, Scrabble.new.score_with_multipliers('w', [2])
   end
 end

@@ -1,7 +1,8 @@
+require "pry"
 class Scrabble
 
   def score(word)
-    1
+    point_values[word.upcase]
   end
 
   def point_values
@@ -14,5 +15,6 @@ class Scrabble
       "U"=>1, "V"=>4, "W"=>4, "X"=>8,
       "Y"=>4, "Z"=>10
     }
+    # binding.pry
   end
 end

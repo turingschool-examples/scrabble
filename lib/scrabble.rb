@@ -13,27 +13,11 @@ class Scrabble
     }
   end
 
-  def score(word)
-    if word == nil || word == ""
-      return 0
-    else
-      word = word.upcase
-      word_arr = word.chars
-      values = word_arr.map do |letter|
-        point_values[letter]
-      end
-      add_score(values)
-    end
-  end
-
-  def add_score(values)
-    values.reduce :+
-  end
-
   def score_with_multipliers(word, letter_mult, tot_multiplier=1)
-      if word == nil || word == ""
+      case word_evaulator(word)
+      when false
         return 0
-      else
+      when true
         word_arr = word_formatter(word)
         values = word_arr.map do |letter|
           point_values[letter]
@@ -58,6 +42,28 @@ class Scrabble
     word.chars
   end
 
-  def word_evaulator
+  def word_evaulator(word)
+    if word == nil || word == ""
+      return false
+    else
+      return true
+    end
+  end
+
+  def score(word)
+    if word == nil || word == ""
+      return 0
+    else
+      word = word.upcase
+      word_arr = word.chars
+      values = word_arr.map do |letter|
+        point_values[letter]
+      end
+      add_score(values)
+    end
+  end
+
+  def add_score(values)
+    values.reduce :+
   end
 end

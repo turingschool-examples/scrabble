@@ -29,4 +29,16 @@ class ScrabbleTest < Minitest::Test
     assert_equal 14, Scrabble.new.score('miCHael')
     assert_equal 18, Scrabble.new.score('TuringSchool')
   end
+
+  def test_letter_multipliers
+    assert_equal 9, Scrabble.new.score_with_multipliers('Adam', [1,2,1,1])
+    assert_equal 16, Scrabble.new.score_with_multipliers('miCHael', [1,2,1,1,2,1,1])
+    assert_equal 24, Scrabble.new.score_with_multipliers('TuringSchool', [1,2,1,1,2,1,1,2,1,1,2,1])
+  end
+
+  def test_word_multipler
+    assert_equal 18, Scrabble.new.score_with_multipliers('Adam', [1,2,1,1], 2)
+    assert_equal 48, Scrabble.new.score_with_multipliers('miCHael', [1,2,1,1,2,1,1], 3)
+    assert_equal 120, Scrabble.new.score_with_multipliers('TuringSchool', [1,2,1,1,2,1,1,2,1,1,2,1], 5)
+  end
 end

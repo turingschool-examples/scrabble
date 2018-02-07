@@ -47,6 +47,7 @@ end
       word_position += 1
       multiplier_position += 1
       end
-      result
+      addition = score_addition(word, result)
+      addition * multiplier
   end
 end

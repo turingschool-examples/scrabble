@@ -20,15 +20,14 @@ class Scrabble
     end
   end
 
-  def score_with_multipliers(word, letter_multiplier, word_multiplier)
+  def score_with_multipliers(word, letter_multiplier, word_multiplier = 1)
     letters = word.split("")
     sumproduct = 0
     letters.each_with_index do |value, index|
-      sumproduct = score(value.upcase) * letter_multiplier[index] *
-      word_multiplier
+      sumproduct += score(value.upcase) * letter_multiplier[index]
     end
-    sumproduct += 10 if word.length > 7
-    sumproduct
+    sumproduct += 10 if word.length >= 7
+    sumproduct * word_multiplier
   end
 
 end

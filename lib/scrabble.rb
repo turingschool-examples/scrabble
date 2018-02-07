@@ -1,5 +1,4 @@
 class Scrabble
-
   def point_values
     {"A"=>1, "B"=>3, "C"=>3, "D"=>2,
     "E"=>1, "F"=>4, "G"=>2, "H"=>4,
@@ -16,23 +15,40 @@ class Scrabble
 
     word.upcase.chars.each{ |char| sum += point_values[char] }
 
-    sum
+    bingo?(word) + sum
   end
 
 
   def score_with_multipliers(word, letter_mult, word_mult = 1)
-    sum = word.size.eql?(7) ? 10 : 0
+    sum = 0
     return sum if invalid_word?(word)
-    return 'Invalid move' unless letter_mult.size.eql?(word.size)
+    return 'Invalid move' unless valid_combo?(word, letter_mult)
+    net = combine(word, letter_mult)
 
-    net = word.upcase.chars.zip(letter_mult)
+    net.each{ |char, modifier| sum += point_values[char] * modifier }
 
-    net.each { |char, modifier| sum += (point_values[char] * modifier) }
-
-    sum * word_mult
+    (sum + bingo?(word)) * word_mult
   end
+
 
   def invalid_word?(word)
     word.nil? || word.empty?
+  end
+
+
+  def valid_combo?(word, board)
+    word.size == board.size
+  end
+
+
+  def combine(word, board)
+    word.upcase!
+    word.chars.zip(board)
+  end
+
+
+  def bingo?(word)
+    return 10 if word.size == 7
+    0
   end
 end

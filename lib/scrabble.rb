@@ -32,6 +32,16 @@ class Scrabble
     scores
   end
 
+  def highest_scoring_word(words)
+    word_scores = words.map { |word| score word }
+    max_score = word_scores.max
+    highest_words = words.select.with_index do |_word, index|
+      word_scores[index] == max_score
+    end
+
+    highest_words.sort_by(&:length).first
+  end
+
   def point_values
     {
       'A' => 1, 'B' => 3, 'C' => 3, 'D' => 2,

@@ -1,7 +1,12 @@
-class Scrabble
+require 'pry'
 
+class Scrabble
   def score(word)
-    1
+    if word == '' || word == nil
+      0
+    else
+      point_values[word.upcase]
+    end
   end
 
   def point_values

@@ -3,11 +3,8 @@ class Scrabble
   def score(word)
     return 0 if word.nil? || word.length.zero?
     chars = word.upcase.chars
-    score_per_letter = []
-
-    until chars.empty?
-      char = chars.shift
-      score_per_letter.push(point_values[char]) unless point_values[char].nil?
+    score_per_letter = chars.map do |char|
+      point_values[char]
     end
 
     apply_modifiers(score_per_letter)
@@ -30,11 +27,8 @@ class Scrabble
   def score_with_multipliers(word, multipliers, global_mod = 1)
     return 0 if word.nil? || word.length.zero?
     chars = word.upcase.chars
-    score_per_letter = []
-
-    until chars.empty?
-      char = chars.shift
-      score_per_letter.push(point_values[char]) unless point_values[char].nil?
+    score_per_letter = chars.map do |char|
+      point_values[char]
     end
 
     apply_modifiers(score_per_letter, multipliers, global_mod)

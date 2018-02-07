@@ -17,9 +17,7 @@ class Scrabble
     end
     points
   end
-  # if word_length > 6
-  #   points += 10
-  # end
+
   def score_with_multipliers(word, multiplier_index = [], word_multiplier = 1, word_length = 0)
     if word == "" || word == nil
       points = 0

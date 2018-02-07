@@ -2,7 +2,12 @@ require "pry"
 class Scrabble
 
   def score(word)
-    point_values[word.upcase]
+    letters = word.upcase.scan(/./)
+    total = 0
+    letters.each do |letter|
+      total += point_values[letter]
+    end
+    total
   end
 
   def point_values
@@ -15,6 +20,5 @@ class Scrabble
       "U"=>1, "V"=>4, "W"=>4, "X"=>8,
       "Y"=>4, "Z"=>10
     }
-    # binding.pry
   end
 end

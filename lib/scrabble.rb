@@ -4,7 +4,7 @@ class Scrabble
     if word == ''
     0
   else
-    word.each_char{|words| point_values[words.upcase]}
+    word.each_char.map {|letter| point_values[letter.upcase]}.inject(:+)
 end
   end
 
@@ -20,3 +20,5 @@ end
     }
   end
 end
+scrabble = Scrabble.new
+p scrabble.score("George")

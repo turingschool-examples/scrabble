@@ -1,3 +1,5 @@
+require 'pry'
+
 class Scrabble
 
   def point_values
@@ -28,6 +30,14 @@ class Scrabble
     end
     sumproduct += 10 if word.length >= 7
     sumproduct * word_multiplier
+  end
+
+  def highest_scoring_word(words)
+    score_words = {}
+    words.each do |word|
+      score_words[word] = score(word)
+    end
+    max_value = score_words.max_by{|key, value| value}[0]
   end
 
 end

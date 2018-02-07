@@ -23,15 +23,15 @@ class GameReader
     end
   end
 
-def score_addition(word, score)
-  if score == 0
-    return 0
-  elsif word.length < 7
-    score.sum
-  else
-    score.sum + 10
+  def score_addition(word, score)
+    if score == 0
+      return 0
+    elsif word.length < 7
+      score.sum
+    else
+      score.sum + 10
+    end
   end
-end
 
   def seperated_word(word)
     word.upcase.chars

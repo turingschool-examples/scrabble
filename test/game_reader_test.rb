@@ -54,6 +54,12 @@ class GameReaderTest < Minitest::Test
     assert 18, game.score_with_multipliers("HELLO", [1,2,1,1,1], 2)
   end
 
+  def test_score_with_multipler_without_bonus_or_multiplier
+      game = GameReader.new
+
+      assert_equal 9, game.score_with_multipliers('hello', [1,2,1,1,1])
+  end
+
   def test_game_has_score_with_multiplers_plus_10_points_bonus
     game = GameReader.new
 

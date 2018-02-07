@@ -24,6 +24,11 @@ class Scrabble
   end
 
   def score_with_multipliers(word, letter_multiplier)
-    score(word) * letter_multiplier[0]
+    words = word.upcase.chars
+    letter_multiplier_array = words.zip(letter_multiplier)
+    score = letter_multiplier_array.map do |subarray|
+      score(subarray[0]) * subarray[1]
+    end
+    score.inject { |sum, n| sum + n }
   end
 end

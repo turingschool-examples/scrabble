@@ -1,7 +1,38 @@
 class Scrabble
 
+attr_reader :word
+
+  def initialize
+    @word = word
+  end
+
   def score(word)
-    1
+    if word == nil
+      points = 0
+    else
+      chars = word.upcase.split('')
+
+      points = 0
+      chars.each do |char|
+        points += point_values[char]
+      end
+    end
+    points
+  end
+
+  def score_with_multipliers(word)
+    if word == nil
+      points = 0
+    else
+      chars = word.upcase.split('')
+
+      points = 0
+      chars.each do |char|
+      points += point_values[char]
+      end
+    end
+    points
+
   end
 
   def point_values

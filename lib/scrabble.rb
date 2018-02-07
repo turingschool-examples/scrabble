@@ -30,7 +30,7 @@ class Scrabble
     values.reduce :+
   end
 
-  def score_with_multipliers(word, letter_mult)
+  def score_with_multipliers(word, letter_mult, tot_multiplier=1)
       if word == nil || word == ""
         return 0
       else
@@ -39,14 +39,13 @@ class Scrabble
         values = word_arr.map do |letter|
           point_values[letter]
         end
-        add_score_mult(values, letter_mult)
+        binding.pry
+        add_score_mult(values, letter_mult) * tot_multiplier
       end
   end
 
   def add_score_mult(values, letter_mult)
-    binding.pry
     tot_values = values.zip(letter_mult).map{|val_i, mult_i| val_i * mult_i}
-    binding.pry
     tot_values.reduce :+
   end
 end

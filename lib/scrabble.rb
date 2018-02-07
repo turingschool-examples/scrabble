@@ -24,16 +24,22 @@ class Scrabble
 
   def score_with_multipliers(word, multiplier, word_multiplier = 1)
     total_score = 0
+    total_score += 10 if word.length >= 7
     return total_score if word == '' || word == nil
-    letter_multipler_array = []
-    until letter_multipler_array.length == word.length
-      letter_multipler_array << [word[letter_multipler_array.length], multiplier[letter_multipler_array.length]]
-    end
-    letter_multipler_array.each do |pair|
+    combined_array = combine_arrays(word, multiplier)
+    combined_array.each do |pair|
       total_score += score(pair[0]) * pair[1]
     end
     total_score *= word_multiplier
-    total_score += 10 if word.length >= 7
-    total_score
+  end
+
+  def combine_arrays(word, multiplier)
+    array = []
+    until array.length == word.length
+      array << [word[array.length], multiplier[array.length]]
+    end
+    array
   end
 end
+
+# binding.pry

@@ -43,7 +43,7 @@ class ScrabbleTest < Minitest::Test
   end
 
   def test_bonus_for_7_or_more
-    assert_equal 58, Scrabble.new.score_with_multipliers('miCHael', [1,2,1,1,2,1,1], 3)
-    assert_equal 130, Scrabble.new.score_with_multipliers('TuringSchool', [1,2,1,1,2,1,1,2,1,1,2,1], 5)
+    assert_equal 78, Scrabble.new.score_with_multipliers('miCHael', [1,2,1,1,2,1,1], 3)
+    assert_equal 170, Scrabble.new.score_with_multipliers('TuringSchool', [1,2,1,1,2,1,1,2,1,1,2,1], 5)
   end
 end

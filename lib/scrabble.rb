@@ -1,14 +1,19 @@
 # Scores words per Scrabble rules
 class Scrabble
+  def score(word)
+    score_per_letter = get_letter_scores(word)
+    apply_modifiers(score_per_letter)
+  end
+
+  def score_with_multipliers(word, multipliers, global_mod = 1)
+    score_per_letter = get_letter_scores(word)
+    apply_modifiers(score_per_letter, multipliers, global_mod)
+  end
+
   def get_letter_scores(word)
     return [0] if word.nil? || word.length.zero?
     chars = word.upcase.chars
     point_values.values_at(*chars)
-  end
-
-  def score(word)
-    score_per_letter = get_letter_scores(word)
-    apply_modifiers(score_per_letter)
   end
 
   def apply_modifiers(scores, multipliers = [], global_mod = 1)
@@ -20,14 +25,9 @@ class Scrabble
       end
     end
 
-    total = scores.reduce :+
+    total = scores.sum
     total += 10 if scores.length >= 7
     total * global_mod
-  end
-
-  def score_with_multipliers(word, multipliers, global_mod = 1)
-    score_per_letter = get_letter_scores(word)
-    apply_modifiers(score_per_letter, multipliers, global_mod)
   end
 
   def point_values

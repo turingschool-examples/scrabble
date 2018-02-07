@@ -13,11 +13,27 @@ class Scrabble
   end
 
   def score(word)
+    return 0 if word == nil
     letters = word.upcase.chars
     score = 0
     letters.each do |letter|
       score += @point_values[letter]
     end
     score
+  end
+
+  def score_with_multipliers(word, multipliers)
+    letters = word.upcase.chars
+    scores = letters.map do |letter|
+      score(letter)
+    end
+    multiplied = scores.map.with_index do |score, index|
+      scores[index] * multipliers[index]
+    end
+    total = 0
+    multiplied.each do |score|
+      total += score
+    end
+    total
   end
 end

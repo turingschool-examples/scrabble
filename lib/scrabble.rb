@@ -1,7 +1,15 @@
 class Scrabble
 
-  def score(word)
-    1
+  def initialize
+    @score = score
+    @point_values = point_values
+  end
+
+  def score
+    point_values.each do |key, value|
+      key = point_values.key,
+      value = point_values.value
+    end
   end
 
   def point_values
@@ -15,4 +23,5 @@ class Scrabble
       "Y"=>4, "Z"=>10
     }
   end
+
 end

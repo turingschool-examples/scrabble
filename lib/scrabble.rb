@@ -1,7 +1,13 @@
+require 'pry'
+
 class Scrabble
 
   def score(word)
-    1
+    return 0 if word == "" || word == nil
+    letters = word.split("")
+    letters.reduce(0) do |total,letter|
+      total + point_values[letter.upcase]
+    end
   end
 
   def point_values

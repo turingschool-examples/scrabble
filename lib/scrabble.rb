@@ -2,9 +2,7 @@
 class Scrabble
   def get_letter_scores(word)
     chars = word.upcase.chars
-    chars.map do |char|
-      point_values[char]
-    end
+    point_values.values_at(*chars)
   end
 
   def score(word)

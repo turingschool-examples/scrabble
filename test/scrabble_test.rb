@@ -28,6 +28,7 @@ class ScrabbleTest < Minitest::Test
     bonus10 = @game.score_with_multipliers('sparkle', [1, 2, 1, 3, 1, 2, 1], 2)
 
     assert_equal 9,  @game.score_with_multipliers('hello', [1, 2, 1, 1, 1])
+    assert_equal 9,  @game.score_with_multipliers('hello', [-5, 2, 1, 1, 1])
     assert_equal 18, @game.score_with_multipliers('hello', [1, 2, 1, 1, 1], 2)
     assert_equal 58, bonus10
   end

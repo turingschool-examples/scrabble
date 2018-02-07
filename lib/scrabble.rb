@@ -20,7 +20,6 @@ class Scrabble
       @letters.each do |letter|
           point_value_array << point_values[letter]
       end
-      letter_multiplier
       letter_sums = letter_multiplier.zip(point_value_array).map{|multiplier, letter| multiplier * letter}
       total = 0
       letter_sums.each { |sum| total += sum}

@@ -14,19 +14,21 @@ class Scrabble
 
   def score(word)
     return 0 if word == nil
-    letters = word.upcase.chars
-    score = 0
-    letters.each do |letter|
-      score += @point_values[letter]
+    scores = find_scores_each_letter(word)
+    scores.reduce(0) do |sum, score|
+      sum + score
     end
-    score
+  end
+
+  def find_scores_each_letter(word)
+    letters = word.upcase.chars
+    letters.map do |letter|
+      @point_values[letter]
+    end
   end
 
   def score_with_multipliers(word, array, multiplier = 1)
-    letters = word.upcase.chars
-    scores = letters.map do |letter|
-      score(letter)
-    end
+    scores = find_scores_each_letter(word)
     multiplied = scores.map.with_index do |score, index|
       scores[index] * array[index]
     end

@@ -25,4 +25,8 @@ class ScrabbleTest < Minitest::Test
     assert_equal 14, Scrabble.new.score_with_multipliers("very", [2,1,1,1])
   end
 
+  def test_it_can_score_letter_and_word_multipliers
+    assert_equal 18, Scrabble.new.score_with_multipliers("hello", [1,2,1,1,1], 2)
+    assert_equal 42, Scrabble.new.score_with_multipliers("very", [2,1,1,1], 3)
+  end
 end

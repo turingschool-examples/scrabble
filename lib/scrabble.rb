@@ -1,9 +1,5 @@
+# Plays Scrabble
 class Scrabble
-
-  def score(word)
-    1
-  end
-
   def point_values
     {
       "A"=>1, "B"=>3, "C"=>3, "D"=>2,
@@ -14,5 +10,66 @@ class Scrabble
       "U"=>1, "V"=>4, "W"=>4, "X"=>8,
       "Y"=>4, "Z"=>10
     }
+  end
+
+  def score(word)
+    if word.nil?
+      0
+    else
+      letters = word.upcase.chars
+      points_array = letters.map { |letter| point_values[letter] }
+      points_array.sum
+    end
+  end
+
+  def score_with_multipliers(word, position_score, word_multiplier = 1)
+    if word.nil?
+      0
+    elsif word.length < 7
+      multiply_no_bonus(word, position_score, word_multiplier)
+    else
+      multiply_with_bonus(word, position_score, word_multiplier)
+    end
+  end
+
+  def multiply_no_bonus(word, position_score, word_multiplier)
+    letters = word.upcase.chars
+    points_array = letters.map { |letter| point_values[letter] }
+    zipped_letters = points_array.zip(position_score)
+    scores_to_sum = zipped_letters.map do |zipped_letter|
+      zipped_letter[0] * zipped_letter[1]
+    end
+    scores_to_sum.sum * word_multiplier
+  end
+
+  def multiply_with_bonus(word, position_score, word_multiplier)
+    letters = word.upcase.chars
+    points_array = letters.map { |letter| point_values[letter] }
+    zipped_letters = points_array.zip(position_score)
+    scores_to_sum = zipped_letters.map do |zipped_letter|
+      zipped_letter[0] * zipped_letter[1]
+    end
+    (scores_to_sum.sum + 10) * word_multiplier
+  end
+
+  def highest_scoring_word(various_words)
+    best_word = nil
+    highest_score = various_words[0]
+    various_words.each do |word|
+      if score(word) > highest_score
+        highest_score = score(word)
+        best_word = word
+      elsif score(word) == highest_score
+        compare_word_length(word, best_word)
+      end
+    end
+    puts best_word
+  end
+
+  def compare_word_length(word, best_word)
+    if word.length < best_word.length
+      best_word = word
+    end
+    puts best_word
   end
 end

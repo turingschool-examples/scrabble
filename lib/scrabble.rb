@@ -34,18 +34,30 @@ class Scrabble
       if word == nil || word == ""
         return 0
       else
-        word = word.upcase
-        word_arr = word.chars
+        word_arr = word_formatter(word)
         values = word_arr.map do |letter|
           point_values[letter]
         end
-        binding.pry
-        add_score_mult(values, letter_mult) * tot_multiplier
+        score = add_score_mult(values, letter_mult)
+        total_score(word, score, tot_multiplier)
       end
   end
 
   def add_score_mult(values, letter_mult)
     tot_values = values.zip(letter_mult).map{|val_i, mult_i| val_i * mult_i}
     tot_values.reduce :+
+  end
+
+  def total_score(word, score, tot_multiplier)
+    if word.length >= 7 then score += 10 end
+    score * tot_multiplier
+  end
+
+  def word_formatter(word)
+    word = word.upcase
+    word.chars
+  end
+
+  def word_evaulator
   end
 end

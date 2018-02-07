@@ -13,14 +13,14 @@ class Scrabble
   end
 
   def score(word)
-    return 0 if word == nil
-    scores = find_scores_each_letter(word)
+    return 0 if word.nil?
+    scores = find_score_each_letter(word)
     scores.reduce(0) do |sum, score|
       sum + score
     end
   end
 
-  def find_scores_each_letter(word)
+  def find_score_each_letter(word)
     letters = word.upcase.chars
     letters.map do |letter|
       @point_values[letter]
@@ -28,13 +28,10 @@ class Scrabble
   end
 
   def score_with_multipliers(word, array, multiplier = 1)
-    scores = find_scores_each_letter(word)
+    scores = find_score_each_letter(word)
     multiplied = multiply_arrays(scores, array)
-    total = 0
+    total = multiplied.reduce(0) { |sum, score| sum + score }
     total += 10 if word.length > 6
-    multiplied.each do |score|
-      total += score
-    end
     total * multiplier
   end
 

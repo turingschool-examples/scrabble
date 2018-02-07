@@ -31,6 +31,6 @@ class ScrabbleTest < Minitest::Test
   end
 
   def test_seven_letters_scores_10_bonus_points
-    assert_equal 58, Scrabble.new.score_with_multipliers('sparkle', [1,2,1,3,1,2,1], 2)
+    assert_equal 48, Scrabble.new.score_with_multipliers('sparkle', [1,2,1,3,1,2,1], 2)
   end
 end

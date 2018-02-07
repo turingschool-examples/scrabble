@@ -18,12 +18,16 @@ class Scrabble
     if score(word) != 0
       point_value_array = Array.new
       @letters.each do |letter|
-          point_value_array << point_values[letter]
+      point_value_array << point_values[letter]
       end
       letter_sums = letter_multiplier.zip(point_value_array).map{|multiplier, letter| multiplier * letter}
       total = 0
       letter_sums.each { |sum| total += sum}
-      total * word_multiplier
+      banana = total * word_multiplier
+      if @letters.length >= 7
+        banana += 10
+      end
+      banana
     end
   end
 

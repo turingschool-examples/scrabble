@@ -1,7 +1,11 @@
 class Scrabble
 
+attr_reader :word
+
   def score(word)
-    1
+    word = word.upcase.chars
+    result = point_values.fetch(word)
+binding.pry 
   end
 
   def point_values

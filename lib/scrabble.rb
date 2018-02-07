@@ -1,8 +1,5 @@
+require 'pry'
 class Scrabble
-
-  def score(word)
-    1
-  end
 
   def point_values
     {
@@ -14,5 +11,68 @@ class Scrabble
       "U"=>1, "V"=>4, "W"=>4, "X"=>8,
       "Y"=>4, "Z"=>10
     }
+  end
+
+  def score_with_multipliers(word, letter_mult, tot_multiplier=1)
+      case word_evaulator(word)
+      when false
+        return 0
+      when true
+        word_arr = word_formatter(word)
+        values = word_arr.map do |letter|
+          point_values[letter]
+        end
+        score = add_score_mult(values, letter_mult)
+        total_score(word, score, tot_multiplier)
+      end
+  end
+
+  def add_score_mult(values, letter_mult)
+    tot_values = values.zip(letter_mult).map{|val_i, mult_i| val_i * mult_i}
+    tot_values.reduce :+
+  end
+
+  def total_score(word, score, tot_multiplier)
+    if word.length >= 7 then score += 10 end
+    score * tot_multiplier
+  end
+
+  def word_formatter(word)
+    word = word.upcase
+    word.chars
+  end
+
+  def word_evaulator(word)
+    if word == nil || word == ""
+      return false
+    else
+      return true
+    end
+  end
+
+  def highest_scoring_word(words)
+    scores = words.map do |word|
+      score(word)
+    end
+    word_hash = Hash[words.zip(scores)]
+    top = word_hash.max_by{|k, v| v }
+    top[0]
+  end
+
+  def score(word)
+    if word == nil || word == ""
+      return 0
+    else
+      word = word.upcase
+      word_arr = word.chars
+      values = word_arr.map do |letter|
+        point_values[letter]
+      end
+      add_score(values)
+    end
+  end
+
+  def add_score(values)
+    values.reduce :+
   end
 end

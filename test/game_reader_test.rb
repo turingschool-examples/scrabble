@@ -47,9 +47,16 @@ class GameReaderTest < Minitest::Test
     assert_equal 0, game.score("")
   end
 
-  def test_game_has_score_with_multipliers
+  def test_game_has_score_with_multipliers_with_valid
     game = GameReader.new
 
     assert 18, game.score_with_multipliers("hello", [1,2,1,1,1], 2)
   end
+
+  def test_game_has_score_with_multipliers_with_invalid_position
+    game = GameReader.new
+
+    assert 9, game.score_with_multipliers("hello", [1,2,1,1,2])
+  end
+
 end

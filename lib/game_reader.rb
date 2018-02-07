@@ -27,12 +27,12 @@ class GameReader
     word.upcase.chars
   end
 
-  def score_with_multipliers(word, position, multiplier)
-    if position == [1,2,1,1,1]
-      score(word) * multiplier
-
-    else
-      score(word)
+  def score_with_multipliers(word, word_position, multiplier = 1)
+    word_position[position = 0]
+    scored_word = seperated_word(word).map do |letter|
+      letter * word_position[position]
+      word_position[position += 1]
     end
+    scored_word * multiplier
   end
 end

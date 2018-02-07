@@ -1,12 +1,12 @@
 # Scores words per Scrabble rules
 class Scrabble
   def get_letter_scores(word)
+    return [0] if word.nil? || word.length.zero?
     chars = word.upcase.chars
     point_values.values_at(*chars)
   end
 
   def score(word)
-    return 0 if word.nil? || word.length.zero?
     score_per_letter = get_letter_scores(word)
     apply_modifiers(score_per_letter)
   end
@@ -26,7 +26,6 @@ class Scrabble
   end
 
   def score_with_multipliers(word, multipliers, global_mod = 1)
-    return 0 if word.nil? || word.length.zero?
     score_per_letter = get_letter_scores(word)
     apply_modifiers(score_per_letter, multipliers, global_mod)
   end

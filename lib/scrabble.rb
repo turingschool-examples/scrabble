@@ -29,14 +29,18 @@ class Scrabble
 
   def score_with_multipliers(word, array, multiplier = 1)
     scores = find_scores_each_letter(word)
-    multiplied = scores.map.with_index do |score, index|
-      scores[index] * array[index]
-    end
+    multiplied = multiply_arrays(scores, array)
     total = 0
     total += 10 if word.length > 6
     multiplied.each do |score|
       total += score
     end
     total * multiplier
+  end
+
+  def multiply_arrays(scores, array)
+    scores.map.with_index do |score, index|
+      score * array[index]
+    end
   end
 end

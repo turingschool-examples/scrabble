@@ -11,7 +11,12 @@ class Scrabble
   end
 
   def score_with_multipliers(word, position)
-     score(word)
+    assigned_multipliers = word.chars.zip(position)
+    scores = assigned_multipliers.map do |pair|
+      score(pair[0]) * pair[1]
+    end
+    scores.sum
+     # score(word)
   end
 
   def nil_value(data)

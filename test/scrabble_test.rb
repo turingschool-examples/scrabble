@@ -35,7 +35,15 @@ class ScrabbleTest < Minitest::Test
 
     def test_score_multiplying_two_letters
       game = Scrabble.new
-      
+
       assert_equal 3, game.score_with_multipliers('ae', [1,2])
+      assert_equal 7, game.score_with_multipliers('ef', [3,1])
+    end
+
+    def test_score_multiplyng_full_word
+      game = Scrabble.new
+
+      assert_equal 9, game.score_with_multipliers('hello', [1,2,1,1,1])
+      assert_equal 14, game.score_with_multipliers('world', [1,2,1,1,3])
     end
 end

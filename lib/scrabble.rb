@@ -31,6 +31,8 @@ class Scrabble
   end
 
 
+  private
+
   def invalid_word?(word)
     word.nil? || word.empty?
   end

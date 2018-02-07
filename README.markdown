@@ -132,7 +132,7 @@ game = Scrabble.new
 game.highest_scoring_word(['hi', 'word', 'ward'])  # => "word"
 ```
 
-#@ Reading Game Data
+## Reading Game Data
 
 Find a file named `input.csv` in the `./test/` folder with this game data:
 

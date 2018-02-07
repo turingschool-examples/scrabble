@@ -1,3 +1,4 @@
+# Scores words per Scrabble rules
 class Scrabble
   def score(word)
     return 0 if word.nil? || word.length.zero?

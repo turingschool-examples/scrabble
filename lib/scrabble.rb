@@ -42,6 +42,9 @@ class Scrabble
       (0..letters.length - 1).each do |i|
         total += point_values[letters[i]] * multipliers[i]
       end
+      if word.length == 7
+        total += 10
+      end
       total * word_multiplier
     end
   end

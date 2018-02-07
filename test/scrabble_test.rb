@@ -29,6 +29,10 @@ class ScrabbleTest < Minitest::Test
     assert_equal 0, @game.score_with_multipliers("", [])
   end
 
+  def test_scoring_bonus
+    assert_equal 58, @game.score_with_multipliers('sparkle', [1,2,1,3,1,2,1], 2)
+  end
+
   def test_invalid_word_score
     assert_equal 0, @game.score('helloo')
   end

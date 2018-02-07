@@ -41,5 +41,3 @@ class Scrabble
     array
   end
 end
-
-# binding.pry

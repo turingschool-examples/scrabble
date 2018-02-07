@@ -14,7 +14,6 @@ class ScrabbleTest < Minitest::Test
     game = Scrabble.new
     word = "hello"
     assert_equal = game.score(word), "hello",length
-
   end
 
   def test_can_score_an_empty_string
@@ -25,7 +24,6 @@ class ScrabbleTest < Minitest::Test
   def test_can_score_nil
     game = Scrabble.new""
     assert_nil nil, game.
-
   end
 
 

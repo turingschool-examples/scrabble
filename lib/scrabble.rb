@@ -38,6 +38,17 @@ class Scrabble
     end
     points*word_multiplier
   end
+
+  def highest_scoring_word(words = [])
+    best_word = ''
+    word_and_score = []
+    words.each do |word|
+      word_and_score.push({word: word, score: score(word)})
+    end
+    word_and_score = word_and_score.sort_by { |hash| hash[:weight] }
+    word_and_score.shift[:word]
+  end
+
   def point_values
     {
       "A"=>1, "B"=>3, "C"=>3, "D"=>2,

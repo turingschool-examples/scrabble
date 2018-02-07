@@ -36,4 +36,20 @@ class ScrabbleTest < Minitest::Test
   def test_invalid_word_score_multiplier
     assert_equal 0, @game.score_with_multipliers('helloo', [1,1,1,2,1,1])
   end
+
+  def test_highest_scoring_word
+    assert_equal 'home', @game.highest_scoring_word(['home', 'word', 'hello', 'sound'])
+  end
+
+  def test_highest_scoring_least_letters
+    assert_equal 'word', @game.highest_scoring_word(['hello', 'word', 'sound'])
+  end
+
+  def test_highest_scoring_bonus
+    assert_equal 'silence', @game.highest_scoring_word(['home', 'word', 'silence'])
+  end
+
+  def test_highest_scoring_takes_first_tied_option
+    assert_equal 'word', @game.highest_scoring_word(['hi', 'word', 'ward'])
+  end
 end

@@ -45,4 +45,20 @@ class Scrabble
       total * word_multiplier
     end
   end
+
+  def highest_scoring_word(words)
+    highest = words[0]
+    words.each do |word|
+      if word.length == 7
+        highest = word
+        break
+      end
+      if score(word) > score(highest)
+        highest = word
+      elsif score(word) == score(highest) && word.length < highest.length
+        highest = word
+      end
+    end
+    highest
+  end
 end

@@ -51,4 +51,25 @@ class Scrabble
     end
     (scores_to_sum.sum + 10) * word_multiplier
   end
+
+  def highest_scoring_word(various_words)
+    best_word = nil
+    highest_score = various_words[0]
+    various_words.each do |word|
+      if score(word) > highest_score
+        highest_score = score(word)
+        best_word = word
+      elsif score(word) == highest_score
+        compare_word_length(word, best_word)
+      end
+    end
+    puts best_word
+  end
+
+  def compare_word_length(word, best_word)
+    if word.length < best_word.length
+      best_word = word
+    end
+    puts best_word
+  end
 end

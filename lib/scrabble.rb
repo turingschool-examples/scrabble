@@ -1,7 +1,21 @@
 class Scrabble
+  attr_reader :word 
+
+  def initialize
+    @word = word
+  end 
 
   def score(word)
-    1
+    # require 'pry'; binding.pry
+    scores =[]
+    word.split.each do |letter|
+      if point_values[letter.upcase] == nil
+        letter = 0
+        scores << letter
+      end 
+      scores << point_values[letter.upcase]
+
+    end
   end
 
   def point_values

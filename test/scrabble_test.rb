@@ -15,14 +15,14 @@ class ScrabbleTest < Minitest::Test
     assert_equal 0, @game.score('')
   end
 
-  def test_it_can_score_a_word
+  def test_it_can_score_a_wordr
     assert_equal 8, @game.score('hello')
   end
 
-  def test_it_can_do_multipliers
+  def test_it_can_do_multipliers                      
     bonus10 = @game.score_with_multipliers('sparkle', [1, 2, 1, 3, 1, 2, 1], 2)
 
-    assert_equal 8,  @game.score_with_multipliers('hello', [1, 2, 1, 1, 1])
+    assert_equal 9,  @game.score_with_multipliers('hello', [1, 2, 1, 1, 1])
     assert_equal 18, @game.score_with_multipliers('hello', [1, 2, 1, 1, 1], 2)
     assert_equal 58, bonus10
   end

@@ -9,21 +9,34 @@ class Scrabble
       score_per_letter.push(point_values[char]) unless point_values[char].nil?
     end
 
-    get_final_score(score_per_letter)
+    apply_modifiers(score_per_letter)
   end
 
-  def get_final_score(scores, multipliers = [], global_mod = 1)
+  def apply_modifiers(scores, multipliers = [], global_mod = 1)
     if multipliers.length == scores.length
-      scores = letters.map.with_index do |letter_score, index|
+      scores = scores.map.with_index do |letter_score, index|
         multiplier = multipliers[index]
         multiplier = 1 if multiplier < 1
-        letter_score * multiplier * global_mod
+        letter_score * multiplier
       end
-    else
-      scores.map { |letter_score| letter_score * global_mod }
     end
 
-    scores.reduce :+
+    total = scores.reduce :+
+    total += 10 if scores.length >= 7
+    total * global_mod
+  end
+
+  def score_with_multipliers(word, multipliers, global_mod = 1)
+    return 0 if word.nil? || word.length.zero?
+    chars = word.upcase.chars
+    score_per_letter = []
+
+    until chars.empty?
+      char = chars.shift
+      score_per_letter.push(point_values[char]) unless point_values[char].nil?
+    end
+
+    apply_modifiers(score_per_letter, multipliers, global_mod)
   end
 
   def point_values

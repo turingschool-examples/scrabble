@@ -1,7 +1,11 @@
 class Scrabble
 
   def score(word)
-    1
+    return 0 if word.nil?
+    letters = word.upcase.chars
+    letters.map do |letter|
+      point_values[letter]
+    end.sum
   end
 
   def point_values
@@ -14,5 +18,14 @@ class Scrabble
       "U"=>1, "V"=>4, "W"=>4, "X"=>8,
       "Y"=>4, "Z"=>10
     }
+  end
+
+  def score_with_multipliers(word, position_mults, word_mult = 1)
+    scoring_array = word.chars.zip(position_mults)
+    sub_total = scoring_array.map do |element|
+      score(element[0]) * element[1]
+    end.sum
+    sub_total += 10 if word.length > 6
+    sub_total * word_mult
   end
 end

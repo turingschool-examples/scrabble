@@ -37,21 +37,15 @@ end
     word.upcase.chars
   end
 
-  def score_with_multipliers(word, word_position, multiplier = 1)
+  def score_with_multipliers(word, multiplier_array, multiplier = 1)
     word_position = 0
-    array_position = 0
-    word[score[word_position]] * word_position[array_position]
-    word
-      word * word_position
+    multiplier_position = 0
+    result = []
+    while word_position < word.length
+      result << word[word_position] * multiplier_array[multiplier_position]
+      word_position += 1
+      multiplier_position += 1
       end
-      scored_word.sum
-    else
-      word_position[position = 0]
-      scored_word = seperated_word(word).map do |letter|
-        letter * word_position[position]
-        word_position[position += 1]
-      end
-      scored_word.sum
-    end
+      result
   end
 end

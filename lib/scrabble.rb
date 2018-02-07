@@ -18,16 +18,14 @@ class Scrabble
 
   def apply_modifiers(scores, multipliers = [], global_mod = 1)
     if multipliers.length == scores.length
-      scores = scores.map.with_index do |letter_score, index|
-        multiplier = multipliers[index]
-        multiplier = 1 if multiplier < 1
-        letter_score * multiplier
+      scores = scores.zip(multipliers).map do |score_mult|
+        score_mult[1] = 1 if score_mult[1] < 1
+        score_mult.inject :*
       end
     end
 
-    total = scores.sum
-    total += 10 if scores.length >= 7
-    total * global_mod
+    scores.push 10 if scores.length >= 7
+    scores.sum * global_mod
   end
 
   def point_values

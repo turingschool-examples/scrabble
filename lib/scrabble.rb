@@ -1,7 +1,11 @@
 class Scrabble
 
   def score(word)
-    1
+    if word == ''
+    0
+  else
+    word.each_char{|words| point_values[words.upcase]}
+end
   end
 
   def point_values

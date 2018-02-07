@@ -32,13 +32,18 @@ class ScrabbleTest < Minitest::Test
 
   def test_letter_multipliers
     assert_equal 9, Scrabble.new.score_with_multipliers('Adam', [1,2,1,1])
-    assert_equal 16, Scrabble.new.score_with_multipliers('miCHael', [1,2,1,1,2,1,1])
-    assert_equal 24, Scrabble.new.score_with_multipliers('TuringSchool', [1,2,1,1,2,1,1,2,1,1,2,1])
+    assert_equal 32, Scrabble.new.score_with_multipliers('Happy', [1,2,1,1,5])
+    assert_equal 9, Scrabble.new.score_with_multipliers('Dog', [1,5,1])
   end
 
   def test_word_multipler
     assert_equal 18, Scrabble.new.score_with_multipliers('Adam', [1,2,1,1], 2)
-    assert_equal 48, Scrabble.new.score_with_multipliers('miCHael', [1,2,1,1,2,1,1], 3)
-    assert_equal 120, Scrabble.new.score_with_multipliers('TuringSchool', [1,2,1,1,2,1,1,2,1,1,2,1], 5)
+    assert_equal 96, Scrabble.new.score_with_multipliers('Happy', [1,2,1,1,5], 3)
+    assert_equal 45, Scrabble.new.score_with_multipliers('Dog', [1,5,1], 5)
+  end
+
+  def test_bonus_for_7_or_more
+    assert_equal 58, Scrabble.new.score_with_multipliers('miCHael', [1,2,1,1,2,1,1], 3)
+    assert_equal 130, Scrabble.new.score_with_multipliers('TuringSchool', [1,2,1,1,2,1,1,2,1,1,2,1], 5)
   end
 end

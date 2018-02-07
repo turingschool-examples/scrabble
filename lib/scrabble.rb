@@ -32,6 +32,8 @@ class Scrabble
     letter_multipler_array.each do |pair|
       total_score += score(pair[0]) * pair[1]
     end
-    total_score * word_multiplier
+    total_score *= word_multiplier
+    total_score += 10 if word.length >= 7
+    total_score
   end
 end

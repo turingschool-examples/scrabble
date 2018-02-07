@@ -17,9 +17,7 @@ class Scrabble
   def score_with_multipliers(word, letter_multiplier, word_multiplier = 1)
     if score(word) != 0
       point_value_array = Array.new
-      @letters.each do |letter|
-      point_value_array << point_values[letter]
-      end
+      @letters.each { |letter| point_value_array << point_values[letter] }
       letter_sums = letter_multiplier.zip(point_value_array).map{|multiplier, letter| multiplier * letter}
       total = 0
       letter_sums.each { |sum| total += sum}

@@ -23,11 +23,10 @@ class Scrabble
       letter_sums = letter_multiplier.zip(point_value_array).map{|multiplier, letter| multiplier * letter}
       total = 0
       letter_sums.each { |sum| total += sum}
-      banana = total * word_multiplier
       if @letters.length >= 7
-        banana += 10
+        total += 10
       end
-      banana
+      total * word_multiplier
     end
   end
 

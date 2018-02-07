@@ -9,6 +9,10 @@ class ScrabbleTest < Minitest::Test
     @game = Scrabble.new
   end
 
+  def test_it_maps_letter_scores
+    assert_equal [4, 1, 1, 1, 1], @game.get_letter_scores('hello')
+  end
+
   def test_it_can_score_a_single_letter
     assert_equal 1, @game.score('a')
     assert_equal 4, @game.score('f')

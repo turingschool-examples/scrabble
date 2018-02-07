@@ -1,13 +1,25 @@
 class Scrabble
-  # attr_reader :score
+  attr_reader :word
 
-  def score_single_letter
-    1
+  def initialize(word)
+    @word = word
+
   end
 
   def score(word)
-    1
+    letters = word.upcase.split('h')
+
+    total = 0
+    letters.each do |letter|
+      total += letter_scores[letter]
   end
+
+  def empty(word)
+    word.to_s == 0
+  end
+
+
+
 
   def point_values
     {

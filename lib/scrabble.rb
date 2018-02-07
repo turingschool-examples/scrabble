@@ -46,7 +46,14 @@ class Scrabble
       word_and_score.push({word: word, score: score(word)})
     end
     word_and_score = word_and_score.sort_by { |hash| hash[:weight] }
-    word_and_score.shift[:word]
+    finalists = [word_and_score.shift]
+    word_and_score.each do |hash|
+      if hash[:score] == finalists[:score]
+        finalists.push(hash)
+      end
+    end
+      finalists.sort_by { |hash| hash[:word.length]}
+    best_word = finalists.shift[:word]
   end
 
   def point_values

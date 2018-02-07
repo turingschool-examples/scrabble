@@ -19,20 +19,39 @@ class GameReader
       score = word.map do |letter|
         @letters[letter]
       end
-      score.sum
+      score_addition(word, score)
     end
   end
+
+def score_addition(word, score)
+  if score == 0
+    return 0
+  elsif word.length < 7
+    score.sum
+  else
+    score.sum + 10
+  end
+end
 
   def seperated_word(word)
     word.upcase.chars
   end
 
   def score_with_multipliers(word, word_position, multiplier = 1)
-    word_position[position = 0]
-    scored_word = seperated_word(word).map do |letter|
-      letter * word_position[position]
-      word_position[position += 1]
+    word_position = 0
+    array_position = 0
+    word[score[word_position]] * word_position[array_position]
+    word
+      word * word_position
+      end
+      scored_word.sum
+    else
+      word_position[position = 0]
+      scored_word = seperated_word(word).map do |letter|
+        letter * word_position[position]
+        word_position[position += 1]
+      end
+      scored_word.sum
     end
-    scored_word * multiplier
   end
 end

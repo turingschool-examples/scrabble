@@ -1,6 +1,6 @@
 class GameReader
   attr_reader :letters
-  
+
   def initialize
     @letters = {"A"=>1, "B"=>3, "C"=>3, "D"=>2,
                 "E"=>1, "F"=>4, "G"=>2, "H"=>4,
@@ -10,4 +10,21 @@ class GameReader
                 "U"=>1, "V"=>4, "W"=>4, "X"=>8,
                 "Y"=>4, "Z"=>10}
   end
+
+  def score(word)
+    if word == nil || word.length == 0
+      0
+    else
+      word = seperated_word(word)
+      score = word.map do |letter|
+        @letters[letter]
+      end
+      score.sum
+    end
+  end
+
+  def seperated_word(word)
+    word.chars
+  end
+
 end

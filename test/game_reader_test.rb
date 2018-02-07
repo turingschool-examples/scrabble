@@ -23,4 +23,27 @@ class GameReaderTest < Minitest::Test
       "Y"=>4, "Z"=>10
       }), game.letters
   end
+
+  def test_game_has_a_score_function
+    game = GameReader.new
+
+    assert_equal 1, game.score("A")
+  end
+
+  def test_game_has_a_seperate_word_function
+    game = GameReader.new
+    assert_equal ["H", "e", "l", "l", "o"], game.seperated_word("Hello")
+  end
+
+  def test_score_can_score_a_word
+    game = GameReader.new
+    assert_equal 8, game.score("HELLO")
+  end
+
+  def test_nil_and_0_returns_0
+    game = GameReader.new
+    binding.pry
+    assert_equal 0, game.score(nil)
+    assert_equal 0, game.score("")
+  end
 end

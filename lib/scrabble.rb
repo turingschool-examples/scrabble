@@ -6,7 +6,7 @@ class Scrabble
   end
 
   def score(letters)
-    letters.each_char do |letter|
+    letters.each do |letter|
       letter  = letter.fetch(point_values.key)
     end
   end

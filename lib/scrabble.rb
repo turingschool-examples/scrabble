@@ -1,11 +1,15 @@
 require "pry"
 class Scrabble
 
-  def score(word)
-    letters = word.upcase.scan(/./)
+  def score(word = nil)
     total = 0
-    letters.each do |letter|
+    if word.nil?
+      total
+    else
+      letters = word.upcase.scan(/./)
+      letters.each do |letter|
       total += point_values[letter]
+      end
     end
     total
   end

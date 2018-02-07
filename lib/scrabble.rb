@@ -1,7 +1,31 @@
+require './lib/dictionary'
+require 'pry'
+
 class Scrabble
 
   def score(word)
-    1
+    return nil if word == nil || word == ""
+    word.split("").map do |letter|
+      point_values[letter.upcase]
+    end.sum
+  end
+
+  def score_with_multipliers(word, bonus = nil, multiplier = 1)
+    return nil if word == nil || word == ""
+    total_score = bonus_multiplier(word, bonus, multiplier)
+    total_score += length_bonus(word)
+  end
+
+  def bonus_multiplier(word, bonus = nil, multiplier = 1)
+    return nil if word == nil || word == ""
+    word.split("").map.with_index do |letter, index|
+      score(letter) * bonus[index]
+    end.sum * multiplier
+  end
+
+  def length_bonus(word)
+    return 10 if word.split("").length >= 7
+    return 0
   end
 
   def point_values

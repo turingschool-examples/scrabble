@@ -1,18 +1,18 @@
 class Scrabble
 
-  def initialize
+  def initialize(score)
     @score = score
-    @point_values = point_values
+
   end
 
-  def score
-    point_values.each do |key, value|
-      key = point_values.key,
-      value = point_values.value
+  def score(letters)
+    letters.each_char do |letter|
+      letter  = letter.fetch(point_values.key)
     end
   end
 
-  def point_values
+  def point_values(letters)
+    letters =
     {
       "A"=>1, "B"=>3, "C"=>3, "D"=>2,
       "E"=>1, "F"=>4, "G"=>2, "H"=>4,

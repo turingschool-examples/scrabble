@@ -18,6 +18,7 @@ class Scrabble
     points
   end
 
+
   def point_values
     {
       "A"=>1, "B"=>3, "C"=>3, "D"=>2,

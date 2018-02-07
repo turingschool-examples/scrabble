@@ -1,13 +1,11 @@
 class Scrabble
 
+attr_reader :word
+
   def score(word)
     word = word.upcase.chars
-    word.each do |charater|
-      if charater == point_values.key
-        score = point_values.value
-      end
-      binding.pry
-    end
+    output = point_values.key(word)
+binding.pry
   end
 
   def point_values

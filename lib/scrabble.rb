@@ -14,7 +14,7 @@ def initialize
 end
 
 
-  # def point_values
+  # # def point_values
   #   letters = {
   #     "A"=>1, "B"=>3, "C"=>3, "D"=>2,
   #     "E"=>1, "F"=>4, "G"=>2, "H"=>4,
@@ -27,10 +27,21 @@ end
   # end
 
   def score(word)
-    require 'pry'; binding.pry
+    if word.length == 1
+      @letters[word.upcase]
+    elsif word.length > 1
+       word.upcase.chars.each do |letter|
+        @letter[word]
+      end
+    end
 
-   @letters[lsword]
 
+
+      # end
+    # end
+
+
+   # require 'pry'; binding.pry
   end
 
 

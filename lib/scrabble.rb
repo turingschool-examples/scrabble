@@ -1,5 +1,3 @@
-require 'pry'
-
 class Scrabble
 
   def point_values
@@ -20,6 +18,17 @@ class Scrabble
     letters.reduce(0) do |total,letter|
       total + point_values[letter.upcase]
     end
+  end
+
+  def score_with_multipliers(word, letter_multiplier, word_multiplier)
+    letters = word.split("")
+    sumproduct = 0
+    letters.each_with_index do |value, index|
+      sumproduct = score(value.upcase) * letter_multiplier[index] *
+      word_multiplier
+    end
+    sumproduct += 10 if word.length > 7
+    sumproduct
   end
 
 end

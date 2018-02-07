@@ -1,4 +1,4 @@
-require "pry"
+require 'pry'
 class Scrabble
 
   def score(word = nil)
@@ -6,12 +6,26 @@ class Scrabble
     if word.nil?
       total
     else
-      letters = word.upcase.scan(/./)
-      letters.each do |letter|
+      @letters = word.upcase.scan(/./)
+      @letters.each do |letter|
       total += point_values[letter]
       end
     end
     total
+  end
+
+  def score_with_multipliers(word, letter_multiplier)
+    if score(word) != 0
+      point_value_array = Array.new
+      @letters.each do |letter|
+          point_value_array << point_values[letter]
+      end
+      letter_multiplier
+      letter_sums = letter_multiplier.zip(point_value_array).map{|multiplier, letter| multiplier * letter}
+      total = 0
+      letter_sums.each { |sum| total += sum}
+      total
+    end
   end
 
   def point_values

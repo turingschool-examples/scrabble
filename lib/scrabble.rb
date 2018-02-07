@@ -1,4 +1,9 @@
 class Scrabble
+  # attr_reader :score
+
+  def score_single_letter
+    1
+  end
 
   def score(word)
     1

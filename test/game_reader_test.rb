@@ -6,7 +6,6 @@ require 'pry'
 
 class GameReaderTest < Minitest::Test
   def test_it_reads_players
-    skip
     game = GameReader.new('./test/input.csv')
     assert_equal 3, game.word_count(:player_1)
     assert_equal 2, game.word_count(:player_2)

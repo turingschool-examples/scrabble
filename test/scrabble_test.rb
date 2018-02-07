@@ -16,5 +16,11 @@ class ScrabbleTest < Minitest::Test
 
   def test_it_returns_zero_for_nil_or_empty
     assert_equal 0, Scrabble.new.score(nil)
+    assert_equal 0, Scrabble.new.score("")
   end
+
+  def test_it_can_score_multipliers
+    board = Scrabble.new.score_with_multipliers('hello', [1,2,1,1,1], 2)
+    assert_equal 9, board
+  end 
 end

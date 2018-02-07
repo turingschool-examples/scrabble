@@ -6,15 +6,25 @@ class Scrabble
   end 
 
   def score(word)
-    if word == nil
+    if word == nil || word == ""
       0
     else
-    sliced_word = word.upcase.split("")
-    sliced_word.map do |letter|
-      point_values[letter]
-      # require 'pry'; binding.pry
-    end.compact.sum
+      sliced_word = word.upcase.split("")
+      sliced_word.map do |letter|
+        point_values[letter]
+      end.compact.sum
+    end
   end
+
+  def score_with_multipliers(word, board, multiplier = 1)
+    scores = score(word)
+    index = 0
+    scores.map do |score|
+      scores[index] * board[index]
+    index +=1
+    end
+    multiplied_scores * multiplier
+
   end
 
   def point_values

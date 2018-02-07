@@ -1,7 +1,18 @@
+require 'pry'
+
 class Scrabble
 
   def score(word)
-    1
+    if word == nil
+      0
+    else
+      letters = word.chars
+      value = []
+      letters.map do |letter|
+        value << point_values[letter.upcase]
+      end
+      value.sum
+    end
   end
 
   def point_values
@@ -14,5 +25,32 @@ class Scrabble
       "U"=>1, "V"=>4, "W"=>4, "X"=>8,
       "Y"=>4, "Z"=>10
     }
+  end
+
+  def score_with_multipliers(word, letter, bonus=0)
+    if word == nil
+      0
+    else
+      value = []
+      word.chars.map do |letter|
+        value << point_values[letter.upcase]
+      end
+      total = []
+      total << (value.zip(letter))
+      total.flatten!(1)
+      total.map! do |num|
+        num[0] * num[1]
+      end
+      total.sum
+    end
+    if word.length >= 7
+      total.sum + 10
+    else
+      total.sum
+    end
+    if bonus == 0
+      total.sum
+    else total.sum * bonus
+    end
   end
 end

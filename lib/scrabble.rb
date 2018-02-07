@@ -33,15 +33,14 @@ class Scrabble
   
   
   def highest_scoring_word(words)
-    words.each
 
     scores = words.map{ |word| score(word) }
     hashed = words.zip(scores).to_h
     potential = hashed.select{ |k, v| v == scores.max }
     if potential.size == 1
-      return potential.keys[0]
+      potential.keys[0]
     else
-      return potential.min_by{|k, v| k.size}[0]
+      potential.min_by{|k, v| k.size}[0]
     end
   end
 

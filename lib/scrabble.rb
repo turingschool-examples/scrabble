@@ -2,10 +2,10 @@ class Scrabble
 
   def score(word)
     if word == ''
-    0
-  else
-    word.each_char.map {|letter| point_values[letter.upcase]}.inject(:+)
-end
+      0
+    else
+      word.each_char.map {|letter| point_values[letter.upcase]}.inject(:+)
+    end
   end
 
   def point_values
@@ -19,11 +19,9 @@ end
       "Y"=>4, "Z"=>10
     }
   end
-end
 
   def score_with_multipliers(word, point_values)
+    
   end
 
-
-scrabble = Scrabble.new
-p scrabble.score("kio")
+end

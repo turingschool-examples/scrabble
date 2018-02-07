@@ -17,4 +17,14 @@ class ScrabbleTest < Minitest::Test
     assert_equal 7, Scrabble.new.score("kio")
   end
 
+  def test_score_with_multipliers
+    assert_equal 9, score_with_multipliers('hello', [1,2,1,1,1])
+  end
+
+  def test_score_with_multipliers_bounus
+    skip
+    assert_equal 58, score_with_multipliers('sparkle', [1,2,1,3,1,2,1], 2)
+
+
+  end
 end

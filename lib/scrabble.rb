@@ -1,22 +1,35 @@
 require 'pry'
 class Scrabble
 
+  # def score(word)
+  #   word = nil_value(word)
+  #   letters = word.upcase.chars
+  #   scoring = letters.map do |letter|
+  #     point_values[letter]
+  #   end
+  #   scoring.sum
+  # end
+
   def score(word)
     word = nil_value(word)
     letters = word.upcase.chars
     scoring = letters.map do |letter|
       point_values[letter]
     end
-    scoring.sum
+    if word.length < 7
+      scoring.sum
+      binding.pry
+    else
+      scoring.sum += 10
+  end
   end
 
-  def score_with_multipliers(word, position)
+  def score_with_multipliers(word, position, bonus=1)
     assigned_multipliers = word.chars.zip(position)
     scores = assigned_multipliers.map do |pair|
       score(pair[0]) * pair[1]
     end
-    scores.sum
-     # score(word)
+    scores.sum * bonus
   end
 
   def nil_value(data)

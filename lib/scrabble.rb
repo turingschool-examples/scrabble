@@ -1,16 +1,11 @@
 class Scrabble
-
-# attr_reader :score
-#
-#   def initialize(score)
-#     @score = score
-#   end
+require 'pry'
 
   def score(score)
 
      total = 0
      point_values.each_key do |letter|
-       letter = point_values.values
+       letter = point_values.keys + point_values.values
        total += 1
      end
      total

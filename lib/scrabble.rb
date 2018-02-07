@@ -17,14 +17,24 @@ class Scrabble
   end
 
   def score_with_multipliers(word, board, multiplier = 1)
-    scores = score(word)
-    index = 0
-    scores.map do |score|
-      scores[index] * board[index]
-    index +=1
-    end
-    multiplied_scores * multiplier
+    board.map do |letter_score|
+      word.upcase.split('').map do |letter|
+        point_values[letter]
+      end
+      word[letter_score] * board[letter_score]
+      # require 'pry'; binding.pry
+    end 
 
+    # letters = word.upcase.split("")
+    # index = 0
+    # letters.map do |letter|
+    #   point_values[letter] * board[index]
+    # # end
+    # # index = 0
+    # # scores.map do |score|
+    # #   scores[index] 
+    # index +=1
+    # end.sum * multiplier
   end
 
   def point_values

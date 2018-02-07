@@ -5,9 +5,10 @@ require 'minitest/pride'
 require 'pry'
 
 class PlayerTest < Minitest::Test
-  def test_player_has_id
+  def test_player_initialized
     player = Player.new 1
     assert_equal 1, player.id
+    assert_equal 0, player.score
   end
 
   def test_player_can_take_score

@@ -1,7 +1,13 @@
+require_relative 'word_finder'
+
 # scrabble scoring class
 class Scrabble
+  def initialize
+    @finder = WordFinder.new
+  end
+
   def score(word)
-    unless word
+    if !word || !@finder.exists?(word)
       return 0
     end
     letters = word.upcase.chars
@@ -25,7 +31,7 @@ class Scrabble
   end
 
   def score_with_multipliers(word, multipliers, word_multiplier = 1)
-    unless word
+    if !word || !@finder.exists?(word)
       return 0
     end
     letters = word.upcase.chars

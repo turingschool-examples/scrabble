@@ -1,18 +1,22 @@
 class Scrabble
 
-  def initialize(score)
-    @score = score
+# attr_reader :score
+#
+#   def initialize(score)
+#     @score = score
+#   end
 
+  def score(score)
+
+     total = 0
+     point_values.each_key do |letter|
+       letter = point_values.values
+       total += 1
+     end
+     total
   end
 
-  def score(letters)
-    letters.each do |letter|
-      letter  = letter.fetch(point_values.key)
-    end
-  end
-
-  def point_values(letters)
-    letters =
+  def point_values
     {
       "A"=>1, "B"=>3, "C"=>3, "D"=>2,
       "E"=>1, "F"=>4, "G"=>2, "H"=>4,

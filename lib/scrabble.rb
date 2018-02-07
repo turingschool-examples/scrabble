@@ -6,10 +6,15 @@ class Scrabble
   end 
 
   def score(word)
-    sliced_word = word.upcase.split("")
-    sliced_word.map do |letter|
+    scores = []
+    if word=nil? || word = ("")
+      word = 0
+      scores << word
+    else
+      sliced_word = word.upcase.split("")
+      sliced_word.each do |letter|
       point_values[letter]
-      # require 'pry'; binding.pry
+        # require 'pry'; binding.pry
     end.compact.sum
   end
 

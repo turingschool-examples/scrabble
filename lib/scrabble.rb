@@ -37,7 +37,7 @@ class Scrabble
     words.each do |word|
       score_words[word] = score(word)
     end
-    max_value = score_words.max_by{|key, value| value}[0]
+    max_value = score_words.sort_by{|key, value| value}.last[0]
   end
 
 end

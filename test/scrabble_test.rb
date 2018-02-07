@@ -99,4 +99,11 @@ class ScrabbleTest < Minitest::Test
     game.highest_scoring_word(['home', 'word', 'hello', 'sound'])
   end
 
+  def test_it_finds_the_highest_scoring_word_with_same_scores
+    game = Scrabble.new
+
+    assert_equal "word",
+    game.highest_scoring_word(['hello', 'word', 'sound'])
+  end
+
 end

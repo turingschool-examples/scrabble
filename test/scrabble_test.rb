@@ -13,6 +13,29 @@ class ScrabbleTest < Minitest::Test
 
   def test_scoring_two_words
 
-    assert_equal 6, Scrabble.new.score("BC")
+    assert_equal 6, Scrabble.new.score("bc")
+    assert_equal 5, Scrabble.new.score("sw")
   end
+
+  def test_scoring_words
+
+    assert_equal 8, Scrabble.new.score("hello")
+    assert_equal 10, Scrabble.new.score("what")
+  end
+
+  def test_scoring_empty_strings
+
+      assert_equal 0, Scrabble.new.score("")
+    end
+
+    def test_scoring_nil
+
+      assert_equal 0, Scrabble.new.score(nil)
+    end
+
+    def test_score_multiplying_two_letters
+      game = Scrabble.new
+      
+      assert_equal 3, game.score_with_multipliers('ae', [1,2])
+    end
 end

@@ -2,8 +2,24 @@ require 'pry'
 class Scrabble
 
   def score(word)
-    # values = word.each {|letter| letter.upcase}
-    point_values[word.upcase]
+    word = nil_value(word)
+    letters = word.upcase.chars
+    scoring = letters.map do |letter|
+      point_values[letter]
+    end
+    scoring.sum
+  end
+
+  def score_with_multipliers(word, position)
+     score(word)
+  end
+
+  def nil_value(data)
+    if data == nil
+      ""
+    else
+      data = data
+    end
   end
 
   def point_values

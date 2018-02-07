@@ -3,13 +3,17 @@ require 'pry'
 class Scrabble
 
   def score(word)
-    word_array = word.upcase.chars
-    points = 0
-    word_array.map! do |char|
-      char = point_values[char]
-    end
-    word_array.each do |number|
-      points += number
+    if word == "" || word == nil
+      points = 0
+    else
+      word_array = word.upcase.chars
+      points = 0
+      word_array.map! do |char|
+        char = point_values[char]
+      end
+      word_array.each do |number|
+        points += number
+      end
     end
     points
   end

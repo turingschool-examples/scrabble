@@ -22,5 +22,6 @@ class GameReaderTest < Minitest::Test
     game = GameReader.new('./test/input.csv')
 
     assert_equal 3, game.word_count(:player_1)
+    assert_equal 2, game.word_count(:player_2)
   end
 end

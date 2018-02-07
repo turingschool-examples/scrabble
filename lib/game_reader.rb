@@ -12,5 +12,13 @@ class GameReader
   end
 
   def word_count(player)
+    split_array = read_file
+    find_words(player, split_array).length
+  end
+
+  def find_words(player, split_array)
+    split_array.find_all do |array|
+      array[0] = player[-1]
+    end
   end
 end

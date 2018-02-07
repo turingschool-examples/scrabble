@@ -50,6 +50,15 @@ class Scrabble
     end
   end
 
+  def highest_scoring_word(words)
+    scores = words.map do |word|
+      score(word)
+    end
+    word_hash = Hash[words.zip(scores)]
+    top = word_hash.max_by{|k, v| v }
+    top[0]
+  end
+
   def score(word)
     if word == nil || word == ""
       return 0

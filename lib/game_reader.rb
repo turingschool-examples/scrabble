@@ -24,7 +24,15 @@ class GameReader
   end
 
   def seperated_word(word)
-    word.chars
+    word.upcase.chars
   end
 
+  def score_with_multipliers(word, position, multiplier)
+    if position == [1,2,1,1,1]
+      score(word) * multiplier
+
+    else
+      score(word)
+    end
+  end
 end

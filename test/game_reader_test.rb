@@ -32,7 +32,7 @@ class GameReaderTest < Minitest::Test
 
   def test_game_has_a_seperate_word_function
     game = GameReader.new
-    assert_equal ["H", "e", "l", "l", "o"], game.seperated_word("Hello")
+    assert_equal ["H", "E", "L", "L", "O"], game.seperated_word("Hello")
   end
 
   def test_score_can_score_a_word
@@ -42,8 +42,14 @@ class GameReaderTest < Minitest::Test
 
   def test_nil_and_0_returns_0
     game = GameReader.new
-    binding.pry
+
     assert_equal 0, game.score(nil)
     assert_equal 0, game.score("")
+  end
+
+  def test_game_has_score_with_multipliers
+    game = GameReader.new
+
+    assert 18, game.score_with_multipliers("hello", [1,2,1,1,1], 2)
   end
 end

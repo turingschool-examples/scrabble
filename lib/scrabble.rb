@@ -17,8 +17,29 @@ class Scrabble
     end
     points
   end
-
-
+  # if word_length > 6
+  #   points += 10
+  # end
+  def score_with_multipliers(word, multiplier_index = [], word_multiplier = 1, word_length = 0)
+    if word == "" || word == nil
+      points = 0
+    else
+      word_length = word.size
+      word_array = word.upcase.chars
+      points = 0
+      word_array.map! do |char|
+        multiplier = multiplier_index.shift
+        char = point_values[char]*multiplier
+      end
+      word_array.each do |number|
+        points += number
+      end
+    end
+    if word_length > 6
+      points += 10
+    end
+    points*word_multiplier
+  end
   def point_values
     {
       "A"=>1, "B"=>3, "C"=>3, "D"=>2,

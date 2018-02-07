@@ -99,3 +99,58 @@ Additionally, a word scores a 10-point bonus (applied before the word multiplier
 Use the existing `point_values` method in the `Scrabble` class as a source for each letter's value.
 
 It is expected that you will add to the existing tests in `test/scrabble_test.rb`.
+
+# BONUS
+
+## Highest Scoring Word
+
+Implement a `highest_scoring_word` method that works like the examples below.
+
+```ruby
+game = Scrabble.new
+game.highest_scoring_word(['home', 'word', 'hello', 'sound'])  # => "home"
+```
+
+Note that it's better to use fewer tiles, so if the top score is tied between multiple words, pick the one with the fewest letters:
+
+```ruby
+game = Scrabble.new
+game.highest_scoring_word(['hello', 'word', 'sound'])  # => "word"
+```
+
+But there is a bonus for using all seven letters. If one of the highest scores uses all seven letters, pick that one:
+
+```ruby
+game = Scrabble.new
+game.highest_scoring_word(['home', 'word', 'silence'])  # => "silence"
+```
+
+But if the there are multiple words that are the same score and same length, pick the first one in supplied list:
+
+```ruby
+game = Scrabble.new
+game.highest_scoring_word(['hi', 'word', 'ward'])  # => "word"
+```
+
+## Reading Game Data
+
+Find a file named `input.csv` in the `./test/` folder with this game data:
+
+```
+player_id,word
+1,hello
+2,hi
+1,silence
+2,snacker
+1,fun
+```
+
+Write code that can parse that file and follow this interaction pattern:
+
+```ruby
+game = GameReader.new('./test/input.csv')
+game.word_count(:player_1)  # => 3
+game.word_count(:player_2)  # => 2
+game.score(:player_1)       # => 23
+game.score(:player_2)       # => 18
+```

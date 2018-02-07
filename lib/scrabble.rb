@@ -1,7 +1,31 @@
+require 'pry'
 class Scrabble
 
-  def score(word)
-    1
+  def score(word = nil)
+    total = 0
+    if word.nil?
+      total
+    else
+      @letters = word.upcase.scan(/./)
+      @letters.each do |letter|
+      total += point_values[letter]
+      end
+    end
+    total
+  end
+
+  def score_with_multipliers(word, letter_multiplier, word_multiplier = 1)
+    if score(word) != 0
+      point_value_array = Array.new
+      @letters.each { |letter| point_value_array << point_values[letter] }
+      letter_sums = letter_multiplier.zip(point_value_array).map{|multiplier, letter| multiplier * letter}
+      total = 0
+      letter_sums.each { |sum| total += sum}
+      if @letters.length >= 7
+        total += 10
+      end
+      total * word_multiplier
+    end
   end
 
   def point_values

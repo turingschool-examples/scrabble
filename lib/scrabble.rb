@@ -4,8 +4,8 @@ attr_reader :word
 
   def score(word)
     word = word.upcase.chars
-    output = point_values.key(word)
-binding.pry
+    result = point_values.fetch(word)
+binding.pry 
   end
 
   def point_values

@@ -10,17 +10,20 @@ class ScrabbleTest < Minitest::Test
   end
 
   def test_it_can_score_a_single_letter
-    assert_equal 1, @game.score("a")
-    assert_equal 4, @game.score("f")
-    assert_equal 0, @game.score("")
+    assert_equal 1, @game.score('a')
+    assert_equal 4, @game.score('f')
+    assert_equal 0, @game.score('')
   end
 
   def test_it_can_score_a_word
-    assert_equal 8, @game.score("hello")
+    assert_equal 8, @game.score('hello')
   end
 
   def test_it_can_do_multipliers
-    assert_equal 8,  @game.score("hello", [1,2,1,1,1])
-    assert_equal 18, @game.score("hello", [1,2,1,1,1], 2)
+    bonus10 = @game.score_with_multipliers('sparkle', [1, 2, 1, 3, 1, 2, 1], 2)
+
+    assert_equal 8,  @game.score_with_multipliers('hello', [1, 2, 1, 1, 1])
+    assert_equal 18, @game.score_with_multipliers('hello', [1, 2, 1, 1, 1], 2)
+    assert_equal 58, bonus10
   end
 end

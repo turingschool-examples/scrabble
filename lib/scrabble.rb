@@ -22,16 +22,16 @@ class Scrabble
     end
   end
 
-  def score_with_multipliers(word, array, multiplier = 1)
-    multiplied = multiply_arrays(find_score_each_letter(word), array)
+  def score_with_multipliers(word, letter_multiply, multiplier = 1)
+    multiplied = multiply_arrays(find_score_each_letter(word), letter_multiply)
     total = multiplied.reduce(0) { |sum, score| sum + score }
     total += 10 if word.length > 6
     total * multiplier
   end
 
-  def multiply_arrays(scores, array)
+  def multiply_arrays(scores, letter_multiply)
     scores.map.with_index do |score, index|
-      score * array[index]
+      score * letter_multiply[index]
     end
   end
 end

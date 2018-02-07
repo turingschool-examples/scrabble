@@ -27,12 +27,13 @@ class ScrabbleTest < Minitest::Test
   def test_score_with_multipliers
     game = Scrabble.new
     assert_equal 2, game.score_with_multipliers('a', [2])
-    assert_equal 9, game.score_with_multipliers('hello', [1,2,1,1,1])
-    assert_equal 18, game.score_with_multipliers('hello', [1,2,1,1,1], 2)
+    assert_equal 9, game.score_with_multipliers('hello', [1, 2, 1, 1, 1])
+    assert_equal 18, game.score_with_multipliers('hello', [1, 2, 1, 1, 1], 2)
   end
 
   def test_10_point_bonus
     game = Scrabble.new
-    assert_equal 58, game.score_with_multipliers('sparkle', [1,2,1,3,1,2,1], 2)
+    score = game.score_with_multipliers('sparkle', [1, 2, 1, 3, 1, 2, 1], 2)
+    assert_equal 58, score
   end
 end

@@ -15,9 +15,7 @@ class Scrabble
   def score(word)
     return 0 if word.nil?
     scores = find_score_each_letter(word)
-    scores.reduce(0) do |sum, score|
-      sum + score
-    end
+    scores.reduce(0) { |sum, score| sum + score }
   end
 
   def find_score_each_letter(word)
@@ -28,8 +26,7 @@ class Scrabble
   end
 
   def score_with_multipliers(word, array, multiplier = 1)
-    scores = find_score_each_letter(word)
-    multiplied = multiply_arrays(scores, array)
+    multiplied = multiply_arrays(find_score_each_letter(word), array)
     total = multiplied.reduce(0) { |sum, score| sum + score }
     total += 10 if word.length > 6
     total * multiplier

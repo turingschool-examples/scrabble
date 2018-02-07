@@ -26,4 +26,13 @@ class ScrabbleTest < Minitest::Test
     assert_equal 'Invalid move', game.score_with_multipliers('hello', [1,2,1,1])
     assert_equal 58, game.score_with_multipliers('sparkle', [1,2,1,3,1,2,1], 2)
   end
+
+  def test_highest_scoring_word_method
+    game = Scrabble.new
+
+    assert_equal 'home', game.highest_scoring_word(['home', 'word', 'hello', 'sound'])
+    assert_equal 'word', game.highest_scoring_word(['hello', 'word', 'sound'])
+    assert_equal 'silence', game.highest_scoring_word(['home', 'word', 'silence'])
+    assert_equal 'word', game.highest_scoring_word(['hi', 'word', 'ward'])
+  end
 end

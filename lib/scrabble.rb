@@ -1,3 +1,4 @@
+require 'pry'
 class Scrabble
   def point_values
     {"A"=>1, "B"=>3, "C"=>3, "D"=>2,
@@ -28,6 +29,20 @@ class Scrabble
     net.each{ |char, modifier| sum += point_values[char] * modifier }
 
     (sum + bingo?(word)) * word_mult
+  end
+  
+  
+  def highest_scoring_word(words)
+    words.each
+
+    scores = words.map{ |word| score(word) }
+    hashed = words.zip(scores).to_h
+    potential = hashed.select{ |k, v| v == scores.max }
+    if potential.size == 1
+      return potential.keys[0]
+    else
+      return potential.min_by{|k, v| k.size}[0]
+    end
   end
 
 

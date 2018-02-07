@@ -16,16 +16,14 @@ class Scrabble
 
   def score(word)
     return 0 if word == "" || word == nil
-    letters = word.split("")
-    letters.reduce(0) do |total,letter|
+    word.chars.reduce(0) do |total, letter|
       total + point_values[letter.upcase]
     end
   end
 
   def score_with_multipliers(word, letter_multiplier, word_multiplier = 1)
-    letters = word.split("")
     sumproduct = 0
-    letters.each_with_index do |value, index|
+    word.chars.each_with_index do |value, index|
       sumproduct += score(value.upcase) * letter_multiplier[index]
     end
     sumproduct += 10 if word.length >= 7

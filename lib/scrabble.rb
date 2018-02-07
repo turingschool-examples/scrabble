@@ -22,18 +22,19 @@ class Scrabble
     score
   end
 
-  def score_with_multipliers(word, multipliers)
+  def score_with_multipliers(word, array, multiplier = 1)
     letters = word.upcase.chars
     scores = letters.map do |letter|
       score(letter)
     end
     multiplied = scores.map.with_index do |score, index|
-      scores[index] * multipliers[index]
+      scores[index] * array[index]
     end
     total = 0
+    total += 10 if word.length > 6
     multiplied.each do |score|
       total += score
     end
-    total
+    total * multiplier
   end
 end

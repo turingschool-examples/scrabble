@@ -1,7 +1,40 @@
 class Scrabble
+  attr_reader :word 
+
+  def initialize
+    @word = word
+  end 
 
   def score(word)
-    1
+    if word == nil || word == ""
+      0
+    else
+      sliced_word = word.upcase.split("")
+      sliced_word.map do |letter|
+        point_values[letter]
+      end.compact.sum
+    end
+  end
+
+  def score_with_multipliers(word, board, multiplier = 1)
+    board.map do |letter_score|
+      word.upcase.split('').map do |letter|
+        point_values[letter]
+      end
+      word[letter_score] * board[letter_score]
+      # require 'pry'; binding.pry
+    end 
+
+    # letters = word.upcase.split("")
+    # index = 0
+    # letters.map do |letter|
+    #   point_values[letter] * board[index]
+    # # end
+    # # index = 0
+    # # scores.map do |score|
+    # #   scores[index] 
+    # index +=1
+    # end.sum * multiplier
   end
 
   def point_values

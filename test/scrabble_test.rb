@@ -23,4 +23,10 @@ class ScrabbleTest < Minitest::Test
   def test_score_works_with_nil
     assert_equal 0, Scrabble.new.score(nil)
   end
+
+  def test_score_works_for_full_word
+    assert_equal 7, Scrabble.new.score('Adam')
+    assert_equal 14, Scrabble.new.score('miCHael')
+    assert_equal 18, Scrabble.new.score('TuringSchool')
+  end
 end

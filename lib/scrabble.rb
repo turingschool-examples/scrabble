@@ -2,11 +2,12 @@ require 'pry'
 
 class Scrabble
   def score(word)
-    if word == '' || word == nil
-      0
-    else
-      point_values[word.upcase]
+    total_score = 0
+    return total_score if word == '' || word == nil
+    word.chars.each do |letter|
+      total_score += point_values[letter.upcase]
     end
+    total_score
   end
 
   def point_values

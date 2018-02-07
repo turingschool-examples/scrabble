@@ -22,7 +22,33 @@ class Scrabble
     end
   end
 
-  def score_with_multipliers(word,
-    
+  def score_with_multipliers(word, position_score, word_multiplier = 1)
+    if word.nil?
+      0
+    elsif word.length < 7
+      multiply_no_bonus(word, position_score, word_multiplier)
+    else
+      multiply_with_bonus(word, position_score, word_multiplier)
+    end
+  end
+
+  def multiply_no_bonus(word, position_score, word_multiplier)
+    letters = word.upcase.chars
+    points_array = letters.map { |letter| point_values[letter] }
+    zipped_letters = points_array.zip(position_score)
+    scores_to_sum = zipped_letters.map do |zipped_letter|
+      zipped_letter[0] * zipped_letter[1]
+    end
+    scores_to_sum.sum * word_multiplier
+  end
+
+  def multiply_with_bonus(word, position_score, word_multiplier)
+    letters = word.upcase.chars
+    points_array = letters.map { |letter| point_values[letter] }
+    zipped_letters = points_array.zip(position_score)
+    scores_to_sum = zipped_letters.map do |zipped_letter|
+      zipped_letter[0] * zipped_letter[1]
+    end
+    (scores_to_sum.sum + 10) * word_multiplier
   end
 end

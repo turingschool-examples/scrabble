@@ -32,4 +32,11 @@ class ScrabbleTest < Minitest::Test
     assert_equal 18, @game.score_with_multipliers('hello', [1, 2, 1, 1, 1], 2)
     assert_equal 58, bonus10
   end
+
+  def test_it_finds_highest_scoring_word
+    asssert_equal 'home', @game.highest_scoring_word(%w[home word hello sound])
+    asssert_equal 'home', @game.highest_scoring_word(%w[word hello sound])
+    asssert_equal 'silence', @game.highest_scoring_word(%w[home word silence])
+    asssert_equal 'word', @game.highest_scoring_word(%w[hi word ward])
+  end
 end

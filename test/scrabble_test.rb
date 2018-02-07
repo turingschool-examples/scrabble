@@ -15,8 +15,8 @@ class ScrabbleTest < Minitest::Test
   end
 
   def test_score_multiple_letter_words
-    assert_equal 6, @game.score("bear")
-    assert_equal 19, @game.score("quality")
+    assert_equal 6, @game.score('bear')
+    assert_equal 19, @game.score('quality')
   end
 
   def test_score_with_multipliers

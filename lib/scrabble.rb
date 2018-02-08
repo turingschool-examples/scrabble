@@ -1,8 +1,6 @@
-class Scrabble
+require 'pry'
 
-  def score(word)
-    1
-  end
+class Scrabble
 
   def point_values
     {
@@ -15,4 +13,29 @@ class Scrabble
       "Y"=>4, "Z"=>10
     }
   end
+
+  def score(word)
+    return 0 if word == "" || word == nil
+    word.chars.reduce(0) do |total, letter|
+      total + point_values[letter.upcase]
+    end
+  end
+
+  def score_with_multipliers(word, letter_multiplier, word_multiplier = 1)
+    sumproduct = 0
+    word.chars.each_with_index do |value, index|
+      sumproduct += score(value.upcase) * letter_multiplier[index]
+    end
+    sumproduct += 10 if word.length >= 7
+    sumproduct * word_multiplier
+  end
+
+  def highest_scoring_word(words)
+    score_words = {}
+    words.each do |word|
+      score_words[word] = score(word)
+    end
+    score_words.sort_by{|key, value| value}.last[0]
+  end
+
 end

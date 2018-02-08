@@ -1,7 +1,21 @@
+require_relative 'word_finder'
+
+# scrabble scoring class
 class Scrabble
+  def initialize
+    @finder = WordFinder.new
+  end
 
   def score(word)
-    1
+    if !word || !@finder.exists?(word)
+      return 0
+    end
+    letters = word.upcase.chars
+    total = 0
+    letters.each do |letter|
+      total += point_values[letter]
+    end
+    total
   end
 
   def point_values
@@ -14,5 +28,40 @@ class Scrabble
       "U"=>1, "V"=>4, "W"=>4, "X"=>8,
       "Y"=>4, "Z"=>10
     }
+  end
+
+  def score_with_multipliers(word, multipliers, word_multiplier = 1)
+    if !word || !@finder.exists?(word)
+      return 0
+    end
+    letters = word.upcase.chars
+    if letters.length != multipliers.length
+      nil
+    else
+      total = 0
+      (0..letters.length - 1).each do |i|
+        total += point_values[letters[i]] * multipliers[i]
+      end
+      if word.length == 7
+        total += 10
+      end
+      total * word_multiplier
+    end
+  end
+
+  def highest_scoring_word(words)
+    highest = words[0]
+    words.each do |word|
+      if word.length == 7
+        highest = word
+        break
+      end
+      if score(word) > score(highest)
+        highest = word
+      elsif score(word) == score(highest) && word.length < highest.length
+        highest = word
+      end
+    end
+    highest
   end
 end

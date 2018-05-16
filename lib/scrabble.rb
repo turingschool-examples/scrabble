@@ -17,7 +17,11 @@ class Scrabble
   end
 
   def score(word)
+    if word == nil
+      return nil
+    else
     count_score(word).flatten.sum
+    end
   end
 
   def score_with_multipliers(word, position, multiplier = 1)
@@ -25,8 +29,8 @@ class Scrabble
     array = score.zip(position).map do |s,p|
       s * p
     end
-    # binding.pry
-    (array.sum * multiplier) + if_seven_chars_add_ten(word)
+    array << if_seven_chars_add_ten(word)
+    (array.sum * multiplier)
   end
 
   def count_score(word)

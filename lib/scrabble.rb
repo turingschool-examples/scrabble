@@ -1,7 +1,8 @@
 class Scrabble
 
-  def score(word)
-    1
+  def initialize
+    @point_values = point_values
+    @words = []
   end
 
   def point_values
@@ -15,4 +16,53 @@ class Scrabble
       "Y"=>4, "Z"=>10
     }
   end
+
+  def score_single_letter(letter)
+    @point_values[letter.upcase]
+  end
+
+  def score(word)
+    if word == nil
+      return 0
+    else
+    word = word.chars
+    total_score = word.map do |letter|
+      @point_values[letter.upcase]
+    end
+    end
+    return total_score.sum
+  end
+
+  def score_letter_with_multiplier(letter, multiplier)
+    @point_values[letter.upcase] * multiplier
+  end
+
+
+  def score_with_multipliers(word, multiplier, word_mult = 1)
+    word = word.chars
+    total_score = word.map do |letter|
+      @point_values[letter.upcase]
+    end
+    mult_array_score = total_score.map.with_index do |element, index|
+      element * multiplier[index]
+    end
+    sum_letter_mult = mult_array_score.sum
+    if word.length < 7
+      bonus_word = sum_letter_mult
+    elsif word.length >= 7
+      bonus_word = sum_letter_mult + 10
+    end
+    if word_mult == 1 || word_mult == 0
+      bonus_word
+    else
+      bonus_word * word_mult
+    end
+  end
+
+  def highest_scoring_word(word)
+    string_word = word.join(",")
+    string_word.score_with_multipliers
+    @words << word
+  end
+
 end

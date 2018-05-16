@@ -16,8 +16,12 @@ class Scrabble
     }
   end
 
-  def score(letter)
-    score = point_values.fetch_values(letter.upcase)
-    score.sum
+  def score(word)
+    word_array = word.chars
+    score = word_array.map do |letter|
+     point_values.fetch_values(letter.upcase)
+    end
+    # binding.pry
+    score.flatten.sum
   end
 end

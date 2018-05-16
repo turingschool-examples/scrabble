@@ -1,8 +1,7 @@
-class Scrabble
+require 'pry'
+require './lib/player'
 
-  def score(word)
-    1
-  end
+class Scrabble
 
   def point_values
     {
@@ -14,5 +13,55 @@ class Scrabble
       "U"=>1, "V"=>4, "W"=>4, "X"=>8,
       "Y"=>4, "Z"=>10
     }
+  end
+
+  def score(word)
+    score = 0
+    if word != nil
+      word_array = word.chars
+      word_array.each do | letter |
+        score += point_values[letter.upcase]
+      end
+    end
+    score
+  end
+
+  def  score_with_multipliers(word, multipliers, total_multiplier = 1)
+    score = 0
+    if word != nil
+      if word.length >= 7
+        score += 10
+      end
+      word_array = word.chars
+      word_array.each_with_index do | letter, index |
+        points = point_values[letter.upcase] * multipliers[index]
+        score += points
+      end
+      score *= total_multiplier
+    end
+    score
+  end
+
+  def highest_scoring_word(words)
+    scores = {}
+    words.each do | word |
+      scores[word] = score(word)
+    end
+    tied_words = []
+    scores.keys.each do | word |
+      if scores[word] == scores.values.max
+        tied_words.push(word)
+      end
+    end
+
+    tied_words.sort_by! do | word |
+      word.length
+    end
+
+    if tied_words.last.length == 7
+      return tied_words.last
+    else
+      return tied_words.first
+    end
   end
 end

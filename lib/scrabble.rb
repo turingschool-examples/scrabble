@@ -22,18 +22,36 @@ class Scrabble
     }
   end
 
-  def score(letter)
+  def value(letter)
     letter = letter.upcase
     letter_score = point_values[letter.upcase]
   end
 
-  def word_score(word)
-    word_array = []
-    word_array << word.split("")
-    letter_scores = word_array.map do |letter|
-      score(letter)
+  def score(word)
+    if word == nil
+      word_subtotal = 0
+    else
+      word_array = word.split("")
+      letter_scores = word_array.map do |letter|
+      value(letter)
+      end
+    word_subtotal = letter_scores.sum
     end
-    word_subtotal = letter.score.sum
-    # word_subtotal
+  end
+
+  def score_with_multipliers (word, position_values)
+    if word == nil
+      word_subtotal = 0
+    else
+      #Need a way to add multiplication by value at index
+      word_array = word.split("")
+      letter_scores = word_array.map do |letter|
+      value(letter) * position_value[count]
+      count = 0
+      while count < letter_score.length
+        letter_score
+      #word_subtotal = letter_scores.sum
+    end
+
   end
 end

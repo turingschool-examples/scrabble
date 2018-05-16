@@ -42,9 +42,10 @@ class ScrabbleTest < Minitest::Test
     assert_equal 18, game.score_with_multipliers('hello', [1,2,1,1,1], 2)
   end
 
-  # > game.score_with_multipliers('hello', [1,2,1,1,1])
-  # => 9
-  # > game.score_with_multipliers('hello', [1,2,1,1,1], 2)
-  # => 18
+  def test_add_bonus_score_for_word_longer_than_10
+    game = Scrabble.new
+
+    assert_equal 58, game.score_with_multipliers('sparkle', [1,2,1,3,1,2,1], 2)
+  end
 
 end

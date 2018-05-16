@@ -44,10 +44,18 @@ class Scrabble
     mult_array_score = total_score.map.with_index do |element, index|
       element * multiplier[index]
     end
+    sum_letter_mult = mult_array_score.sum
+
+    if word.length < 7
+      bonus_word = sum_letter_mult
+    elsif word.length >= 7
+      bonus_word = sum_letter_mult + 10
+    end
+     # binding.pry
     if word_mult == 1 || word_mult == 0
-      return mult_array_score.sum
+      bonus_word
     else
-      mult_array_score.sum * word_mult
+      bonus_word * word_mult
     end
   end
 

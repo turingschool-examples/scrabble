@@ -23,4 +23,19 @@ class Scrabble
       end.sum
     end
   end
+
+  def score_with_multipliers(word, multipliers)
+    @score_array.map do |num, i|
+      multiplier[i]
+    end
+  end
+
+  def score_array(word)
+    @score_array = word.upcase.chars.map do |letter|
+      @point_values[letter]
+    end
+  end
+
+  def highest_scoring_word(word_list)
+  end
 end

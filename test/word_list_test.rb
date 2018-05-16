@@ -5,5 +5,6 @@ require 'minitest/pride'
 require 'pry'
 
 class WordListTest < Minitest::Test
-
+  def test_word_list_exists
+  end 
 end

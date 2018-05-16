@@ -3,15 +3,7 @@ class Scrabble
 
   def score(word)
     return 0 if word == nil
-    points = []
-    format_word(word).map do |letter|
-      points << point_values[letter]
-    end
-    points.sum
-  end
-
-  def format_word(word)
-    word.upcase.chars
+    score = calculate_points(word)
   end
 
   def point_values
@@ -24,5 +16,17 @@ class Scrabble
       "U"=>1, "V"=>4, "W"=>4, "X"=>8,
       "Y"=>4, "Z"=>10
     }
+  end
+
+  def format_word(word)
+    word.upcase.chars
+  end
+
+  def calculate_points(word)
+    points = []
+    format_word(word).map do |letter|
+      points << point_values[letter]
+    end
+    points.sum
   end
 end

@@ -60,6 +60,19 @@ class ScrabbleTest < Minitest::Test
     assert_equal "home", x1
   end
 
+  def test_create_hash_of_words_and_values
+    game = Scrabble.new
+    x1 = game.create_hash_of_words_and_values(['home', 'word', 'hello', 'sound'])
+    hash = {
+              "home" => 9,
+              "word" => 8,
+              "hello" => 8,
+              "sound" => 6,
+            }
+
+    assert_equal hash, x1
+  end
+
   # def test_highest_scoring_word_minimize_tiles
   #   game = Scrabble.new
   #   x1 = game.highest_scoring_word(['hello', 'word', 'sound'])

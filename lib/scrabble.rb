@@ -42,6 +42,7 @@ class Scrabble
     return post_multi_score
   end
 
+# Below is complex as I was modifying it to maximize score and minimze tiles
   def highest_scoring_word(word_array)
     words_and_values = create_hash_of_words_and_values(word_array)
     max_word = words_and_values.max_by do |word, score|
@@ -56,31 +57,5 @@ class Scrabble
     end
     Hash[word_array.zip word_score_array]
   end
-
-
-
-
-  # def highest_scoring_word(word_array)
-  #   score_array = word_array.map do |word|
-  #     score(word)
-  #   end
-  #   if detect_more_than_one_highest_score(score_array)
-  #     word_array[score_array.index(detect_more_than_one_highest_score)]
-  #   else
-  #     find_word_with_fewest_letters(word_array, score_array)
-  #     word_array[score_array.max.index]
-  #   binding.pry
-  # end
-  #
-  # def detect_more_than_one_highest_score(score_array)
-  #   score_array.one? do |score|
-  #     score_array.max
-  #   end
-  # end
-  #
-  # def find_word_with_fewest_letters(word_array, score_array)
-  #
-  #
-  # end
 
 end

@@ -30,12 +30,15 @@ class Scrabble
     points.sum
   end
 
-  
   def score_with_multipliers(word, letter_mult = nil, word_mult = nil)
+    tally = []
     split_word = format_word(word)
+    word_mult = word_mult
     array = split_word.zip(letter_mult)
     array.map do |subarray|
-      calculate_points(subarray[0]) * subarray[1]
-    end.sum
+      tally << calculate_points(subarray[0]) * subarray[1]
+      tally.sum * word_mult if word_mult != nil
+      end
+      tally.sum
+    end
   end
-end

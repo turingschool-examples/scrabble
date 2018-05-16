@@ -14,7 +14,6 @@ class ScrabbleTest < Minitest::Test
   def test_it_can_score_multiple_letters
     assert_equal 5, Scrabble.new.score("cat")
     assert_equal 6, Scrabble.new.score("dogs")
-    assert_equal 14, Scrabble.new.score("scrabble")
   end
 
   def test_it_can_score_an_empty_string
@@ -27,5 +26,14 @@ class ScrabbleTest < Minitest::Test
 
   def test_it_can_score_seven_letter_words
     assert_equal 21, Scrabble.new.score("catdogs")
+  end
+
+  def test_it_can_score_with_letter_multipliers
+    assert_equal 9, Scrabble.new.score_with_multipliers('hello', [1,2,1,1,1])
+    assert_equal 18, Scrabble.new.score_with_multipliers('hello', [1,2,1,1,1], 2)
+  end
+
+  def test_it_can_score_seven_letter_word_with_multipliers
+    assert_equal 58, Scrabble.new.score_with_multipliers('sparkle', [1,2,1,3,1,2,1], 2)
   end
 end

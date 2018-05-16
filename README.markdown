@@ -1,17 +1,18 @@
 # Scrabble
 
-Work on the sample exercise defined below for 1 hour.
+Work on the sample exercise defined below for 2 hours.
 
 As you work, you may:
 
-* Ask questions of your facilitator
+* Ask clarifying questions of your facilitator
 * Reference external public resources (ie: Google, Ruby API, etc)
 * Use the tooling most comfortable to you (Editor/IDE, testing framework, support tools like Guard, etc)
 
-As you work, you should not:
+As you work, you should **not**:
 
 * Copy code snippets other than those present in this description
 * Seek live support from individuals other than your facilitator
+* Use past projects to use as guides/examples
 
 ## Preparation
 

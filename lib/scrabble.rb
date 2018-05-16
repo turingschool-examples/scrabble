@@ -1,8 +1,15 @@
+require 'pry'
+
 class Scrabble
 
   def score(word)
-    1
+    letter_array = word.upcase.chars
+    score_array = letter_array.map do |letter|
+      point_values[letter]
+    end
+    return score_array.sum
   end
+
 
   def point_values
     {
@@ -15,4 +22,9 @@ class Scrabble
       "Y"=>4, "Z"=>10
     }
   end
+
+  def score_with_multipliers(word, letter_multiplier, word_multiplier)
+
+  end
+
 end

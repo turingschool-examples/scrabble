@@ -1,4 +1,10 @@
+require 'pry'
+
+
 class Scrabble
+
+  def initialize
+  end
 
   def score(word)
     1
@@ -14,5 +20,38 @@ class Scrabble
       "U"=>1, "V"=>4, "W"=>4, "X"=>8,
       "Y"=>4, "Z"=>10
     }
+  end
+
+  def value(letter)
+    letter = letter.upcase
+    letter_score = point_values[letter.upcase]
+  end
+
+  def score(word)
+    if word == nil
+      word_subtotal = 0
+    else
+      word_array = word.split("")
+      letter_scores = word_array.map do |letter|
+      value(letter)
+      end
+    word_subtotal = letter_scores.sum
+    end
+  end
+
+  def score_with_multipliers (word, position_values)
+    if word == nil
+      word_subtotal = 0
+    else
+      #Need a way to add multiplication by value at index
+      word_array = word.split("")
+      letter_scores = word_array.map do |letter|
+      value(letter) * position_value[count]
+      count = 0
+      while count < letter_score.length
+        letter_score
+      #word_subtotal = letter_scores.sum
+    end
+
   end
 end

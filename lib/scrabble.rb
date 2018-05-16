@@ -27,6 +27,15 @@ class Scrabble
     score_total * word_mult
   end
 
+  def highest_scoring_word(word_arr)
+    high_word = []
+    word_arr.each do |word|
+      if score(word) >= score(high_word[0])
+        high_word << word
+      end
+    end
+    high_word.min_by {|word| word.length}
+  end
   def point_values
     {
       "A"=>1, "B"=>3, "C"=>3, "D"=>2,

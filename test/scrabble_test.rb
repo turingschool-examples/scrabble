@@ -40,4 +40,20 @@ class ScrabbleTest < Minitest::Test
 
     assert_equal 58, actual
   end
+
+  def test_it_returns_highest_scoring_word
+    game = Scrabble.new
+    expected = "home"
+    actual = game.highest_scoring_word(['home', 'word', 'hello', 'sound'])
+
+    assert_equal expected, actual
+  end
+
+  def test_picks_one_with_fewest_letters
+    game = Scrabble.new
+    expected = 'word'
+    actual = game.highest_scoring_word(['hello', 'word', 'sound'])
+
+    assert_equal expected, actual
+  end
 end

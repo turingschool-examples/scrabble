@@ -10,18 +10,17 @@ class Scrabble
     "M"=>3, "N"=>1, "O"=>1, "P"=>3,
     "Q"=>10, "R"=>1, "S"=>1, "T"=>1,
     "U"=>1, "V"=>4, "W"=>4, "X"=>8,
-    "Y"=>4, "Z"=>10
+    "Y"=>4, "Z"=>10, ""=>0
     }
   end
 
   def score(word)
-    word.upcase.chars.map do |letter|
-      @point_values[letter]
-    end.sum
+    if word == nil
+      return 0
+    else
+      word.upcase.chars.map do |letter|
+        @point_values[letter]
+      end.sum
+    end
   end
 end
-#
-# k = Scrabble.new
-# p k.score("hello")
-# p k.score("a")
-# p k.score("w")

@@ -1,16 +1,16 @@
 class Scrabble
   def score(word)
+    if word == nil
+      point_values[word]
+    else
     new_words = word.upcase.chars
     number = new_words.map do |new_word|
       point_values[new_word]
     end
     number.sum
-    # require'pry';binding.pry
+    end
   end
-
-  def enumerating(word)
-
-  end
+  # require'pry';binding.pry
 
   def point_values
   {
@@ -20,7 +20,7 @@ class Scrabble
     'M' => 3, 'N' => 1, 'O' => 1, 'P' => 3,
     'Q' => 10, 'R' => 1, 'S' => 1, 'T' => 1,
     'U' => 1, 'V' => 4, 'W' => 4, 'X' => 8,
-    'Y' => 4, 'Z' => 10
+    'Y' => 4, 'Z' => 10, " " => 0, nil => 0
   }
   end
 end

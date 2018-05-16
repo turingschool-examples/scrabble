@@ -1,6 +1,3 @@
-require './lib/scrabble'
-require './lib/player'
-
 class GameReader
 attr_reader :file
 
@@ -8,13 +5,11 @@ attr_reader :file
     @current_game = File.read(file).split("\n")
   end
 
-  def word_count(player_id)
-    player = Player.new(player_id)
+  def word_count(player)
     player.word_list.length
   end
 
-  def score(player_id)
-    player = Player.new(player_id)
+  def score(player)
     player.score
   end
 end

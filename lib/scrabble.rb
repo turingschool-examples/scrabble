@@ -1,6 +1,4 @@
-
 class Scrabble
-
   def score(word)
     if word
       word = word.upcase.chars
@@ -38,7 +36,9 @@ class Scrabble
   end
 
   def highest_scoring_word(word_list)
-    
+    # There should be word objects that have attributes
+    # score and the word itself.
+    # word_list will hold these objects and be able to return
+    # word.score and word.english_spelling_of_the_word
   end
-
 end

@@ -30,11 +30,22 @@ class Scrabble
   def highest_scoring_word(word_arr)
     high_word = []
     word_arr.each do |word|
-      if score(word) >= score(high_word[0])
+      if score(word) > score(high_word[0])
+        high_word = [word]
+      elsif score(word) == score(high_word[0])
         high_word << word
       end
     end
-    high_word.min_by {|word| word.length}
+    words_ascending = high_word.sort_by {|word| word.length}
+    highest = ""
+    if high_word.select {|word| word.length >= 7} != []
+      highest = high_word.select {|word| word.length >= 7}[0]
+    elsif high_word.all?{|word| word.length == high_word[0]}
+      highest = words_ascending[0]
+    else
+      highest = high_word.min_by {|word| word.length}
+    end
+    highest
   end
   def point_values
     {

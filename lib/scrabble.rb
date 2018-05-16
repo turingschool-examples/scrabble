@@ -1,7 +1,17 @@
+require 'pry'
 class Scrabble
 
   def score(word)
-    1
+    return 0 if word == nil
+    points = []
+    format_word(word).map do |letter|
+      points << point_values[letter]
+    end
+    points.sum
+  end
+
+  def format_word(word)
+    word.upcase.chars
   end
 
   def point_values

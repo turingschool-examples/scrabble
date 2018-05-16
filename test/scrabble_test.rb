@@ -28,6 +28,13 @@ class ScrabbleTest < Minitest::Test
     assert_equal 0, game.score(nil)
   end
 
+  def test_it_can_score_letter_with_multipliers
+    game = Scrabble.new
+
+    assert_equal 16, game.score_letter_with_multiplier("j", 2)
+    assert_equal 8, game.score_letter_with_multiplier("v", 2)
+  end
+
   # > game.score_with_multipliers('hello', [1,2,1,1,1])
   # => 9
   # > game.score_with_multipliers('hello', [1,2,1,1,1], 2)

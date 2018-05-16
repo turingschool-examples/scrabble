@@ -32,6 +32,10 @@ class Scrabble
     return total_score.sum
   end
 
+  def score_letter_with_multiplier(letter, multiplier)
+    @point_values[letter.upcase] * multiplier
+  end
+
   # def score(word)
   #   1
   # end

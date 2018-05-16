@@ -1,4 +1,10 @@
+require 'pry'
+
+
 class Scrabble
+
+  def initialize
+  end
 
   def score(word)
     1
@@ -14,5 +20,20 @@ class Scrabble
       "U"=>1, "V"=>4, "W"=>4, "X"=>8,
       "Y"=>4, "Z"=>10
     }
+  end
+
+  def score(letter)
+    letter = letter.upcase
+    letter_score = point_values[letter.upcase]
+  end
+
+  def word_score(word)
+    word_array = []
+    word_array << word.split("")
+    letter_scores = word_array.map do |letter|
+      score(letter)
+    end
+    word_subtotal = letter.score.sum
+    # word_subtotal
   end
 end

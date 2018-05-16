@@ -36,8 +36,19 @@ class Scrabble
     @point_values[letter.upcase] * multiplier
   end
 
-  # def score(word)
-  #   1
-  # end
+  def score_with_multipliers(word, multiplier, word_mult = 1)
+    word = word.chars
+    total_score = word.map do |letter|
+      @point_values[letter.upcase]
+    end
+    mult_array_score = total_score.map.with_index do |element, index|
+      element * multiplier[index]
+    end
+    if word_mult == 1 || word_mult == 0
+      return mult_array_score.sum
+    else
+      mult_array_score.sum * word_mult
+    end
+  end
 
 end

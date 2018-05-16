@@ -1,7 +1,7 @@
 class Scrabble
 
-  def score(word)
-    1
+  def initialize
+    @point_values = point_values
   end
 
   def point_values
@@ -15,4 +15,25 @@ class Scrabble
       "Y"=>4, "Z"=>10
     }
   end
+
+  def score_single_letter(letter)
+    @point_values[letter.upcase]
+  end
+
+  def score(word)
+    if word == nil
+      return 0
+    else
+    word = word.chars
+    total_score = word.map do |letter|
+      @point_values[letter.upcase]
+    end
+    end
+    return total_score.sum
+  end
+
+  # def score(word)
+  #   1
+  # end
+
 end

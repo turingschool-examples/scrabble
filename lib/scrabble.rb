@@ -3,15 +3,6 @@ require 'pry'
 
 class Scrabble
 
-  # player_1 = Player.new
-  # player_2 = Player.new
-  #
-  # game = GameReader.new
-  # # game.word_count(:player_1)  # => 3
-  # # game.word_count(:player_2)  # => 2
-  # game.score(:player_1)       # => 23
-  # # game.score(:player_2)       # => 18
-
   def point_values
     {
       "A"=>1, "B"=>3, "C"=>3, "D"=>2,
@@ -24,14 +15,26 @@ class Scrabble
     }
   end
 
-  def score(letter)
+  def score(word)
     total = 0
-    if letter == "" || letter == nil
+    if word == "" || word == nil
       return total
     end
-    letter.each_char do |char|
+    word.each_char do |char|
       total += point_values[char.upcase]
-      # binding.pry
+    end
+    return total
+  end
+
+  def score_with_multipliers(word, letter_multipliers, word_multiplier)
+    total = 0
+    i = 0
+    if word == "" || word == nil
+      return total
+    end
+    word.each_char do |char|
+      total += point_values[char.upcase] * letter_multipliers[i]
+      i += 1
     end
     return total
   end

@@ -23,7 +23,11 @@ class ScrabbleTest < Minitest::Test
     assert_equal 0, Scrabble.new.score(nil)
   end
 
-  def test_it_can_score_with_multipliers
+  def test_it_can_score_with_letter_multipliers
+    assert_equal 9, Scrabble.new.score_with_multipliers("hello", [1,2,1,1,1], nil)
+  end
 
+  def test_it_can_score_with_word_multipliers
+    assert_equal 19, Scrabble.new.score_with_multipliers('sparkle', [1,2,1,3,1,2,1], 2)
   end
 end

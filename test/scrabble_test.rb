@@ -36,4 +36,14 @@ class ScrabbleTest < Minitest::Test
   def test_it_can_score_seven_letter_word_with_multipliers
     assert_equal 58, Scrabble.new.score_with_multipliers('sparkle', [1,2,1,3,1,2,1], 2)
   end
+
+  def test_highest_scoring_word
+    # game = Scrabble.new
+    # game.highest_scoring_word(['home', 'word', 'hello', 'sound'])  # => "home"
+    game = Scrabble.new
+    assert_equal "home", game.highest_scoring_word(['home', 'word', 'hello', 'sound'])
+    assert_equal "silence", game.highest_scoring_word(['home', 'word', 'silence'])
+    assert_equal "word", game.highest_scoring_word(['hello', 'word', 'sound'])
+    assert_equal "word", game.highest_scoring_word(['hi', 'word', 'ward'])
+  end
 end

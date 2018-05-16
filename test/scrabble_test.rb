@@ -17,6 +17,8 @@ class ScrabbleTest < Minitest::Test
     assert_equal 4, scrabble.score("f")
     scrabble_2 = Scrabble.new("")
     assert_equal 0, scrabble.score("")
+    scrabble_3 = Scrabble.new("*")
+    assert_equal nil, scrabble.score("*")
 
   end
 end

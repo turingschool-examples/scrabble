@@ -31,4 +31,20 @@ class ScrabbleTest < Minitest::Test
     game = Scrabble.new
     assert_equal 0, game.score(nil)
   end
+
+  def test_it_can_multiply_a_single_letter
+    game = Scrabble.new
+    assert_equal 2, game.score_with_multipliers('a', [2])
+  end
+
+  def test_it_can_score_multipliers_single_letter
+    game = Scrabble.new
+    assert_equal 9, game.score_with_multipliers('hello', [1,2,1,1,1])
+  end
+
+  def test_it_can_score_with_multipliers_single_word
+    skip
+    game = Scrabble.new
+    assert_equal 18, game.score_with_multipliers('hello', [1,2,1,1,1], 2)
+  end
 end

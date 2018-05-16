@@ -29,4 +29,13 @@ class Scrabble
     end
     points.sum
   end
+
+  
+  def score_with_multipliers(word, letter_mult = nil, word_mult = nil)
+    split_word = format_word(word)
+    array = split_word.zip(letter_mult)
+    array.map do |subarray|
+      calculate_points(subarray[0]) * subarray[1]
+    end.sum
+  end
 end

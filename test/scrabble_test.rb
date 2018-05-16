@@ -21,9 +21,21 @@ class ScrabbleTest < Minitest::Test
     assert_equal nil, game_3.score("*", nil)
   end
 
-  def test_it_can_score_with_multipliers
+  def test_it_can_score_with_letter_multipliers
     game = Scrabble.new("a", 1)
     game_1 = Scrabble.new('hello', "[1,2,1,1,1]")
     assert_equal [], game_1.it_can_score_with_multipliers('hello', "[1,2,1,1,1]")
   end
+
+  def test_it_can_score_a_word_with_word_multiplier
+    game = Scrabble.new
+    actual = scrabble.it_can_score_with_multiplier('hello', [1,2,1,1,1], 2)
+    assert_equal 18, actual
+  end
+
+  def test_it_adds_a_bonus_for_seven_characters_or_longer
+    game = Scrabble.new
+    actual = scrabble.it_adds_a_bonus_for_seven_characters_or_longer('sparkle', [1,2,1,3,1,2,1], 2)
+    assert_equal 58, actual
+  end 
 end

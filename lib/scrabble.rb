@@ -1,12 +1,9 @@
 
 class Scrabble
-  attr_reader :word,
-              :point_values,
-              :position,
-              :score
 
-  def initialize(word, position)
-    @word = word
+
+
+  def point_values
     @point_values = {
       "A"=>1, "B"=>3, "C"=>3, "D"=>2,
       "E"=>1, "F"=>4, "G"=>2, "H"=>4,
@@ -16,25 +13,29 @@ class Scrabble
       "U"=>1, "V"=>4, "W"=>4, "X"=>8,
       "Y"=>4, "Z"=>10, ""=>0
     }
-    @score = []
-    @position = position
-
   end
-
   def score(word, position)
-    @point_values[word.upcase]
+    if word.nil?
+      0
+    else
+      word.upcase.chars.map do |letter|
+        point_values[letter]
+      end.sum
+    end
   end
 
-  def it_can_score_with_multipliers(word, position)
-    split_word = word.split("")
-    split_word.map do |letter|
-      letter.upcase
-      @score << @point_values[letter.upcase[0]]
-      @score << @point_values[letter.upcase[1]]
-      @score << @point_values[letter.upcase[2]]
-      @score << @point_values[letter.upcase[3]]
-      @score << @point_values[letter.upcase[4]]
+  def get_chars(word)
+    word.upcase.chars
+  end
 
+  def it_can_score_with_multipliers(word, letter_multipliers, position)
+    score = get_chars(word).map.with_index do |letter, index|
+      point_values[letter] * letter_multipliers[index]
     end
+    if word.length >=7
+      score << 10
+    end 
+    score = score.sum
+    score * word_multiplier
   end
 end

@@ -5,9 +5,18 @@ require 'minitest/pride'
 require 'pry'
 
 class ScrabbleTest < Minitest::Test
+  def test_it_exists
+    scrabble = Scrabble.new("a")
+    assert_instance_of Scrabble, scrabble
+  end
+
   def test_it_can_score_a_single_letter
-    skip
-    assert_equal 1, Scrabble.new.score("a")
-    assert_equal 4, Scrabble.new.score("f")
+    scrabble = Scrabble.new("a")
+    assert_equal 1, scrabble.score("a")
+    scrabble_1 = Scrabble.new("f")
+    assert_equal 4, scrabble.score("f")
+    scrabble_2 = Scrabble.new("")
+    assert_equal 0, scrabble.score("")
+
   end
 end

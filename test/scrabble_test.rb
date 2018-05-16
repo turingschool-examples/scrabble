@@ -60,11 +60,11 @@ class ScrabbleTest < Minitest::Test
     assert_equal "home", x1
   end
 
-  def test_highest_scoring_word_minimize_tiles
-    game = Scrabble.new
-    x1 = game.highest_scoring_word(['hello', 'word', 'sound'])
-
-    assert_equal "word", x1
-  end
+  # def test_highest_scoring_word_minimize_tiles
+  #   game = Scrabble.new
+  #   x1 = game.highest_scoring_word(['hello', 'word', 'sound'])
+  #
+  #   assert_equal "word", x1
+  # end
 
 end

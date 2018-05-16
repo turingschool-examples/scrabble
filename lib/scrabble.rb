@@ -2,11 +2,13 @@ class Scrabble
 
   def score(word)
     score = 0
-    uppercase = word.upcase
-    word_array = uppercase.chars
+    if word
+      uppercase = word.upcase
+      word_array = uppercase.chars
 
-    word_array.each do |letter|
-      score += point_values[letter]
+      word_array.each do |letter|
+        score += point_values[letter]
+      end
     end
     score
   end

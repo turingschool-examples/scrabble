@@ -16,4 +16,12 @@ class ScrabbleTest < Minitest::Test
     assert_equal 6, Scrabble.new.score("dogs")
     assert_equal 14, Scrabble.new.score("scrabble")
   end
+
+  def test_it_can_score_an_empty_string
+    assert_equal 0, Scrabble.new.score("")
+  end
+
+  def test_it_can_score_nil
+    assert_equal 0, Scrabble.new.score(nil)
+  end
 end

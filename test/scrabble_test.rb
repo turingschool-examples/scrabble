@@ -16,7 +16,6 @@ class ScrabbleTest < Minitest::Test
   end
   def test_it_can_score_a_single_letter
     # skip
-    scrabble = Scrabble.new
     assert_equal 1, Scrabble.new.score("a")
     assert_equal 4, Scrabble.new.score("f")
   end
@@ -30,12 +29,19 @@ class ScrabbleTest < Minitest::Test
     scrabble = Scrabble.new
     assert_equal 0, scrabble.score(" ")
   end
+
   def test_it_can_score_nil
     scrabble = Scrabble.new
     assert_equal 0, scrabble.score(nil)
   end
+
   def test_it_can_score_a_phrase
     scrabble = Scrabble.new
     assert_equal 17, scrabble.score("hello world")
+  end
+
+  def test_it_can_multiply_scores
+    scrabble = Scrabble.new
+    assert_equal 9, scrabble.score_with_multipliers('hello', [1,2,1,1,1])
   end
 end

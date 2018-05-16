@@ -10,7 +10,6 @@ class Scrabble
     number.sum
     end
   end
-  # require'pry';binding.pry
 
   def point_values
   {
@@ -20,7 +19,14 @@ class Scrabble
     'M' => 3, 'N' => 1, 'O' => 1, 'P' => 3,
     'Q' => 10, 'R' => 1, 'S' => 1, 'T' => 1,
     'U' => 1, 'V' => 4, 'W' => 4, 'X' => 8,
-    'Y' => 4, 'Z' => 10, " " => 0, nil => 0
+    'Y' => 4, 'Z' => 10, ' ' => 0, nil => 0
   }
+  end
+
+  def score_with_multipliers(word, letter_multiplier)
+     letter_multiplier[1] * letter_multiplier[1]
+
+    require'pry';binding.pry
+
   end
 end

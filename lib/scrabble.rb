@@ -1,7 +1,27 @@
 class Scrabble
 
   def score(word)
-    1
+    if word == nil || word == ""
+      return 0
+    end
+    letter_arr = word.upcase.chars
+    score_total = 0
+    letter_arr.each do |letter|
+      score_total += point_values[letter]
+    end
+    score_total
+  end
+
+  def score_with_multipliers(word, letter_mult , word_mult = 1)
+    if word == nil || word == ""
+      return 0
+    end
+    letter_arr = word.upcase.chars
+    score_total = 0
+    letter_arr.each_with_index do |letter, index|
+      score_total += point_values[letter] * letter_mult[index]
+    end
+    score_total * word_mult
   end
 
   def point_values

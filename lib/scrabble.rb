@@ -9,6 +9,9 @@ class Scrabble
       word_array.each do |letter|
         score += point_values[letter]
       end
+      if word.length == 7
+        score += 10
+      end
     end
     score
   end

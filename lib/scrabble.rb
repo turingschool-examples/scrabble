@@ -43,9 +43,14 @@ class Scrabble
     if word.length < 7
       total *= word_multiplier
     else
-      new_total = total += 10
-      total = new_total *= word_multiplier
+      total_with_seven_letter_bonus = total += 10
+      total = total_with_seven_letter_bonus *= word_multiplier
     end
     total
   end
+
+  # def highest_scoring_word(words_array)
+  #   points = words_array.map do |word|
+  #     score(word)
+  #   end
 end

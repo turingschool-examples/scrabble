@@ -26,14 +26,14 @@ class Scrabble
     return total
   end
 
-  def score_with_multipliers(word, letter_multipliers, word_multiplier)
+  def score_with_multipliers(word, letter_multipliers, word_multiplier=1)
     total = 0
     i = 0
     if word == "" || word == nil
       return total
     end
     word.each_char do |char|
-      total += point_values[char.upcase] * letter_multipliers[i]
+      total += point_values[char.upcase] * letter_multipliers[i] * word_multiplier
       i += 1
     end
     return total

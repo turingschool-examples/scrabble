@@ -1,6 +1,5 @@
 
 class Scrabble
-attr_reader :score, :point_values
 
   def score(word)
     if word
@@ -36,6 +35,10 @@ attr_reader :score, :point_values
     else
       0
     end
+  end
+
+  def highest_scoring_word(word_list)
+    
   end
 
 end

@@ -25,7 +25,8 @@ class Scrabble
     array = score.zip(position).map do |s,p|
       s * p
     end
-    array.sum * multiplier
+    # binding.pry
+    (array.sum * multiplier) + if_seven_chars_add_ten(word)
   end
 
   def count_score(word)
@@ -34,5 +35,13 @@ class Scrabble
      point_values.fetch_values(letter.upcase)
     end
     score
+  end
+
+  def if_seven_chars_add_ten(word)
+    if word.length >= 7
+      return 10
+    else
+      return 0
+    end
   end
 end

@@ -19,6 +19,7 @@ class ScrabbleTest < Minitest::Test
     game = Scrabble.new
     assert_equal 8, game.score("hello")
     assert_equal 14, game.score("john")
+    assert_equal 13, game.score('sparkle')
   end
 
   def test_it_can_score_zero
@@ -39,5 +40,15 @@ class ScrabbleTest < Minitest::Test
     game = Scrabble.new
     assert_equal 9, game.score_with_multipliers('hello', [1,2,1,1,1])
   end
+
+  def test_it_adds_ten_point_bonus_for_words_over_seven_characters
+    game = Scrabble.new
+    assert_equal 58, game.score_with_multipliers('sparkle', [1,2,1,3,1,2,1], 2)
+  end
   
+  def test_it_adds_ten_points_for_words_over_seven_characters
+    game = Scrabble.new
+
+    assert_equal 10 , game.if_seven_chars_add_ten('sparkle')
+  end
 end

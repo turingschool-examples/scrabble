@@ -2,6 +2,7 @@ class Scrabble
 
   def initialize
     @point_values = point_values
+    @words = []
   end
 
   def point_values
@@ -36,6 +37,7 @@ class Scrabble
     @point_values[letter.upcase] * multiplier
   end
 
+
   def score_with_multipliers(word, multiplier, word_mult = 1)
     word = word.chars
     total_score = word.map do |letter|
@@ -45,18 +47,22 @@ class Scrabble
       element * multiplier[index]
     end
     sum_letter_mult = mult_array_score.sum
-
     if word.length < 7
       bonus_word = sum_letter_mult
     elsif word.length >= 7
       bonus_word = sum_letter_mult + 10
     end
-     # binding.pry
     if word_mult == 1 || word_mult == 0
       bonus_word
     else
       bonus_word * word_mult
     end
+  end
+
+  def highest_scoring_word(word)
+    string_word = word.join(",")
+    string_word.score_with_multipliers
+    @words << word
   end
 
 end

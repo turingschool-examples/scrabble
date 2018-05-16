@@ -6,4 +6,8 @@ require 'pry'
 
 class PlayerTest < Minitest::Test
 
+  def test_player_can_exist
+    player = Player.new
+    assert_instance_of Player, player
+  end
 end

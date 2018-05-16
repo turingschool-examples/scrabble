@@ -1,8 +1,16 @@
+require './lib/player'
+require 'pry'
+
 class Scrabble
 
-  def score(word)
-    1
-  end
+  # player_1 = Player.new
+  # player_2 = Player.new
+  #
+  # game = GameReader.new
+  # # game.word_count(:player_1)  # => 3
+  # # game.word_count(:player_2)  # => 2
+  # game.score(:player_1)       # => 23
+  # # game.score(:player_2)       # => 18
 
   def point_values
     {
@@ -14,5 +22,17 @@ class Scrabble
       "U"=>1, "V"=>4, "W"=>4, "X"=>8,
       "Y"=>4, "Z"=>10
     }
+  end
+
+  def score(letter)
+    total = 0
+    if letter == "" || letter == nil
+      return total
+    end
+    letter.each_char do |char|
+      total += point_values[char.upcase]
+      # binding.pry
+    end
+    return total
   end
 end

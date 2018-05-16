@@ -1,7 +1,9 @@
+require 'pry'
 class Scrabble
 
   def score(word)
-    1
+    return 0 if word == nil
+    score = calculate_points(word)
   end
 
   def point_values
@@ -15,4 +17,28 @@ class Scrabble
       "Y"=>4, "Z"=>10
     }
   end
-end
+
+  def format_word(word)
+    word.upcase.chars
+  end
+
+  def calculate_points(word)
+    points = []
+    format_word(word).map do |letter|
+      points << point_values[letter]
+    end
+    points.sum
+  end
+
+  def score_with_multipliers(word, letter_mult = nil, word_mult = nil)
+    tally = []
+    split_word = format_word(word)
+    word_mult = word_mult
+    array = split_word.zip(letter_mult)
+    array.map do |subarray|
+      tally << calculate_points(subarray[0]) * subarray[1]
+      tally.sum * word_mult if word_mult != nil
+      end
+      tally.sum
+    end
+  end

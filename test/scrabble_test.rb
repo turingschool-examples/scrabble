@@ -6,19 +6,24 @@ require 'pry'
 
 class ScrabbleTest < Minitest::Test
   def test_it_exists
-    scrabble = Scrabble.new("a")
-    assert_instance_of Scrabble, scrabble
+    game = Scrabble.new("a", 1)
+    assert_instance_of Scrabble, game
   end
 
   def test_it_can_score_a_single_letter
-    scrabble = Scrabble.new("a")
-    assert_equal 1, scrabble.score("a")
-    scrabble_1 = Scrabble.new("f")
-    assert_equal 4, scrabble.score("f")
-    scrabble_2 = Scrabble.new("")
-    assert_equal 0, scrabble.score("")
-    scrabble_3 = Scrabble.new("*")
-    assert_equal nil, scrabble.score("*")
+    game = Scrabble.new("a", 1)
+    assert_equal 1, game.score("a", 1)
+    game_1 = Scrabble.new("f", 4)
+    assert_equal 4, game.score("f", 4)
+    game_2 = Scrabble.new("", 0)
+    assert_equal 0, game.score("" ,0)
+    game_3 = Scrabble.new("*", nil)
+    assert_equal nil, game.score("*", nil)
+  end
 
+  def test_it_can_score_with_multipliers
+    game = Scrabble.new("a", 1)
+    game_1 = Scrabble.new('hello', "[1,2,1,1,1]")
+    assert_equal [], game.it_can_score_with_multipliers('hello', "[1,2,1,1,1]")
   end
 end

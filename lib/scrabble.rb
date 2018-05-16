@@ -15,4 +15,48 @@ class Scrabble
       "Y"=>4, "Z"=>10
     }
   end
+
+  def score(word)
+    if word == nil
+      return nil
+    else
+    count_score(word).flatten.sum
+    end
+  end
+
+  def score_with_multipliers(word, position, multiplier = 1)
+    score = count_score(word).flatten
+    array = score.zip(position).map do |s,p|
+      s * p
+    end
+    array << if_seven_chars_add_ten(word)
+    (array.sum * multiplier)
+  end
+
+  def highest_scoring_word(array)
+    #takes in array of words
+    #gets score for each
+    #create hash of words with their score
+    hash = Hash[array.map {|key, value| [key, score(key)]}]
+    #returns word with the highest score value
+      #search over hash for largest value and return its key
+        #max_by ennum
+  end
+
+  def count_score(word)
+    word_array = word.chars
+    score = word_array.map do |letter|
+     point_values.fetch_values(letter.upcase)
+    end
+    score
+  end
+
+  def if_seven_chars_add_ten(word)
+    if word.length >= 7
+      return 10
+    else
+      return 0
+    end
+  end
+
 end

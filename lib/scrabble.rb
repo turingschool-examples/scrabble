@@ -33,6 +33,16 @@ class Scrabble
     (array.sum * multiplier)
   end
 
+  def highest_scoring_word(array)
+    #takes in array of words
+    #gets score for each
+    #create hash of words with their score
+    hash = Hash[array.map {|key, value| [key, score(key)]}]
+    #returns word with the highest score value
+      #search over hash for largest value and return its key
+        #max_by ennum
+  end
+
   def count_score(word)
     word_array = word.chars
     score = word_array.map do |letter|
@@ -48,4 +58,5 @@ class Scrabble
       return 0
     end
   end
+
 end

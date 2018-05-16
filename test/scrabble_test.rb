@@ -31,6 +31,7 @@ class ScrabbleTest < Minitest::Test
     game = Scrabble.new
     assert_nil game.score(nil)
   end
+
   def test_score_with_multipliers
     game = Scrabble.new
     assert_equal 18, game.score_with_multipliers('hello', [1,2,1,1,1], 2)
@@ -50,4 +51,10 @@ class ScrabbleTest < Minitest::Test
     game = Scrabble.new
     assert_equal 10 , game.if_seven_chars_add_ten('sparkle')
   end
+
+  def test_it_determines_the_highest_scoring_word
+    game = Scrabble.new
+    assert_equal "home", game.highest_scoring_word(['home', 'word', 'hello', 'sound'])
+  end
+
 end

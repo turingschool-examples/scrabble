@@ -1,7 +1,11 @@
 class Scrabble
+  
+  attr_reader  :point_values
 
   def score(word)
-    1
+    #point_values.each do |letter, number|
+    #point_values.slice(:a, :f)
+    point_values.fetch('A') 
   end
 
   def point_values

@@ -1,7 +1,19 @@
+require 'pry'
+
 class Scrabble
+  attr_reader :input
+
+  def initialize
+  end
 
   def score(word)
-    1
+    word = '' if word == nil
+    word = word.upcase.chars
+    values = word.map do |letter|
+      point_values[letter]
+    end
+    total = values.sum
+    total
   end
 
   def point_values
@@ -15,4 +27,17 @@ class Scrabble
       "Y"=>4, "Z"=>10
     }
   end
+
+  def score_with_multipliers(word, multipliers, word_mult = 1)
+    word = word.upcase.chars
+    let_mult = Hash[word.zip(multipliers)]
+    values =[]
+    values << 10 if word.length >= 7
+    word.each do |letter|
+      values << (point_values[letter] * let_mult[letter])
+    end
+    total = values.sum
+    total * word_mult
+  end
+
 end

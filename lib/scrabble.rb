@@ -17,11 +17,22 @@ class Scrabble
   end
 
   def score(word)
+    count_score(word).flatten.sum
+  end
+
+  def score_with_multipliers(word, position, multiplier = 1)
+    score = count_score(word).flatten
+    array = score.zip(position).map do |s,p|
+      s * p
+    end
+    array.sum * multiplier
+  end
+
+  def count_score(word)
     word_array = word.chars
     score = word_array.map do |letter|
      point_values.fetch_values(letter.upcase)
     end
-    # binding.pry
-    score.flatten.sum
+    score
   end
 end

@@ -6,8 +6,8 @@ require 'pry'
 
 class ScrabbleTest < Minitest::Test
   def test_it_exists
-    new_game = Scrabble.new
-    assert_instance_of Scrabble, new_game
+    game = Scrabble.new
+    assert_instance_of Scrabble, game
   end
 
   def test_it_can_score_a_single_letter
@@ -16,19 +16,28 @@ class ScrabbleTest < Minitest::Test
   end
 
   def test_it_can_score_a_multiletter_word
-    new_game = Scrabble.new
-    assert_equal 8, new_game.score("hello")
-    assert_equal 14, new_game.score("john")
+    game = Scrabble.new
+    assert_equal 8, game.score("hello")
+    assert_equal 14, game.score("john")
   end
 
   def test_it_can_score_zero
-    new_game = Scrabble.new
-    assert_equal 0, new_game.score("")
+    game = Scrabble.new
+    assert_equal 0, game.score("")
   end
 
   def it_can_score_nil
-    new_game = Scrabble.new
-    assert_equal nil, new_game.score(nil)
+    game = Scrabble.new
+    assert_equal nil, game.score(nil)
+  end
+  def test_score_with_multipliers
+    game = Scrabble.new
+    assert_equal 18, game.score_with_multipliers('hello', [1,2,1,1,1], 2)
+  end
+
+  def test_score_with_multipliers_without_multiplier
+    game = Scrabble.new
+    assert_equal 9, game.score_with_multipliers('hello', [1,2,1,1,1])
   end
   
 end

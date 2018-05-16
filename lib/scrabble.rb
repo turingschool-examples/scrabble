@@ -1,8 +1,7 @@
-class Scrabble
+require './lib/player'
+require 'pry'
 
-  def score(word)
-    1
-  end
+class Scrabble
 
   def point_values
     {
@@ -14,5 +13,29 @@ class Scrabble
       "U"=>1, "V"=>4, "W"=>4, "X"=>8,
       "Y"=>4, "Z"=>10
     }
+  end
+
+  def score(word)
+    total = 0
+    if word == "" || word == nil
+      return total
+    end
+    word.each_char do |char|
+      total += point_values[char.upcase]
+    end
+    return total
+  end
+
+  def score_with_multipliers(word, letter_multipliers, word_multiplier=1)
+    total = 0
+    i = 0
+    if word == "" || word == nil
+      return total
+    end
+    word.each_char do |char|
+      total += point_values[char.upcase] * letter_multipliers[i] * word_multiplier
+      i += 1
+    end
+    return total
   end
 end

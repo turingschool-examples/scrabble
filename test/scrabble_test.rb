@@ -32,11 +32,11 @@ class ScrabbleTest < Minitest::Test
   def test_it_can_score_a_word_with_a_word_multiplier
     assert_equal 20, Scrabble.new.score_with_multipliers('dog', [2, 2, 2], 2)
     assert_equal 27, Scrabble.new.score_with_multipliers('hello', [1,2,1,1,1], 3)
-    assert_equal 58, Scrabble.new.score_with_multipliers('sparkle', [1,2,1,3,1,2,1], 2)
   end
 
   def test_it_can_score_a_word_with_a_seven_letter_bonus
     assert_equal 19, Scrabble.new.score_with_multipliers("triangle", [1, 1, 1, 1, 1, 1, 1, 1], 1)
+    assert_equal 58, Scrabble.new.score_with_multipliers('sparkle', [1, 2, 1, 3, 1, 2, 1], 2)
     assert_equal 78, Scrabble.new.score_with_multipliers("baseball", [2, 1, 1, 1, 1, 1, 1, 2], 3)
   end
 

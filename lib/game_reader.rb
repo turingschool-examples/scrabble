@@ -38,7 +38,7 @@ class GameReader
   end
 
   def word_count(player)
-    if player = 'player_1'
+    if player == 'player_1'
       return @player_1[word_count]
     else
       return @player_2[word_count]
@@ -46,7 +46,7 @@ class GameReader
   end
 
   def score(player)
-    if player = 'player_1'
+    if player == 'player_1'
       return @player_1[score]
     else
       return @player_2[score]

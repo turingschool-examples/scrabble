@@ -40,4 +40,14 @@ class Scrabble
     total * word_mult
   end
 
+  def highest_scoring_word(words)
+    values = words.map do |word|
+      score(word)
+    end
+    matched = Hash[words.zip(values)]
+    max = matched.values.max
+    winner = matched.key(max)
+    winner
+  end
+
 end

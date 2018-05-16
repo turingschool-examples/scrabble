@@ -15,4 +15,9 @@ class Scrabble
       "Y"=>4, "Z"=>10
     }
   end
+
+  def score(letter)
+    score = point_values.fetch_values(letter.upcase)
+    score.sum
+  end
 end

@@ -14,16 +14,16 @@ class ScrabbleTest < Minitest::Test
     game = Scrabble.new("a", 1)
     assert_equal 1, game.score("a", 1)
     game_1 = Scrabble.new("f", 4)
-    assert_equal 4, game.score("f", 4)
+    assert_equal 4, game_1.score("f", 4)
     game_2 = Scrabble.new("", 0)
-    assert_equal 0, game.score("" ,0)
+    assert_equal 0, game_2.score("" ,0)
     game_3 = Scrabble.new("*", nil)
-    assert_equal nil, game.score("*", nil)
+    assert_equal nil, game_3.score("*", nil)
   end
 
   def test_it_can_score_with_multipliers
     game = Scrabble.new("a", 1)
     game_1 = Scrabble.new('hello', "[1,2,1,1,1]")
-    assert_equal [], game.it_can_score_with_multipliers('hello', "[1,2,1,1,1]")
+    assert_equal [], game_1.it_can_score_with_multipliers('hello', "[1,2,1,1,1]")
   end
 end

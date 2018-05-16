@@ -33,4 +33,11 @@ class ScrabbleTest < Minitest::Test
 
     assert_equal 18, actual
   end
+
+  def test_it_adds_ten_if_seven_or_more_letters
+    game = Scrabble.new
+    actual = game.score_with_multipliers('sparkle', [1,2,1,3,1,2,1], 2)
+
+    assert_equal 58, actual
+  end
 end

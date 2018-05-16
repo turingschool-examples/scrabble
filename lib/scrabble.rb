@@ -21,6 +21,9 @@ class Scrabble
     letter_arr.each_with_index do |letter, index|
       score_total += point_values[letter] * letter_mult[index]
     end
+    if word.length >= 7
+      score_total += 10
+    end
     score_total * word_mult
   end
 

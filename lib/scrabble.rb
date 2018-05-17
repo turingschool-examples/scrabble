@@ -1,7 +1,18 @@
 class Scrabble
+  attr_reader :word
+              :letter
 
-  def score(word)
-    1
+
+  def initialize(word)
+    @word = word
+    @letter = letter
+  end
+
+  def score(@letter)
+    points = []
+    letter = @letter.upcase
+    points << point_values[letter]
+    points.sum
   end
 
   def point_values
@@ -15,4 +26,23 @@ class Scrabble
       "Y"=>4, "Z"=>10
     }
   end
+
+  def score_with_multipliers(word, multipliers)
+    word = word.upcase
+    word_array = word.split
+    points = []
+    letter = @letter.upcase
+    points << point_values[letter]
+
+    multiply = []
+    multiply << points.map.with_index do |number, index|
+        number * multipliers|index|
+    end
+    multiply.sum
+
+#mutliply elements by index from points array by index from matching index in multipliers array
+
+
+  end
+
 end

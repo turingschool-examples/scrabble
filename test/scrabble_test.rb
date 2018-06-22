@@ -40,5 +40,25 @@ class ScrabbleTest < Minitest::Test
     assert_equal 60, game.score_with_multipliers('aaaaaaaaaa', [1,1,1,1,1,1,1,1,1,1], 3)
   end
 
+  def test_highest_scoring_word_returns_highest_score_word_from_array
+    game = Scrabble.new
+    assert_equal "home", game.highest_scoring_word(['home', 'word', 'hello', 'sound'])
+  end
+
+  def test_highest_scoring_word_returns_highest_score_word_with_fewer_tiles_when_tie
+    game = Scrabble.new
+    assert_equal "word", game.highest_scoring_word(['hello', 'word', 'sound'])
+  end
+
+  def test_highest_scoring_word_returns_highest_score_word_with_seven_letters_when_tie
+    game = Scrabble.new
+    assert_equal "silence", game.highest_scoring_word(['home', 'word', 'silence'])
+  end
+
+  def test_highest_scoring_word_returns_first_highest_score_word_with_fewer_tiles_when_tie
+    game = Scrabble.new
+    assert_equal "word", game.highest_scoring_word(['hi', 'word', 'ward'])
+    assert_equal "esilenc", game.highest_scoring_word(['esilenc', 'word', 'silence'])
+  end
 
 end

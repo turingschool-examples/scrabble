@@ -33,6 +33,28 @@ class Scrabble
     sum = mult * sum
   end
 
+  def highest_scoring_word(arr)
+    highest_score = 0
+    highest_word = ''
+    arr.each do |word|
+      word_score = score(word)
+      if word_score > highest_score
+        highest_score = word_score
+        highest_word = word
+      elsif word_score == highest_score
+        # test word lengths
+        if highest_word.length <= word.length
+          if word.length >= 7 && highest_word.length < 7
+            highest_word = word
+          end
+        else
+          highest_word = word
+        end
+      end
+    end
+    highest_word
+  end
+
   def point_values
     {
       "A"=>1, "B"=>3, "C"=>3, "D"=>2,

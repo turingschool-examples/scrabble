@@ -1,4 +1,5 @@
 class Scrabble
+
   def point_values
     {
       "A"=>1, "B"=>3, "C"=>3, "D"=>2,
@@ -10,4 +11,13 @@ class Scrabble
       "Y"=>4, "Z"=>10
     }
   end
+
+  def score(word)
+    score = 0
+    if word != nil
+      word.each_char { |letter| score += point_values[letter.upcase] }
+    end
+    score
+  end
+
 end

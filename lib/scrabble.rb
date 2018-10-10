@@ -60,6 +60,17 @@ class Scrabble
         letter * score * word_multiplier
       end
       return total_points.sum
+    else
+      new_word = word.upcase.split(//)
+      scored_word = new_word.map do |letter|
+        @point_values[letter]
+      end
+      combined_array = scored_word.zip(letter_score_array)
+      total_points = combined_array.map do |letter, score|
+         letter * score
+      end
+      (total_points.sum + 10) * word_multiplier
+    end
 
 
   end

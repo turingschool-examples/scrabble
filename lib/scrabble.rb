@@ -17,17 +17,18 @@ class Scrabble
   end
 
   def score(element)
-    binding.pry
+    #binding.pry
     e = element.upcase
-      if e.length < 2
-        @point_values[e]
-      elsif e.length >= 2
-        w = e.split(//).to_a
-        new_array = w.map do |l|
-          @point_values[l]
-        end
-        new_array
-      end
+
+      #if e.length == 1
+        point_values[e]
+      #elsif e.length >= 2
+      #  w = e.split(//).to_a
+      #  new_array = w.map do |letter|
+      #    @point_values[letter]
+      #  end
+      #  new_array
+      #end
   end
 
 end

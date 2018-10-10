@@ -1,6 +1,6 @@
 require 'pry'
 class Scrabble
-  POINT_VALUES =  {
+  POINTS =  {
       "A"=>1, "B"=>3, "C"=>3, "D"=>2,
       "E"=>1, "F"=>4, "G"=>2, "H"=>4,
       "I"=>1, "J"=>8, "K"=>5, "L"=>1,
@@ -10,11 +10,16 @@ class Scrabble
       "Y"=>4, "Z"=>10
     }
   def score(string)
-    return 0 if string.length = 0
+    return 0 if string.length == 0
     if string.length == 1
-      POINT_VALUES[string.upcase]
+      POINTS[string.upcase]
     else
       return score_word(string)
     end
   end
+
+  def score_word(word)
+    word.chars.map{|c|POINTS[c.upcase]}.sum
+  end
+
 end

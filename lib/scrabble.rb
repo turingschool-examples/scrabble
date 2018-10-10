@@ -10,4 +10,9 @@ class Scrabble
       "Y"=>4, "Z"=>10
     }
   end
+
+  def score(letter)
+    letters_to_score = letter.upcase
+    point_values[letters_to_score]
+  end
 end

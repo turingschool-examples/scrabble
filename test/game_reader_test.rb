@@ -13,10 +13,15 @@ class GameReaderTest < Minitest::Test
   end
 
   def test_it_can_parse_csv
-    @game.parse_csv
     expected = {:player_1=>["hello", "silence", "fun"], :player_2=>["hi", "snacker"]}
     actual = @game.scrabble.record
     
     assert_equal expected , actual
+  end
+
+  def test_it_can_show_word_count_for_specified_player
+    actual = @game.word_count(:player_1)
+
+    assert_equal 3, actual
   end
 end

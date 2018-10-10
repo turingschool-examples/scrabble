@@ -12,15 +12,17 @@ class Scrabble
     }
   end
   def score(letter)
-    if letter.length == 1
+    if letter == nil
+      0
+    elsif letter.length == 1
       point_values[letter.upcase]
     else
       new_array = letter.upcase.split('')
       conversion = new_array.map do |i|
         point_values[i]
-      end
+        end
       conversion.sum
-    end
-  end 
+    end 
+  end
 
 end

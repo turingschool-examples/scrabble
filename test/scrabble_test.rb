@@ -19,4 +19,10 @@ class ScrabbleTest < Minitest::Test
     assert_equal 8, game.score("hello")
   end
 
+  def test_it_does_not_score_blanks
+    game = Scrabble.new
+    assert_equal 0, game.score("")
+    assert_equal 0, game.score(nil)
+  end 
+
 end

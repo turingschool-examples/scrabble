@@ -36,7 +36,7 @@ class Scrabble
     @new_calculation = conversion.zip(letter_score).map do |x, y|
       x * y
     end
-    @new_calculation.sum
+    @new_calculation.sum * word_score
   end
 
 end

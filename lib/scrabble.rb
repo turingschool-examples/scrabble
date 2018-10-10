@@ -15,11 +15,11 @@ class Scrabble
   def score(player_input)
     @player_input = player_input
 
-    get_letters = @player_input.split('')
+    get_letters = @player_input.upcase.split('')
 
     score = get_letters.map do |find_value|
       @point_values[find_value]
     end
-    score.join('')
+    score.to_i.join('')
   end
 end

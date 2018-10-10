@@ -23,12 +23,31 @@ class Scrabble
     new_word.chars.each do |letter|
       @counter << @point_values[letter]
     end
-    new_count = @counter.inject(0){|sum, num| sum + num }
+    new_count = @counter.inject(0){|sum, num| sum + num}
     new_count
   end
 
   def score_with_multipliers(word, multi, double = 1)
-    (score(word) + multi[0]) * double
+    total = (score(word) + multi[0]) * double
+    total
+    # new_word = word.upcase
+    # count = new_word.chars.each_with_index.map do |letter, index|
+    #   @point_values[letter] * multi[index]
+    # end
+    # if word.length > 6
+    #   (count.inject(0){|sum, num| sum + num + 10}) * multi
+    # else
+    #   (count.inject(0){|sum, num| sum + num}) * multi
+    # end
+
     # i don't understand what this mutli array is doing
+  end
+
+  def highest_scoring_word(arr_words)
+    new_hash = {}
+    arr_words.each do |word|
+      new_hash[score(word)] = word
+    end
+    new_hash
   end
 end

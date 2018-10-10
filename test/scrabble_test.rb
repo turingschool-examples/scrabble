@@ -20,7 +20,10 @@ class ScrabbleTest < Minitest::Test
     assert_equal 0, Scrabble.new.score('nil')
   end
 
-  def test_it_can_score_a_word_with_letter_multipliers; end
+  def test_it_can_score_a_word_with_letter_multipliers
+    assert_equal 9, Scrabble.new.score_with_multipliers('hello', [1, 2, 1, 1, 1], 1)
+    assert_equal 18, Scrabble.new.score_with_multipliers('hello', [1, 2, 1, 1, 1], 2)
+  end
 
   def test_its_can_score_word_with_a_word_multiplier; end
 

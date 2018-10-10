@@ -17,9 +17,15 @@ class Scrabble
     upper_case = value.upcase
     acceptable = upper_case.split(//).join
     translate = @point_values[acceptable]
-    # require 'pry'; binding.pry
     translate
   end
 
-  def score_with_multipliers(word, letter_mult, word_mult); end
+  def score_with_multipliers(*args)
+    argument_array = args
+    value_array = argument_array[1]
+    multiplier = argument_array.last
+    value = multiplier * value_array[1]
+    require 'pry'; binding.pry
+    value
+  end
 end

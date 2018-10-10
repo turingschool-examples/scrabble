@@ -16,13 +16,32 @@ class Scrabble
 
   def score(word)
     if word.class == String
-      caps_array = word.upcase.chars
-      caps_array.each do |letter|
+      caps_letters = word.upcase.chars
+      caps_letters.each do |letter|
         @caps << @point_values[letter]
       end
       p @caps.sum
     else
       return 0
     end
+  end
+
+  def score_with_multipliers(word, letter_multiplier, word_multiplier = 1)
+    caps_letters = word.upcase.chars
+    caps_letters.each do |letter|
+      @caps << @point_values[letter]
+    end
+    shifted_letters = []
+    @caps.each do |i|
+      shifted_letters << i * letter_multiplier.shift
+    end
+    if shifted_letters.count >= 7
+      (shifted_letters.sum + 10) * word_multiplier
+    else
+      shifted_letters.sum * word_multiplier
+    end
+  end
+
+  def highest_scoring_word
   end
 end

@@ -10,4 +10,41 @@ class Scrabble
       "Y"=>4, "Z"=>10
     }
   end
+
+  def score(word)
+    if word == "" || word == nil
+      return 0
+    end
+    score_by_letter = word.upcase.chars.map do |letter|
+      point_values[letter]
+    end
+    score_by_letter.sum + seven_letter_bonus(word)
+  end
+
+  def score_with_multipliers(word, multi_array, multi = 1)
+    total_score = 0
+    word.chars.each_with_index do |letter, i|
+      total_score += score(letter) * multi_array[i]
+    end
+    total_score += seven_letter_bonus(word)
+    total_score *= multi
+  end
+
+  def seven_letter_bonus(word)
+    if word.length >= 7
+      return 10
+    else
+      return 0
+    end
+  end
+
+  def highest_scoring_word(list)
+    list.sort! { |x, y| x.length <=> y.length }
+    scores = []
+    scores = list.map do |word|
+      score(word)
+    end
+    list[scores.index(scores.max)]
+  end
+
 end

@@ -1,3 +1,4 @@
+require 'pry'
 class Scrabble
   def initialize
     @point_values ={
@@ -31,12 +32,7 @@ class Scrabble
     @multi_score = letters.map do |letter|
       score(letter)
     end
-    @multiplier_array.map do |num|
-      if num > 1
-        new_score = num * @multi_score[@multiplier_array.index(num)]
-        @multi_score[array.index(num)] = new_score
-      end
-    end
+    letter_multiplier(@multi_score, @multiplier_array)
     ((@multi_score.sum) + @seven_bonus) * double_word
   end
 
@@ -44,6 +40,15 @@ class Scrabble
     if word.length >= 7
       @seven_bonus = 10
     end
+
+    def letter_multiplier(scored_array, bonus_array)
+      x = 0
+      scored_array.each_index do |i|
+        x = bonus_array[i] * scored_array[i]
+        scored_array[i] = x
+      end
+    end
+
   end
 
 

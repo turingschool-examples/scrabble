@@ -1,5 +1,7 @@
 class Scrabble
-  def point_values
+
+  def initialize
+   @point_values =
     {
       "A"=>1, "B"=>3, "C"=>3, "D"=>2,
       "E"=>1, "F"=>4, "G"=>2, "H"=>4,
@@ -10,4 +12,13 @@ class Scrabble
       "Y"=>4, "Z"=>10
     }
   end
+
+  def score(letter)
+    if letter == ""
+      @point_values[letter] = 0
+    else
+      @point_values[letter.upcase]
+    end
+  end
+
 end

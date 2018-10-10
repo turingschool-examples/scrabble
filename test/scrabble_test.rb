@@ -15,8 +15,7 @@ class ScrabbleTest < Minitest::Test
   end
 
   def test_it_can_score__full_word
-skip
-    # game = Scrabble.new
+    game = Scrabble.new
     assert_equal 8, game.score("hello")
   end
 
@@ -31,10 +30,3 @@ skip
   end
 
 end
-
-# > game.score("hello")
-# => 8
-# > game.score("")
-# => 0
-# > game.score(nil)
-# => 0

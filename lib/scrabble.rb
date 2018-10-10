@@ -1,3 +1,4 @@
+require 'pry'
 class Scrabble
 
   def initialize
@@ -14,13 +15,24 @@ class Scrabble
   end
 
   def score(letter)
-    if letter == ""
+    if letter == nil
       @point_values[letter] = 0
-    elsif letter == nil
-      @point_values[letter] = 0    
-    else
+      # elsif the letter length == 1 do this
+    elsif letter == ""
+      @point_values[letter] = 0
+    elsif letter.length == 1
       @point_values[letter.upcase]
+    else
+     letter.upcase.split(" ").map do |element|
+       @point_values[element]
+
+      # else if letter length is greater than 1 split the
+      # string into an array of strings. Iterate through each
+      # element of the string and assign the key/value pair.
+
     end
   end
+end
+
 
 end

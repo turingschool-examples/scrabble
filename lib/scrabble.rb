@@ -1,5 +1,6 @@
 class Scrabble
 
+
   def point_values
     {
       "A"=>1, "B"=>3, "C"=>3, "D"=>2,
@@ -11,6 +12,7 @@ class Scrabble
       "Y"=>4, "Z"=>10
     }
   end
+
   def score(letter)
     if letter == nil
       0
@@ -22,7 +24,19 @@ class Scrabble
         point_values[i]
         end
       conversion.sum
-    end 
+    end
+
+  end
+
+  def score_with_multipliers(letter, letter_score, word_score = 1)
+    new_array = letter.upcase.split('')
+    conversion = new_array.map do |i|
+      point_values[i]
+      end
+    @new_calculation = conversion.zip(letter_score).map do |x, y|
+      x * y
+    end
+    @new_calculation.sum
   end
 
 end

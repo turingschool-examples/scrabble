@@ -23,6 +23,11 @@ class ScrabbleTest < Minitest::Test
     game = Scrabble.new
     assert_equal 0, game.score("")
     assert_equal 0, game.score(nil)
-  end 
+  end
+
+  def test_multipliers_scores_appropriately
+    game = Scrabble.new
+    assert_equal 9,game.score_with_multipliers('hello', [1,2,1,1,1])
+  end
 
 end

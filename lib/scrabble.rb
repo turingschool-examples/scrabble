@@ -1,4 +1,14 @@
+require 'pry'
+
 class Scrabble
+
+  def score(word)
+    return 0 if word == "" || word == nil
+    return "Invalid Input" if not word.class == String
+    return point_values[word.upcase] if word.length == 1
+    score_with_no_multipliers(word)
+  end
+
   def point_values
     {
       "A"=>1, "B"=>3, "C"=>3, "D"=>2,
@@ -10,4 +20,40 @@ class Scrabble
       "Y"=>4, "Z"=>10
     }
   end
+
+  def highest_scoring_word(words)
+    highest = words.reduce do |highest, word|
+      highest = point_values[word] >
+    end
+  end
+
+  def score_with_no_multipliers(word)
+    letters = word.chars
+    final_score = letters.reduce(0) do |sum, letter|
+      sum += point_values[letter.upcase]
+    end
+  end
+
+  def score_word_with_letter_multipliers(word, letter_multipliers)
+    letters = word.chars
+    final_score = letters.each_with_index.reduce(0) do |sum, (letter, index)|
+      sum += point_values[letter.upcase] * letter_multipliers[index]
+    end
+  end
+
+  def score_with_multipliers(word, letter_multipliers, word_multiplier = nil)
+    return "Invalid letter multipliers" if not word.length == letter_multipliers.length
+
+    score = check_for_seven_letter_bonus(word)
+    score += score_word_with_letter_multipliers(word, letter_multipliers)
+    score *= word_multiplier if word_multiplier
+    score
+  end
+
+  def check_for_seven_letter_bonus(word)
+    score = 0
+    score = 10 if word.length >= 7
+    score
+  end
+
 end

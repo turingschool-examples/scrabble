@@ -39,5 +39,14 @@ class Scrabble
     word.upcase.chars
   end
 
+  def highest_scoring_word(words)
+    high_word = ""
+    words.each do |word|
+      if score(word) > score(high_word)
+        high_word = word
+      end
+    end
+    high_word
+  end
 
 end

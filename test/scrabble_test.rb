@@ -18,5 +18,8 @@ class ScrabbleTest < Minitest::Test
      assert_equal 4, @game.score("f")
   end
 
+  def test_it_can_score_a_word
+     assert_equal 8, @game.score("hello")
+  end
 
 end

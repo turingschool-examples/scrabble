@@ -29,4 +29,10 @@ class ScrabbleTest < Minitest::Test
   def test_it_can_score_a_word_with_no_multipliers
     assert_equal 8, @scrabble.score("hello")
   end
+
+  def test_it_can_score_a_word_with_letter_multipliers_only
+    assert_equal 9, @scrabble.score_with_multipliers('hello', [1,2,1,1,1])
+  end
+
+  
 end

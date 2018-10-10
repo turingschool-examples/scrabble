@@ -21,26 +21,35 @@ class Scrabble
     }
   end
 
-  def score_word_with_no_multipliers(word)
+  def score_with_no_multipliers(word)
     letters = word.chars
     final_score = letters.reduce(0) do |sum, letter|
       sum += point_values[letter.upcase]
     end
   end
 
-  def score_word_with_multipliers(word, letter_multipliers)
+  def score_word_with_letter_multipliers(word, letter_multipliers)
     letters = word.chars
+    binding.pry
     final_score = letters.each_with_index.reduce(0) do |sum, (letter, index)|
-      sum += point_values[letter] * letter_multipliers[index]
+      # binding.pry
+      sum += point_values[letter.upcase] * letter_multipliers[index]
     end
   end
 
-  def score_with_multipliers(word, letter_multipliers, word_multiplier)
-    word_length = word.length
-    return "Invalid letter multipliers" if not word_length == letter_multipliers.length
+  def score_with_multipliers(word, letter_multipliers, word_multiplier = nil)
+    return "Invalid letter multipliers" if not word.length == letter_multipliers.length
 
-    score = word_length >= 7 ? 10 : 0
-
-
+    score = check_for_seven_letter_bonus(word)
+    score += score_word_with_letter_multipliers(word, letter_multipliers)
+    score *= word_multiplier if word_multiplier
+    score
   end
+
+  def check_for_seven_letter_bonus(word)
+    score = 0
+    score = 10 if word.length >= 7
+    score
+  end
+
 end

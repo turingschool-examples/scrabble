@@ -20,12 +20,7 @@ class Scrabble
     @scored_letters = letters_to_score.map do |letter|
      @point_values[letter]
     end
-    total_value = @scored_letters.each do |score|
-       sum = 0
-       @scored_letters.index(sum) = @scored_letters.index(sum + 1)
-    end
-
-
-
+    sum = 0
+    total_value = @scored_letters.map {|score| sum+=score}
   end
 end

@@ -21,11 +21,10 @@ class Scrabble
   end
 
   def score_with_multipliers(*args)
-    argument_array = args
-    value_array = argument_array[1]
-    multiplier = argument_array.last
-    value = multiplier * value_array[1]
-    require 'pry'; binding.pry
+    argument_array = args[1]
+    sum_of_array = argument_array.sum
+    multiplier = args[2]
+    value = multiplier * sum_of_array.to_f
     value
   end
 end

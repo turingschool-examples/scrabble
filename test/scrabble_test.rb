@@ -1,4 +1,4 @@
-require_relative '../lib/scrabble'
+require './lib/scrabble'
 require 'minitest/autorun'
 require 'minitest/pride'
 require 'pry'

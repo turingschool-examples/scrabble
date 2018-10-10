@@ -44,6 +44,11 @@ class ScrabbleTest < Minitest::Test
     assert_equal expected, actual
   end
 
-
+  def test_it_adds_seven_letter_bonus
+    game = Scrabble.new
+    actual = game.score_with_multipliers('sparkle', [1,2,1,3,1,2,1], 2)
+    expected = 58
+    assert_equal expected, actual
+  end
 
 end

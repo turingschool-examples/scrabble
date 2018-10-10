@@ -33,7 +33,11 @@ class Scrabble
         point_values[letter] * letter_mult[i]
       end
     end
-    return points.sum * word_mult
+    if word.length >= 7
+      (points.sum + 10) * word_mult
+    else
+      points.sum * word_mult
+    end
   end
 
 

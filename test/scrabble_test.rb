@@ -15,7 +15,7 @@ class ScrabbleTest < Minitest::Test
 
   def test_it_can_score_a_single_letter
      assert_equal 1, @game.score("a")
-    # assert_equal 4, @game.score("f")
+     assert_equal 4, @game.score("f")
   end
 
 

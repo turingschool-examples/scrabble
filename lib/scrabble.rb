@@ -14,10 +14,11 @@ attr_reader :alphabet
   end
 
   def score(character)
-    letters = character.split(" ")
+    letters = character.upcase.chars
+    # binding.pry
     translation = letters.map do |letter|
       @alphabet[letter]
     end
-    translation
+    translation.join.to_i
   end
 end

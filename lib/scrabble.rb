@@ -21,6 +21,12 @@ class Scrabble
     }
   end
 
+  def highest_scoring_word(words)
+    highest = words.reduce do |highest, word|
+      highest = point_values[word] >
+    end
+  end
+
   def score_with_no_multipliers(word)
     letters = word.chars
     final_score = letters.reduce(0) do |sum, letter|

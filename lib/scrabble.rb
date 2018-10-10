@@ -38,4 +38,14 @@ class Scrabble
     end
   end
 
+  def highest_scoring_word(list)
+    list.sort! { |x, y| x.length <=> y.length }
+    binding.pry
+    scores = []
+    scores = list.map do |word|
+      score(word)
+    end
+    list[scores.index(scores.max)]
+  end
+
 end

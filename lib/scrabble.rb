@@ -23,7 +23,7 @@ class Scrabble
     end
   end
 
-  def score_with_multipliers(word, array)
+  def score_with_multipliers(word, array, double_word = 1)
     @multiplier_array = array
     letters = word.chars
     @multi_score = letters.map do |letter|
@@ -35,7 +35,7 @@ class Scrabble
         @multi_score[array.index(num)] = new_score
       end
     end
-    @multi_score.sum
+    (@multi_score.sum) * double_word
   end
 
 

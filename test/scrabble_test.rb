@@ -26,6 +26,6 @@ class ScrabbleTest < Minitest::Test
   end
   
   def test_it_can_find_highest_scoring_word
-    assert_equal "home", Scrabble.new..highest_scoring_word(['home', 'word', 'hello', 'sound'])
+    assert_equal "home", Scrabble.new.highest_scoring_word(['home', 'word', 'hello', 'sound'])
   end
 end

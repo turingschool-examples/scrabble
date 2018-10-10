@@ -11,6 +11,7 @@ class Scrabble
     }
     @multi_score
     @multiplier_array
+    @seven_bonus = 0
   end
   def score(letter)
     if letter == nil
@@ -24,6 +25,7 @@ class Scrabble
   end
 
   def score_with_multipliers(word, array, double_word = 1)
+    seven_letter_bonus(word)
     @multiplier_array = array
     letters = word.chars
     @multi_score = letters.map do |letter|
@@ -35,8 +37,15 @@ class Scrabble
         @multi_score[array.index(num)] = new_score
       end
     end
-    (@multi_score.sum) * double_word
+    ((@multi_score.sum) + @seven_bonus) * double_word
   end
+
+  def seven_letter_bonus(word)
+    if word.length >= 7
+      @seven_bonus = 10
+    end
+  end
+
 
 
 

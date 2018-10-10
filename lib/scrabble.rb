@@ -23,10 +23,14 @@ class Scrabble
    answer.sum
   end
 
-  def score_with_multipliers(this_needs_to_be_the answer_above, multipliers)
-    #it seems silly to repeat the above...but somehow
-    #these two thing methods have to work together
-    #so that the above score can be multiplied
+  def score_with_multipliers(turn, multipliers)
+    answer = turn.upcase.chars.map do |letter|
+      letter = alphabet[letter]
+    end
+    complex_answer = answer.zip(multipliers).map do |answ, multi|
+      answ * multi
+    end
+    complex_answer.sum
   end
 
 

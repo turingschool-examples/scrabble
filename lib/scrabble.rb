@@ -32,10 +32,13 @@ class Scrabble
   end
 
   def score(word)
-    if word.length == 1
+    if word.empty?
+      word = 0
+
+    elsif word.length == 1
       @point_values[word.upcase]
 
-    elsif new_word = word.upcase.split(//)
+    else new_word = word.upcase.split(//)
     scored_word = new_word.map do |letter|
       @point_values[letter]
     end

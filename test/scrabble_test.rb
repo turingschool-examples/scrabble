@@ -10,5 +10,11 @@ class ScrabbleTest < Minitest::Test
     assert_equal 1, Scrabble.new.score("a")
     assert_equal 4, Scrabble.new.score("f")
   end
-  binding.pry
+
+  def test_if_no_word_score_is_0
+    Scrabble.new.score("")
+
+    assert_equal 0, Scrabble.new.score("")
+  end
+  # binding.pry
 end

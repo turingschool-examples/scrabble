@@ -1,4 +1,3 @@
-require 'pry'
 
 class Scrabble
   def point_values
@@ -13,12 +12,22 @@ class Scrabble
     }
   end
 
-  def score(words)
-    if words == nil
+  def score(word)
+    if word == nil
       0
     else
-      point_values.values_at(*words.upcase.split(//)).sum
+      point_values.values_at(*word.upcase.split(//)).sum
     end
   end
 
+  def score_with_multipliers(words, loc, double = 1)
+    if words == nil
+        0
+    else
+      values = point_values.values_at(*words.upcase.split(//))
+      values.zip(loc).map{|v, l| v * l}.sum * double
+
+    end
+
+  end
 end

@@ -13,4 +13,15 @@ class ScrabbleTest < Minitest::Test
     assert_equal 4, Scrabble.new.score("Test")
     assert_equal 10, Scrabble.new.score("WANTED")
   end
+
+  def test_if_it_can_handle_multipliers
+    red = Scrabble.new.score_with_multipliers('hello', [1,2,1,1,1])
+    long = Scrabble.new.score_with_multipliers('hello', [1,2,1,1,1], 2)
+    assert_equal 9, red
+    assert_equal 18, long
+  end
+
+
+
+
 end

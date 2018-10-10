@@ -34,19 +34,31 @@ class Scrabble
   end
 
   def highest_scoring_word (words)
-    return words[0] If words.length = 1
+    return words[0] if words.length == 1
     winning_index = 0
     test_index = 1
     (words.length - 1).times do
       if score(words[winning_index]) < score(words[test_index])
         winning_index = test_index
-      elsif score(words(winning_index)) = score(words(test_index))
-        find_winner_index(w)
-
+      elsif score(words[winning_index]) == score(words[test_index])
+        winning_index = winning_index
+        #break_tie(words[winning_index], words[test_index])
       end
       test_index += 1
     end
+    words[winning_index]
+  end
 
-
+  def break_tie(word_1, word_2)
+    if score.word_1 = score.word_2 && word_1.length == word_2.length
+      {return ":word_1"}
+    if word_1.length == 7 {return ":word_1"}
+    if word_2.length == 7 {return ":word_2"}
+    if word_1.length <= word_2.length
+      return ":word_1
+    else
+      return "word_2"
+    end
+  end
 
 end

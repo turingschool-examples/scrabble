@@ -17,4 +17,13 @@ class ScrabbleTest < Minitest::Test
     assert_equal 8, @game.score("hello")
   end
 
+  def test_it_can_score_empty_string
+    assert_equal 0, @game.score("")
+  end
+
+  def test_it_can_score_nil
+    assert_equal 0, @game.score(nil)
+  end
+
+
 end

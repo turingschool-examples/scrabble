@@ -11,8 +11,17 @@ class Scrabble
     }
   end
 
-  def score(letter)
-    point_values[letter.upcase]
+  def score(word)
+    score = 0
+    if word == nil
+      return score
+    end
+    letters = word.upcase.chars
+    letters.each do |letter|
+      score += point_values[letter]
+    end
+    score
   end
+
 
 end

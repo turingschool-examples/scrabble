@@ -13,9 +13,10 @@ class GameReaderTest < Minitest::Test
   end
 
   def test_it_can_parse_csv
-    parsed_obj = @game.parse_csv
-    expected = {}
+    @game.parse_csv
+    expected = {:player_1=>["hello", "silence", "fun"], :player_2=>["hi", "snacker"]}
+    actual = @game.scrabble.record
     
-    assert_equal expected, parsed_obj
+    assert_equal expected , actual
   end
 end

@@ -36,7 +36,11 @@ class Scrabble
     @new_calculation = conversion.zip(letter_score).map do |x, y|
       x * y
     end
-    @new_calculation.sum * word_score
+    if letter.length > 6
+      (@new_calculation.sum + 10) * word_score
+    else
+      @new_calculation.sum * word_score
+    end 
   end
 
 end

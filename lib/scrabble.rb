@@ -22,7 +22,7 @@ class Scrabble
       string.split('').each do |letter|
         final_score += scores[letter.upcase]
       end
-      final_score
+      final_score + bonus
     end
   end
   
@@ -34,6 +34,16 @@ class Scrabble
     end
 
     final_score
+  end
+
+  def highest_scoring_word(words)
+    highest = ''
+    words.each do |word|
+      if score(word) > score(highest)
+        highest = word
+      end
+    end 
+    highest
   end
 
   def point_values

@@ -36,4 +36,16 @@ class ScrabbleTest < Minitest::Test
     actual = game.score_with_multipliers('hello', [1,2,1,1,1], 2)
     assert_equal 18, actual
   end
+
+  def test_multipliers_adds_another_set_of_points
+    game = Scrabble.new
+    actual = game.score_with_multipliers('sparkle', [1,2,1,3,1,2,1], 2)
+    assert_equal 58, actual
+  end
+
+  def test_highest_scoring_word
+    game = Scrabble.new
+    actual = game.highest_scoring_word(['home', 'word', 'hello', 'sound'])
+    assert_equal "home", actual
+  end
 end

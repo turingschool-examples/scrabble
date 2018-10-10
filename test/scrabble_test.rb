@@ -10,6 +10,7 @@ class ScrabbleTest < Minitest::Test
   end
 
   def test_it_can_score_a_word
-    assert equal 8, game.score("hello")
+    game = Scrabble.new
+    assert_equal 8, game.score("hello")
   end
 end

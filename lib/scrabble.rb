@@ -33,7 +33,7 @@ class Scrabble
 
   def score(word)
     if word.length == 1
-      @point_values[word]
+      @point_values[word.upcase]
 
     elsif new_word = word.upcase.split(//)
     scored_word = new_word.map do |letter|

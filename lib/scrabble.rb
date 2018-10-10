@@ -43,7 +43,9 @@ class Scrabble
     high_word = ""
     words.each do |word|
       if score(word) == score(high_word)
-        if word.length < high_word.length
+        if word.length == 7
+          high_word = word
+        elsif word.length < high_word.length
           high_word = word
         end
       elsif score(word) > score(high_word)

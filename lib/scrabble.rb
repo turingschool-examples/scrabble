@@ -1,9 +1,4 @@
 class Scrabble
-
-  def score(word)
-    1
-  end
-
   def point_values
     {
       "A"=>1, "B"=>3, "C"=>3, "D"=>2,

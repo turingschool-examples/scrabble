@@ -9,9 +9,11 @@ class Scrabble
       "U"=>1, "V"=>4, "W"=>4, "X"=>8,
       "Y"=>4, "Z"=>10
     }
-  def score(str, mults = nil)
-    return score_with_multipliers(str, mults) if mults
+
+  def score(str, mults = nil, recurring = false)
     return 0 if str.length == 0
+    return score_with_multipliers(str, mults) if mults
+    return score_with_bingo(str, mults) if str.length >= 7 && !recurring
     if str.length == 1
       POINTS[str.upcase]
     else
@@ -27,6 +29,9 @@ class Scrabble
     score(str) * mults
   end
 
+  def score_with_bingo(str, mults)
+    score(str, mults, :recurring) + 50
+  end
 
 
 end

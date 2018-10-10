@@ -4,10 +4,11 @@ require 'pry'
 
 class GameReader
   attr_reader :scrabble
-  
+
   def initialize(csv_path)
     @csv_path = csv_path
     @scrabble = Scrabble.new
+    parse_csv
   end
 
   def parse_csv
@@ -19,5 +20,8 @@ class GameReader
     end
   end
 
+  def word_count(player_sym)
+    @scrabble.record[player_sym].count
+  end
 
 end

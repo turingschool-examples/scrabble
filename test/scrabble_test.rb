@@ -41,6 +41,9 @@ class ScrabbleTest < Minitest::Test
     assert_equal 58, game.multipliers('sparkle', [1,2,1,3,1,2,1], 2)
   end
 
+  # def test_highest_scoring_word
+  # end
+
 
 
 

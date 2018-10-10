@@ -44,4 +44,11 @@ class Scrabble
   end
   end
 
+  # def highest_scoring_word(word_array)
+  #  #split word array into individual Words
+  #  #for each run method multipliers
+  #  #create comparison statment
+  #
+  # end
+
 end

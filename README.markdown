@@ -8,23 +8,26 @@ As you work, you may:
 * Reference external public resources (ie: Google, Ruby API, etc)
 * Use the tooling most comfortable to you (Editor/IDE, testing framework, support tools like Guard, etc)
 
-As you work, you should **not**:
+As you work, you may **not**:
 
 * Copy code snippets other than those present in this description
 * Seek live support from individuals other than your facilitator
-* Use past projects to use as guides/examples
 
-## Preparation
+## Preparation and Submission
 
 1. Fork this repository.
-2. Clone your new repository to your local machine (`$ git clone https://github.com/<YOUR GITHUB USERNAME>/scrabble.git`)
+2. Clone your new repository to your local machine (`$ git clone git@github.com:<YOUR USER NAME>/scrabble.git`)
 3. `cd` into your scrabble directory.
-4. Run `bundle` from the command line.
-5. Run `rake` from the command line.
 
-## Running Specs/Tests
+As you work, we do expect you to make commits in small chunks of functionality.
 
-To run the MiniTest tests run `rake` from the command line.
+When you have finished, submit your work by:
+
+1. Pushing after your final commit up to your forked GitHub repository
+2. Create a Pull Request to the turingschool-examples repository
+    * Name your Pull Request `1810 - YOUR NAME`
+
+
 
 ## Overview
 
@@ -66,9 +69,13 @@ When complete, your Scrabble class will be able to:
 5) score word with a word multiplier,
 6) score a word with a seven-letter bonus.
 
-## Interaction Pattern
+Using test-driven development (write your tests first!), implement a program that will follow the interaction patterns described below:
 
-Using test-driven development, implement an interaction pattern that scores words insensitive to case, such that an empty word or nil scores 0, which follows the interaction pattern below.
+It is expected that you will add to the existing tests in `test/scrabble_test.rb`.
+
+## Iteration 1 - Scoring Words
+
+The game should be able to score a given word. If given an empty string, or nil, the score will be 0.
 
 ```
 > game = Scrabble.new
@@ -81,7 +88,11 @@ Using test-driven development, implement an interaction pattern that scores word
 => 0
 ```
 
-Note: a double letter score in Scrabble is dependent on the position of a letter on the board. The arrays passed to `#score_with_multipliers` below indicate the multiplier for a letter in the corresponding position of the word that is passed as the first argument.
+## Iteration 2 - Multipliers
+
+A double letter score in Scrabble is dependent on the position of a letter on the board. The arrays passed to `#score_with_multipliers` below indicate the *multiplier* for a letter in the corresponding position of the word that is passed as the first argument.
+
+A double word score is indicated by the third argument, and is applied after any double letter score calculations.
 
 ```
 > game.score_with_multipliers('hello', [1,2,1,1,1])
@@ -90,20 +101,19 @@ Note: a double letter score in Scrabble is dependent on the position of a letter
 => 18
 ```
 
-Additionally, a word scores a 10-point bonus (applied before the word multiplier) if that word has seven or more letters.
+## Iteration 3 - Seven Letter Bonus
+
+A word scores an additional 10-point bonus (applied before the word multiplier) if that word has seven or more letters.
 
 ```
 > game.score_with_multipliers('sparkle', [1,2,1,3,1,2,1], 2)
 => 58
 ```
 
-Use the existing `point_values` method in the `Scrabble` class as a source for each letter's value.
 
-It is expected that you will add to the existing tests in `test/scrabble_test.rb`.
+## Iteration 4
 
-# BONUS
-
-## Highest Scoring Word
+### Highest Scoring Word
 
 Implement a `highest_scoring_word` method that works like the examples below.
 
@@ -133,7 +143,7 @@ game = Scrabble.new
 game.highest_scoring_word(['hi', 'word', 'ward'])  # => "word"
 ```
 
-## Reading Game Data
+### Reading Game Data
 
 Find a file named `input.csv` in the `./test/` folder with this game data:
 

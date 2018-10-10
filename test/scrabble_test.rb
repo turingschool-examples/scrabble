@@ -1,4 +1,3 @@
-gem 'minitest'
 require_relative '../lib/scrabble'
 require 'minitest/autorun'
 require 'minitest/pride'

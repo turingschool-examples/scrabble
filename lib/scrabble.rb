@@ -40,10 +40,9 @@ class Scrabble
 
   def highest_scoring_word(list)
     list.sort! { |x, y| x.length <=> y.length }
-    binding.pry
     scores = []
     scores = list.map do |word|
-      score(word)
+      score(word) + seven_letter_bonus(word)
     end
     list[scores.index(scores.max)]
   end

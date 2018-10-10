@@ -33,7 +33,9 @@ class Scrabble
       letters.each do |letter|
        point_value_array << @alphabet[letter]
       end
-      letter_sums = letter_multiplier.zip(point_value_array).map{|multiplier, letter| multiplier * letter}
+      letter_sums = letter_multiplier.zip(point_value_array).map do |multiplier, letter|
+         multiplier * letter
+      end
       total = 0
       letter_sum =letter_sums.sum
       total += letter_sum

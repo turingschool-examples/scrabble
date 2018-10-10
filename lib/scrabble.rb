@@ -24,11 +24,11 @@ class Scrabble
   def score_with_no_multipliers(word)
     letters = word.chars
     final_score = letters.reduce(0) do |sum, letter|
-      sum += point_values[letter]
+      sum += point_values[letter.upcase]
     end
   end
 
-  # def score_with_multipliers
-  #
-  # end
+  def score_with_multipliers
+
+  end
 end

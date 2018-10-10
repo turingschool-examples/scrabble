@@ -23,14 +23,25 @@ class Scrabble
   end
 
   def multipliers(word, multiplier, bonus = 1)
+    if word.length < 7
     new_letters = word.upcase.chars
     valuator =  new_letters.map do |x|
                 LIB[x]
                 end
     multiply =  valuator.zip(multiplier).map{|x,y| x * y}
 
-    return  (multiply.sum) * bonus
-  end
+   return  (multiply.sum) * bonus
 
+    elsif
+      new_letters = word.upcase.chars
+      valuator =  new_letters.map do |x|
+                  LIB[x]
+                  end
+    seven_letter_bonus =  valuator.zip(multiplier).map{|x,y| x * y}
+    multiply = (seven_letter_bonus.sum) + 10
+
+    return(multiply) * bonus
+  end
+  end
 
 end

@@ -30,6 +30,7 @@ class Scrabble
       element_array.size do |element|
           sum += element
       end
+      
     end
 
   end

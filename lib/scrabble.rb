@@ -1,4 +1,14 @@
+require 'pry'
+
 class Scrabble
+
+  def score(word)
+    return 0 if word == "" || word == nil
+    return "Invalid Input" if not word.class == String
+    return point_values[word.upcase] if word.length == 1
+    score_with_no_multipliers(word)
+  end
+
   def point_values
     {
       "A"=>1, "B"=>3, "C"=>3, "D"=>2,
@@ -10,4 +20,15 @@ class Scrabble
       "Y"=>4, "Z"=>10
     }
   end
+
+  def score_with_no_multipliers(word)
+    letters = word.chars
+    final_score = letters.reduce(0) do |sum, letter|
+      sum += point_values[letter]
+    end
+  end
+
+  # def score_with_multipliers
+  #
+  # end
 end

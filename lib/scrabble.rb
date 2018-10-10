@@ -1,6 +1,18 @@
 require 'pry'
 
 class Scrabble
+  attr_reader :record
+  
+  def initialize
+    @record = {}
+  end
+
+  def add_play(player_id, word)
+    if !@record[player_id]
+      @record[player_id] = []
+    end
+    @record[player_id] << word
+  end
 
   def score(string, multi = nil, double = nil)
     bonus = 0

@@ -17,10 +17,14 @@ class Scrabble
   end
 
   def score(turn)
-   turn = alphabet[turn.upcase]
+   turn.upcase.chars.map do |letter|
+     letter = alphabet[letter]
+   end
+   # require 'pry'; binding.pry
    #i know how to split a string
    #but for some reason not here
    #and how to acess all the things
+   #probably an each method but...?
   end
 
 

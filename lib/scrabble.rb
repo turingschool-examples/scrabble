@@ -1,4 +1,7 @@
 class Scrabble
+
+attr_reader :score
+
   def point_values
     {
       "A"=>1, "B"=>3, "C"=>3, "D"=>2,
@@ -10,4 +13,43 @@ class Scrabble
       "Y"=>4, "Z"=>10
     }
   end
+
+  def score(letter)
+    if letter == nil
+      0
+    elsif letter.length == 1
+      point_values[letter.upcase]
+    else
+      new_array = letter.upcase.split('')
+      conversion = new_array.map do |i|
+        point_values[i]
+        end
+      conversion.sum
+    end
+
+  end
+
+  def score_with_multipliers(letter, letter_score, word_score = 1)
+    new_array = letter.upcase.split('')
+    conversion = new_array.map do |i|
+      point_values[i]
+      end
+    @new_calculation = conversion.zip(letter_score).map do |x, y|
+      x * y
+    end
+    if letter.length > 6
+      (@new_calculation.sum + 10) * word_score
+    else
+      @new_calculation.sum * word_score
+    end
+  end
+
+  def highest_scoring_word(word_arr)
+    # run each word through score method
+    # find index position of highest score with .max & .index
+    # return word at index position with greatest value
+    # use if else for tie breakers among word lengths
+
+  end
+
 end

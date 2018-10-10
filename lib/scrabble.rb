@@ -11,14 +11,31 @@ class Scrabble
     }
   end
 
-  def score(word)
+  def score(word, multiplier = 1)
     return 0 if word.nil? || word == ''
 
-    score = 0
+    score_total = 0
     word.split('').each do |x|
       # puts "#{x}:#{point_values[x]}"
-      score += point_values[x.upcase]
+      score_total += point_values[x.upcase]
     end
-    score
+
+    score_total * multiplier
+  end
+
+  def score_with_multipliers(word, array, word_multiplier = 1)
+    return 0 unless check_word_against_array(word, array)
+
+    score_total = 0
+    word_array = word.split('')
+    word_array.each_index do |x|
+      score_total += score(word_array[x], array[x])
+    end
+
+    score_total * word_multiplier
+  end
+
+  def check_word_against_array(word, array)
+    word.length == array.length
   end
 end

@@ -9,6 +9,8 @@ class Scrabble
       "U"=>1, "V"=>4, "W"=>4, "X"=>8,
       "Y"=>4, "Z"=>10
     }
+    @multi_score
+    @multiplier_array
   end
   def score(letter)
     if letter == nil
@@ -22,8 +24,20 @@ class Scrabble
   end
 
   def score_with_multipliers(word, array)
+    @multiplier_array = array
     letters = word.chars
-    letters.length 
-
+    @multi_score = letters.map do |letter|
+      score(letter)
+    end
+    @multiplier_array.map do |num|
+      if num > 1
+        new_score = num * scored_letters[@multiplier_array.index(num)]
+        @multi_score[array.index(num)] = new_score
+      end
+    end
+    @multi_score
   end
+
+
+
 end

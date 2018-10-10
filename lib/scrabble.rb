@@ -42,7 +42,11 @@ class Scrabble
   def highest_scoring_word(words)
     high_word = ""
     words.each do |word|
-      if score(word) > score(high_word)
+      if score(word) == score(high_word)
+        if word.length < high_word.length
+          high_word = word
+        end
+      elsif score(word) > score(high_word)
         high_word = word
       end
     end

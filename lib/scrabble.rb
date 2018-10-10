@@ -13,25 +13,18 @@ class Scrabble
   end
 
   def score(word)
-    if word == nil or word.length == 0
-      return 0
-    else
-      letters = word.upcase.chars
-      points = letters.map do |letter|
-        point_values[letter]
-      end
-    end
-    return points.sum
+    return 0 if word == nil || word.length == 0
+    letters = word.upcase.chars
+    points = letters.map do |letter|
+      point_values[letter]
+    end.sum
   end
 
   def score_with_multipliers(word, letter_mult, word_mult = 1)
-    if word == nil or word.length == 0
-      return 0
-    else
-      letters = word.upcase.chars
-      points = letters.each_with_index.map do |letter, i|
-        point_values[letter] * letter_mult[i]
-      end
+    return 0 if word == nil || word.length == 0
+    letters = word.upcase.chars
+    points = letters.each_with_index.map do |letter, i|
+      point_values[letter] * letter_mult[i]
     end
     if word.length >= 7
       (points.sum + 10) * word_mult
@@ -39,7 +32,5 @@ class Scrabble
       points.sum * word_mult
     end
   end
-
-
 
 end

@@ -16,5 +16,12 @@ class ScrabbleTest < Minitest::Test
 
     assert_equal 0, Scrabble.new.score("")
   end
+
+  def test_if_return_is_nil_score_0
+    skip
+    Scrabble.new.score(nil)
+
+    assert_equal 0, Scrabble.new.score(nil)
+  end
   # binding.pry
 end

@@ -29,6 +29,7 @@ class Scrabble
       "Y" => 4,
       "Z" => 10
     }
+    
   end
 
   def score(word)

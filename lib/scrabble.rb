@@ -1,5 +1,5 @@
 class Scrabble
-  attr_reader  :point_values
+  attr_reader  :point_values, :caps
 
   def initialize
     @point_values = {
@@ -42,6 +42,34 @@ class Scrabble
     end
   end
 
-  def highest_scoring_word
+  def highest_scoring_word(words)
+    array_1 = []
+    array_2 = []
+    array_3 = []
+    #take every word being passed as an argument and make it upcase
+    #then store each upcase word in array_1 with every letter separated
+    words.each do |x|
+      array_1 << x.upcase.chars
+    end
+    array_1 #[["H", "O", "M", "E"], ["W", "O", "R", "D"], ["H", "E", "L", "L", "O"], ["S", "O", "U", "N", "D"]]
+    array_1.each do |x|
+      #convert each letter to the @point_values key
+      x.each do |letter|
+        array_2 << @point_values[letter]
+        array_2.each do |y|
+          array_3 << y.sum
+        end
+      end
+      #now we have array_1 = [[4, 1, 3, 1], [4, 1, 1, 2], [4, 1, 1, 1, 1], [1, 1, 1, 1, 2]]
+      #we need to turn every element.sum
+      array_1
+    end
+    #now we have array_2 =
+
+
+
+
+
+
   end
 end

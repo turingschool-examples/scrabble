@@ -10,12 +10,17 @@ class Scrabble
       "M"=>3, "N"=>1, "O"=>1, "P"=>3,
       "Q"=>10, "R"=>1, "S"=>1, "T"=>1,
       "U"=>1, "V"=>4, "W"=>4, "X"=>8,
-      "Y"=>4, "Z"=>10
+      "Y"=>4, "Z"=>10, " "=>0, nil=>0
     }
     @counter      = []
   end
 
   def score(word)
+    if word == nil
+      return 0
+    end
+    
+    else
     new_word = word.upcase
     new_word.chars.each do |letter|
       @counter << @point_values[letter]
@@ -23,5 +28,4 @@ class Scrabble
     new_count = @counter.inject(0){|sum, num| sum + num }
     new_count
   end
-
 end

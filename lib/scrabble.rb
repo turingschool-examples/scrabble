@@ -42,15 +42,29 @@ class Scrabble
     end
   end
 
-    def letter_multiplier(scored_array, bonus_array)
-      x = 0
-      scored_array.each_index do |i|
-        x = bonus_array[i] * scored_array[i]
-        scored_array[i] = x
-      end
+  def letter_multiplier(scored_array, bonus_array)
+    x = 0
+    scored_array.each_index do |i|
+      x = bonus_array[i] * scored_array[i]
+      scored_array[i] = x
     end
+  end
 
-  
+  # def highest_scoring_word(array_of_words)
+  #   word_scores = array_of_words.map do |word|
+        # y = word.chars
+  #     b = y.map do |letter|
+        # score(letter)
+      #   end
+  #   end
+  #   highest_score = []
+  #   ((word_scores.length) - 1).times. do |x|
+  #     if word_scores[x] > word_scores[x + 1]
+  #       highest_score << array_of_words[word_scores[x]]
+  #     else
+
+  end
+
 
 
 

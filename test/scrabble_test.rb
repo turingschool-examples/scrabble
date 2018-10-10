@@ -35,4 +35,12 @@ class ScrabbleTest < Minitest::Test
     
     assert_equal game.record, {:player_1=>["hello"]}
   end
+  
+  def test_it_can_add_multiple_words_for_a_player
+    game = Scrabble.new
+    game.add_play(:player_1, "hello")
+    game.add_play(:player_1, "world")
+    
+    assert_equal game.record, {:player_1=>["hello", "world"]}
+  end
 end

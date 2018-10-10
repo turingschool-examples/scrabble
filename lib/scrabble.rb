@@ -19,13 +19,16 @@ class Scrabble
     if word == nil
       return 0
     end
-    
-    else
     new_word = word.upcase
     new_word.chars.each do |letter|
       @counter << @point_values[letter]
     end
     new_count = @counter.inject(0){|sum, num| sum + num }
     new_count
+  end
+
+  def score_with_multipliers(word, multi, double = 1)
+    (score(word) + multi[0]) * double
+    # i don't understand what this mutli array is doing
   end
 end

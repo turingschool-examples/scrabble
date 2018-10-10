@@ -40,6 +40,7 @@ class Scrabble
     if word.length >= 7
       @seven_bonus = 10
     end
+  end
 
     def letter_multiplier(scored_array, bonus_array)
       x = 0
@@ -49,7 +50,7 @@ class Scrabble
       end
     end
 
-  end
+  
 
 
 

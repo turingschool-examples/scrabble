@@ -18,4 +18,9 @@ class ScrabbleTest < Minitest::Test
     game = Scrabble.new
     assert_equal 0, game.score("")
   end
+
+  def test_nil_returns_0_points
+    game = Scrabble.new
+    assert_equal 0, game.score(nil)
+  end
 end

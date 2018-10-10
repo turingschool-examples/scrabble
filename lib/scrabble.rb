@@ -15,10 +15,14 @@ class Scrabble
   end
 
   def score(word)
-    caps_array = word.upcase.chars
-    caps_array.each do |letter|
-      @caps << @point_values[letter]
+    if word.class == String
+      caps_array = word.upcase.chars
+      caps_array.each do |letter|
+        @caps << @point_values[letter]
+      end
+      p @caps.sum
+    else
+      return 0
     end
-    p @caps.sum
   end
 end

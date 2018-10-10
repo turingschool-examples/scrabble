@@ -9,7 +9,12 @@ class Scrabble
       "U"=>1, "V"=>4, "W"=>4, "X"=>8,
       "Y"=>4, "Z"=>10
     }
-  def score(letter)
-    POINT_VALUES[letter.upcase]
+  def score(string)
+    return 0 if string.length = 0
+    if string.length == 1
+      POINT_VALUES[string.upcase]
+    else
+      return score_word(string)
+    end
   end
 end

@@ -20,7 +20,7 @@ class Scrabble
     recurring = options[:recurring] || false
     return 0 if str.length == 0
     return POINTS[str.upcase] if str.length == 1
-    return score_with_bingo(str, mults) if str.length >= 7 && !recurring
+    return score_with_bingo(str) if str.length >= 7 && !recurring
     binding.pry if str == "amazing" && mults == 2
     return score_with_multipliers(str, mults) if mults
 
@@ -45,8 +45,8 @@ class Scrabble
     (score(str) + letter_bonus) * word_multiplier
   end
 
-  def score_with_bingo(str, mults)
-    score(str, mults, :recurring) + 50
+  def score_with_bingo(str)
+    score(str, {recurring: true}) + 50
   end
 
 

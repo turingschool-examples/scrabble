@@ -25,9 +25,9 @@ class ScrabbleTest < Minitest::Test
     assert_equal 26, Scrabble.new.score("hello",{mults:{DL:[0,4], W:2}})
   end
 
-  # def test_it_can_score_a_7_letter_word
-  #   assert_equal 69, Scrabble.new.score("amazing")
-  #   skip
-  #   assert_equal 88, Scrabble.new.score("amazing", 2)
-  # end
+  def test_it_can_score_a_7_letter_word
+    assert_equal 69, Scrabble.new.score("amazing")
+
+    # assert_equal 88, Scrabble.new.score("amazing", 2)
+  end
 end

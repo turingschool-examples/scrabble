@@ -1,4 +1,11 @@
 class Scrabble
+
+  attr_reader :score
+
+  def initialize
+    @score = score
+  end
+
   def point_values
     {
       "A"=>1, "B"=>3, "C"=>3, "D"=>2,
@@ -10,4 +17,31 @@ class Scrabble
       "Y"=>4, "Z"=>10
     }
   end
+
+  def score(element)
+    #binding.pry
+
+    if element != nil
+    e = element.upcase
+      if e.length == 1
+        point_values[e]
+      elsif e.length >= 2
+        w = e.split(//).to_a
+        new_array = w.map do |letter|
+          point_values[letter]
+        end
+        #binding.pry
+        sum = 0
+        int_array = new_array.map(&:to_i)
+        sum = int_array.inject(:+)
+      end
+    elsif element = nil
+      0
+    end
+  end
+
+end 
+
+
+
 end

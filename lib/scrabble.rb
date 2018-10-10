@@ -10,4 +10,59 @@ class Scrabble
       "Y"=>4, "Z"=>10
     }
   end
+
+  def score(word)
+
+
+    if word == nil
+      return nil
+    else
+      letters = word.chars
+
+      return_score = letters.map do |score|
+        score_it = score.upcase
+        point_values[score_it]
+      end
+    end
+
+    final_score = return_score.sum
+
+    final_score
+  end
+
+  def score_with_multipliers(word, letter_multiplier, word_multiplier = 1)
+
+    if word == nil
+      return nil
+    else
+      letters = word.chars
+      word_length = word.length
+
+      return_score = letters.map do |score|
+        score_it = score.upcase
+        point_values[score_it]
+      end
+
+      x = 0
+
+      final_score = return_score.map do |score|
+        returned = score * letter_multiplier[x]
+        x += 1
+        returned
+      end
+
+
+    end
+
+    if word_length > 6
+      store_score_length = final_score.sum
+      final_score = store_score_length + 10
+      final_score * word_multiplier
+    else
+      final_score.sum * word_multiplier
+    end
+
+
+
+  end
 end

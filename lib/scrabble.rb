@@ -29,7 +29,7 @@ class Scrabble
       "Y" => 4,
       "Z" => 10
     }
-    
+
   end
 
   def score(word)
@@ -43,8 +43,24 @@ class Scrabble
     scored_word = new_word.map do |letter|
       @point_values[letter]
     end
-    p scored_word
+    scored_word.sum
     end
+
+  end
+
+  def score_with_multipliers(word, letter_score_array, word_multiplier = 1)
+
+    if word.length < 7
+      new_word = word.upcase.split(//)
+      scored_word = new_word.map do |letter|
+        @point_values[letter]
+      end
+      combined_array = scored_word.zip(letter_score_array)
+      total_points = combined_array.map do |letter, score|
+        letter * score * word_multiplier
+      end
+      return total_points.sum
+
 
   end
 end

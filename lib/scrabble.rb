@@ -8,11 +8,11 @@ class Scrabble
     if string == "" || string == nil
       return 0
     end
-
+    
     if string.length > 7
       bonus = 10
     end
-
+    
     if multi && double
       return multiply_string(string, multi) * double + bonus
     elsif multi
@@ -21,11 +21,11 @@ class Scrabble
       final_score = 0
       string.split('').each do |letter|
         final_score += scores[letter.upcase]
-        binding.pry
       end
+      final_score
     end
   end
-
+  
   def multiply_string(string, multi)
     final_score = 0
     scores = point_values

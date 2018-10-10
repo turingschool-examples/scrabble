@@ -36,6 +36,7 @@ class Scrabble
       return nil
     else
       letters = word.chars
+      word_length = word.length
 
       return_score = letters.map do |score|
         score_it = score.upcase
@@ -50,13 +51,25 @@ class Scrabble
         returned
       end
 
+
+    end
+
+    if word_length > 6
+      store_score_length = final_score.sum
+      final_score = store_score_length + 10
+      final_score * word_multiplier
+    else
+      final_score.sum * word_multiplier
+
     end
 
 
-    final_score.sum * word_multiplier
+
   end
 end
 
-game = Scrabble.new
+# game = Scrabble.new
 # p game.score("hello")
-p game.score_with_multipliers('hello', [1,2,1,1,1], 2)
+# # p game.score("sparkle")
+# # p game.score_with_multipliers('hello', [1,2,1,1,1], 2)
+# p game.score_with_multipliers('sparkle', [1,2,1,3,1,2,1], 2)

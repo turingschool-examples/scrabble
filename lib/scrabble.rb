@@ -1,3 +1,5 @@
+require 'pry'
+
 class Scrabble
   def point_values
     {
@@ -10,4 +12,13 @@ class Scrabble
       "Y"=>4, "Z"=>10
     }
   end
+
+  def score(words)
+    if words == nil
+      0
+    else
+      point_values.values_at(*words.upcase.split(//)).sum
+    end
+  end
+
 end

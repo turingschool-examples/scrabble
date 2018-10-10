@@ -23,11 +23,13 @@ class Scrabble
   def score_with_multipliers(words, loc, double = 1)
     if words == nil
         0
+    elsif words.length >= 7
+      values = point_values.values_at(*words.upcase.split(//))
+      (values.zip(loc).map{|v, l| v * l}.sum + 10) * double
+
     else
       values = point_values.values_at(*words.upcase.split(//))
       values.zip(loc).map{|v, l| v * l}.sum * double
-
     end
-
   end
 end

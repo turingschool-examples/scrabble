@@ -10,4 +10,16 @@ class Scrabble
       "Y"=>4, "Z"=>10
     }
   end
+
+  def score(player_input)
+    @player_input = player_input
+
+    get_letters = @player_input.split('')
+
+    score = get_letters.map do |find_value|
+      binding.pry 
+      point_values[find_value]
+    end
+    score.join('')
+  end
 end

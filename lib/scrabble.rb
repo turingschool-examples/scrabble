@@ -18,8 +18,9 @@ class Scrabble
 
   def score(element)
     #binding.pry
-    e = element.upcase
 
+    if element != nil
+    e = element.upcase
       if e.length == 1
         point_values[e]
       elsif e.length >= 2
@@ -32,6 +33,9 @@ class Scrabble
         int_array = new_array.map(&:to_i)
         sum = int_array.inject(:+)
       end
+    elsif element = nil
+      0
+    end
   end
 
 end

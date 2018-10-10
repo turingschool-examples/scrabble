@@ -16,6 +16,8 @@ class Scrabble
   def score(letter)
     if letter == ""
       @point_values[letter] = 0
+    elsif letter == nil
+      @point_values[letter] = 0    
     else
       @point_values[letter.upcase]
     end

@@ -26,8 +26,7 @@ skip
   end
 
   def test_it_can_score_nil
-skip
-    # game = Scrabble.new
+    game = Scrabble.new
     assert_equal 0, game.score(nil)
   end
 

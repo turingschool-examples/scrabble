@@ -9,6 +9,8 @@ class ScrabbleTest < Minitest::Test
   end
 
   def test_it_can_score_a_word
+    assert_equal 3, Scrabble.new.score("asa")
+    assert_equal 7, Scrabble.new.score("will")
   end
 
   def test_it_can_score_an_empty_string

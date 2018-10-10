@@ -13,11 +13,11 @@ class Scrabble
   end
 
   def score(value)
-    acceptable_input = value.upcase.split(//)
+    upper_case = value.upcase
+    acceptable_input = upper_case.split(//).join
     translate = @point_values[acceptable_input]
-    require 'pry';binding.pry
+    require 'pry'; binding.pry
     return translate
-
   end
 
 

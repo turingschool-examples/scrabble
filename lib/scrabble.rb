@@ -15,9 +15,9 @@ class Scrabble
     return 0 if word.nil? || word == ''
 
     score_total = 0
-    word.split('').each do |x|
+    word.upcase.split('').each do |x|
       # puts "#{x}:#{point_values[x]}"
-      score_total += point_values[x.upcase]
+      score_total += point_values[x]
     end
 
     score_total * multiplier

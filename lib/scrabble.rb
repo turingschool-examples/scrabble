@@ -15,17 +15,17 @@ class Scrabble
   def score(player_input)
     @player_input = player_input
 
-      if @player_input == ""
-        0
-      elsif @player_input == nil
-        0
-      else
-        get_letters = @player_input.upcase.split('')
+  if @player_input == ""
+    0
+  elsif @player_input == nil
+    0
+  else
+    get_letters = @player_input.upcase.split('')
 
-        score = get_letters.map do |find_value|
-          @point_values[find_value]
-          end
-        score.sum
+    score = get_letters.map do |find_value|
+      @point_values[find_value]
         end
+    score.sum
       end
+    end
 end

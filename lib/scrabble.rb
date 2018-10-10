@@ -28,12 +28,12 @@ class Scrabble
 
   def score_with_multipliers(word, letter_multiplier, word_multiplier = 1)
     if score(word) != 0
-     point_value_array = []
+     points_value_array = []
       letters = word.upcase.chars
       letters.each do |letter|
-       point_value_array << @alphabet[letter]
+       points_value_array << @alphabet[letter]
       end
-      letter_sums = letter_multiplier.zip(point_value_array).map do |multiplier, letter|
+      letter_sums = letter_multiplier.zip(points_value_array).map do |multiplier, letter|
          multiplier * letter
       end
       total = 0

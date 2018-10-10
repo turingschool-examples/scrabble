@@ -21,22 +21,18 @@ class Scrabble
     score
   end
 
-  def score_with_multipliers(word, multipliers, double = 1)
+  def score_with_multipliers(word, multipliers, word_mult = 1)
     score = 0
     if word != nil
-      letter_points = split_letters(word).map do |letter|
-        point_values[letter]
+      split_letters(word).each_with_index do |letter, index|
+        score += point_values[letter] * multipliers[index]
       end
+    end
 
-      letter_points.each_with_index do |points, index|
-        score += points * multipliers[index]
-      end
-    end
-    
     if word.length >= 7
-      return (score + 10) * double
+      return (score + 10) * word_mult
     end
-    score * double
+    score * word_mult
   end
 
   def split_letters(word)

@@ -38,6 +38,28 @@ class Scrabble
     score_total * word_multiplier
   end
 
+  def highest_scoring_word(words)
+    highest_word = ''
+    highest_score = 0
+    words.each do |word|
+      word_score = score(word)
+
+      word_score += 10 if word.length >= 7
+
+      if word_score > highest_score
+        highest_word = word
+        highest_score = word_score
+      elsif word_score == highest_score
+        if highest_word.length > word.length
+          highest_word = word
+          highest_score = word_score
+        end
+      end
+    end
+
+    highest_word
+  end
+
   def check_word_against_array(word, array)
     word.length == array.length
   end

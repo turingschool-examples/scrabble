@@ -43,4 +43,20 @@ class ScrabbleTest < Minitest::Test
   def test_score_with_multipliers_length_bonus
     assert_equal 58, @game.score_with_multipliers('sparkle', [1, 2, 1, 3, 1, 2, 1], 2)
   end
+
+  def test_highest_scoring_word
+    assert_equal 'home', @game.highest_scoring_word(%w[home word hello sound])
+  end
+
+  def test_highest_scoring_word_priority_shortest
+    assert_equal 'word', @game.highest_scoring_word(%w[hello word sound])
+  end
+
+  def test_highest_scoring_word_priority_over_7
+    assert_equal 'silence', @game.highest_scoring_word(%w[home word silence])
+  end
+
+  def test_highest_scoring_word_priority_first_in_list
+    assert_equal 'word', @game.highest_scoring_word(%w[hi word ward])
+  end
 end

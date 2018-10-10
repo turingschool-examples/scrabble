@@ -11,29 +11,38 @@ class Scrabble
     }
 
   def score(str, options = nil)
-    options ? score_with_options(str, options) : score_word(str)
+    # return nil unless str
+    options ? score_with_options(str, options) : score(str, {})
   end
 
   def score_with_options(str, options)
     mults = options[:mults] || nil
     recurring = options[:recurring] || false
     return 0 if str.length == 0
+    return POINTS[str.upcase] if str.length == 1
     return score_with_bingo(str, mults) if str.length >= 7 && !recurring
     binding.pry if str == "amazing" && mults == 2
     return score_with_multipliers(str, mults) if mults
-    if str.length == 1
-      POINTS[str.upcase]
-    else
-      return score_word(str)
-    end
+
+    score_word(str)
   end
 
   def score_word(word)
-    word.chars.map{|c|POINTS[c.upcase]}.sum
+    word.chars.map{|c|score(c)}.sum
+  end
+
+  def score_letters(letter_inds, str)
+    letter_inds.map{|i|score(str[i])}.sum
   end
 
   def score_with_multipliers(str, mults)
-    score(str) * mults[:DW]
+    dl_inds = mults[:DL]
+    dl_score = dl_inds ? score_letters(dl_inds, str) : 0
+    tl_inds = mults[:TL]
+    tl_score = tl_inds ? score_letters(tl_inds, str) : 0
+    letter_bonus = dl_score + tl_score * 2
+    word_multiplier = mults[:W] || 1
+    (score(str) + letter_bonus) * word_multiplier
   end
 
   def score_with_bingo(str, mults)

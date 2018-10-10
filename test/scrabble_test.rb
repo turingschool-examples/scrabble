@@ -22,4 +22,11 @@ class ScrabbleTest < Minitest::Test
      assert_equal 8, @game.score("hello")
   end
 
+  def test_it_returns_zero_for_a_space
+     assert_equal 0, @game.score("")
+  end
+
+  def test_it_returns_zero_for_nil
+     assert_equal 0, @game.score(nil)
+  end
 end

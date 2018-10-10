@@ -15,10 +15,14 @@ attr_reader :alphabet
 
   def score(character)
     total = 0
-    letters = character.upcase.chars
-    letters.map do |letter|
-      total += @alphabet[letter]
+    if character == nil
+      total
+      else
+      letters = character.upcase.chars
+      letters.map do |letter|
+        total += @alphabet[letter]
+      end
+      total
     end
-    total
   end
 end

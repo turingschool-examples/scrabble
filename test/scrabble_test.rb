@@ -28,4 +28,11 @@ class ScrabbleTest < Minitest::Test
   def test_it_can_find_highest_scoring_word
     assert_equal "home", Scrabble.new.highest_scoring_word(['home', 'word', 'hello', 'sound'])
   end
+  
+  def test_it_can_add_player_and_word
+    game = Scrabble.new
+    game.add_play(:player_1, "hello")
+    
+    assert_equal game.record, {:player_1=>["hello"]}
+  end
 end

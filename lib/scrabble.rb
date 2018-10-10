@@ -1,3 +1,4 @@
+
 class Scrabble
   def point_values
     {
@@ -9,5 +10,26 @@ class Scrabble
       "U"=>1, "V"=>4, "W"=>4, "X"=>8,
       "Y"=>4, "Z"=>10
     }
+  end
+
+  def score(word)
+    if word == nil
+      0
+    else
+      point_values.values_at(*word.upcase.split(//)).sum
+    end
+  end
+
+  def score_with_multipliers(words, loc, double = 1)
+    if words == nil
+        0
+    elsif words.length >= 7
+      values = point_values.values_at(*words.upcase.split(//))
+      (values.zip(loc).map{|v, l| v * l}.sum + 10) * double
+
+    else
+      values = point_values.values_at(*words.upcase.split(//))
+      values.zip(loc).map{|v, l| v * l}.sum * double
+    end
   end
 end

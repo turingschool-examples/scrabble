@@ -31,11 +31,11 @@ class Scrabble
     end
     @multiplier_array.map do |num|
       if num > 1
-        new_score = num * scored_letters[@multiplier_array.index(num)]
+        new_score = num * @multi_score[@multiplier_array.index(num)]
         @multi_score[array.index(num)] = new_score
       end
     end
-    @multi_score
+    @multi_score.sum
   end
 
 

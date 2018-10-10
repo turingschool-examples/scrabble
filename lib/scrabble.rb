@@ -10,4 +10,49 @@ class Scrabble
       "Y"=>4, "Z"=>10
     }
   end
+
+  def score(word)
+    score = 0
+    if word != nil
+      split_letters(word).each do |letter|
+        score += point_values[letter]
+      end
+    end
+    score
+  end
+
+  def score_with_multipliers(word, multipliers, word_mult = 1)
+    score = 0
+    if word != nil
+      split_letters(word).each_with_index do |letter, index|
+        score += point_values[letter] * multipliers[index]
+      end
+    end
+
+    if word.length >= 7
+      return (score + 10) * word_mult
+    end
+    score * word_mult
+  end
+
+  def split_letters(word)
+    word.upcase.chars
+  end
+
+  def highest_scoring_word(words)
+    high_word = ""
+    words.each do |word|
+      if score(word) == score(high_word)
+        if word.length == 7
+          high_word = word
+        elsif word.length < high_word.length
+          high_word = word
+        end
+      elsif score(word) > score(high_word)
+        high_word = word
+      end
+    end
+    high_word
+  end
+
 end

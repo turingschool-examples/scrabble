@@ -10,10 +10,17 @@ class Scrabble
       "Y"=>4, "Z"=>10
     }
 
-  def score(str, mults = nil, recurring = false)
+  def score(str, options = nil)
+    options ? score_with_options(str, options) : score_word(str)
+  end
+
+  def score_with_options(str, options)
+    mults = options[:mults] || nil
+    recurring = options[:recurring] || false
     return 0 if str.length == 0
-    return score_with_multipliers(str, mults) if mults
     return score_with_bingo(str, mults) if str.length >= 7 && !recurring
+    binding.pry if str == "amazing" && mults == 2
+    return score_with_multipliers(str, mults) if mults
     if str.length == 1
       POINTS[str.upcase]
     else
@@ -26,7 +33,7 @@ class Scrabble
   end
 
   def score_with_multipliers(str, mults)
-    score(str) * mults
+    score(str) * mults[:DW]
   end
 
   def score_with_bingo(str, mults)

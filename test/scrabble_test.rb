@@ -16,12 +16,13 @@ class ScrabbleTest < Minitest::Test
   end
 
   def test_it_can_score_a_word_with_mults
-    assert_equal 16, Scrabble.new.score("hello",2)
-    assert_equal 27, Scrabble.new.score("world",3)
+    assert_equal 16, Scrabble.new.score("hello",{mults:{DW:2}})
+    assert_equal 27, Scrabble.new.score("world",{mults:{DW:3}})
   end
 
   def test_it_can_score_a_7_letter_word
+    skip
     assert_equal 69, Scrabble.new.score("amazing")
-    # assert_equal 88, Scrabble.new.score("amazing", 2)
+    assert_equal 88, Scrabble.new.score("amazing", 2)
   end
 end

@@ -14,12 +14,10 @@ class ScrabbleTest < Minitest::Test
   end
 
   def test_it_can_score_an_empty_string
-    skip
     assert_equal 0, Scrabble.new.score("")
   end
 
   def test_it_can_score_with_nil
-    skip
     assert_equal 0, Scrabble.new.score(nil)
   end
 

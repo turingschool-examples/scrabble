@@ -29,4 +29,21 @@ class ScrabbleTest < Minitest::Test
   def test_it_returns_zero_for_nil
      assert_equal 0, @game.score(nil)
   end
+
+  def test_it_can_multiply
+     assert_equal 9, @game.score_with_multipliers('hello', [1,2,1,1,1])
+  end
+
+  def test_it_can_multiply_a_word_and_use_extra_multiplier
+     assert_equal 18, @game.score_with_multipliers('hello', [1,2,1,1,1],2)
+  end
+
+  def test_it_can_multiply_a_word_and_use_multiplier_bonus
+     assert_equal 58, @game.score_with_multipliers('sparkle', [1,2,1,3,1,2,1], 2)
+  end
+
+
+
+
+
 end

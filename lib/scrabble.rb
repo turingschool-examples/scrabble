@@ -1,5 +1,5 @@
 class Scrabble
-attr_reader :alphabet
+  attr_reader :alphabet
 
   def initialize
     @alphabet = {
@@ -13,16 +13,37 @@ attr_reader :alphabet
     }
   end
 
-  def score(character)
+  def score(word)
     total = 0
-    if character == nil
+    if word == nil
       total
       else
-      letters = character.upcase.chars
+      letters = word.upcase.chars
       letters.map do |letter|
         total += @alphabet[letter]
       end
       total
+    end
+  end
+
+
+
+  def score_with_multipliers(word, letter_multiplier, word_multiplier = 1)
+    if score(word) != 0
+    letters = word.upcase.chars
+     point_value_array = Array.new
+      letters.each do |letter|
+       point_value_array << @alphabet[letter]
+      end
+      letter_sums = letter_multiplier.zip(point_value_array).map{|multiplier, letter| multiplier * letter}
+      total = 0
+      letter_sums.each do |sum|
+      total += sum
+      end
+      if letters.length >= 7
+        total += 10
+      end
+      total * word_multiplier
     end
   end
 end

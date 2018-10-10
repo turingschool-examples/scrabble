@@ -13,12 +13,13 @@ class Scrabble
   end
 
   #
-  def score(letter_string)
-    letter_string.upcase!
-    @point_values.key
-    point_values.map do |letter|
-      @point_values[letter_string]
+  def score(point_values)
+    point_values.upcase! #change letter_string to upcase
+    #need to return value from point_values hash!
+    @point_values.each_value do[number]
+      p number
     end
+
   end
   #
   #

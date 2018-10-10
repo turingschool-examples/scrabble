@@ -1,4 +1,9 @@
 class Scrabble
+
+  attr_reader :score
+
+
+
   def point_values
     {
       "A"=>1, "B"=>3, "C"=>3, "D"=>2,
@@ -10,4 +15,19 @@ class Scrabble
       "Y"=>4, "Z"=>10
     }
   end
+
+  def score(element)
+    binding.pry
+    e = element.upcase
+      if e.length < 2
+        @point_values[e]
+      elsif e.length >= 2
+        w = e.split(//).to_a
+        new_array = w.map do |l|
+          @point_values[l]
+        end
+        new_array
+      end
+  end
+
 end

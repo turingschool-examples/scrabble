@@ -13,11 +13,20 @@ As you work, you may **not**:
 * Copy code snippets other than those present in this description
 * Seek live support from individuals other than your facilitator
 
-## Preparation
+## Preparation and Submission
 
 1. Fork this repository.
 2. Clone your new repository to your local machine (`$ git clone git@github.com:<YOUR USER NAME>/scrabble.git`)
 3. `cd` into your scrabble directory.
+
+As you work, we do expect you to make commits in small chunks of functionality.
+
+When you have finished, submit your work by:
+
+1. Pushing after your final commit up to your forked GitHub repository
+2. Create a Pull Request to the turingschool-examples repository
+    * Name your Pull Request `1810 - YOUR NAME`
+
 
 
 ## Overview

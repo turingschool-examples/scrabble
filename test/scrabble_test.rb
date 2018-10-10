@@ -38,8 +38,11 @@ class ScrabbleTest < Minitest::Test
   end
 
   def test_it_can_choose_highest_scoring_word
-    assert_equal "home", @game.highest_scoring_word(['home', 'word', 'hello', 'sound']) 
+    assert_equal "home", @game.highest_scoring_word(['home', 'word', 'hello', 'sound'])
   end
 
+  def test_it_can_choose_highest_scoring_word_with_fewest_tiles
+    assert_equal "word", @game.highest_scoring_word(['hello', 'word', 'sound'])
+  end
 
 end

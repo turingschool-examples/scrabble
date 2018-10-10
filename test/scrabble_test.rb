@@ -30,8 +30,11 @@ class ScrabbleTest < Minitest::Test
   end
 
   def test_it_can_use_double_word_score
-    assert_equal 18, game.score_with_multipliers('hello', [1,2,1,1,1], 2)
+    assert_equal 18, @game.score_with_multipliers('hello', [1,2,1,1,1], 2)
   end
 
+  def test_it_can_score_seven_letter_bonus
+    assert_equal 58, @game.score_with_multipliers('sparkle', [1,2,1,3,1,2,1], 2)
+  end
 
 end

@@ -28,6 +28,9 @@ class Scrabble
 
     score_total = 0
     word_array = word.split('')
+
+    score_total += 10 if word_array.length >= 7
+
     word_array.each_index do |x|
       score_total += score(word_array[x], array[x])
     end

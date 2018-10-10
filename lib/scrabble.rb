@@ -20,4 +20,33 @@ class Scrabble
     score
   end
 
+  def score_with_multipliers(word, multipliers, doubler = 1)
+    score = 0
+    if word != nil && word != ""
+      index = 0
+      word.length.times do
+        score += point_values[word.chars[index].upcase] * multipliers[index]
+        index += 1
+      end
+    end
+    score = score + 10 if word.length >= 7
+    score * doubler
+  end
+
+  def highest_scoring_word (words)
+    return words[0] If words.length = 1
+    winning_index = 0
+    test_index = 1
+    (words.length - 1).times do
+      if score(words[winning_index]) < score(words[test_index])
+        winning_index = test_index
+      elsif score(words(winning_index)) = score(words(test_index))
+        find_winner_index(w)
+
+      end
+      test_index += 1
+    end
+
+
+
 end

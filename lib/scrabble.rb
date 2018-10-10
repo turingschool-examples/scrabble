@@ -1,6 +1,8 @@
 class Scrabble
-  def point_values
-    alphabet = {
+attr_reader :alphabet
+
+  def initialize
+    @alphabet = {
       "A"=>1, "B"=>3, "C"=>3, "D"=>2,
       "E"=>1, "F"=>4, "G"=>2, "H"=>4,
       "I"=>1, "J"=>8, "K"=>5, "L"=>1,
@@ -11,6 +13,11 @@ class Scrabble
     }
   end
 
-  def score(letter)
+  def score(character)
+    letters = character.split(" ")
+    translation = letters.map do |letter|
+      @alphabet[letter]
+    end
+    translation
   end
 end

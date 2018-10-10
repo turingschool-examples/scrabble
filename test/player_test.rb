@@ -8,11 +8,8 @@ class PlayerTest < Minitest::Test
     @player_1 = Player.new(:player_1)
   end
 
-  def test_player_has_name
-    assert_equal :player_1, @player_1.name
-  end
-
   def test_player_has_a_number
+    assert_instance_of Player, @player_1
     assert_equal 1, @player_1.number
   end
 

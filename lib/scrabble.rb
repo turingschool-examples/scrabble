@@ -11,9 +11,11 @@ class Scrabble
 
 
   def score(letters)
-    new_letters = letters.upcase
-    LIB[new_letters]
-
-
+    new_letters = letters.upcase.chars
+    valuator =  new_letters.map do |x|
+                LIB[x]
+                end
+    valuator.sum
   end
+
 end

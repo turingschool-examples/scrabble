@@ -18,13 +18,20 @@ class GameReaderTest < Minitest::Test
   end
 
   def test_it_can_count_player_words
-    assert_equal 3, @game.word_count(@player_1)
+    assert_equal 3, @game.word_count(:player_1)
   end
 
   def test_it_can_count_another_player_words
-    assert_equal 2, @game.word_count(@player_2)
+    assert_equal 2, @game.word_count(:player_2)
   end
 
+  def test_it_can_get_player_words
+    assert_equal ["hello", "silence", "fun"], @game.get_player_words(:player_1)
+  end
+
+  def test_it_can_score_player_words
+    assert_equal 23, @game.score(:player_1)
+  end
 
 
 end

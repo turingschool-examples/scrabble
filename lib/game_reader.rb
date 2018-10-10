@@ -15,7 +15,6 @@ class GameReader
       return if line == 'player_id,word'
 
       splits = line.split(',')
-      p
       unless @players.key?(splits[0].to_i)
         @players[splits[0].to_i] = Player.new(@scrabble)
       end

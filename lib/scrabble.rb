@@ -16,7 +16,7 @@ class Scrabble
 
     score_total = 0
     word.upcase.split('').each do |x|
-      puts "#{x}:#{point_values[x]}"
+      # puts "#{x}:#{point_values[x]}"
       score_total += point_values[x]
     end
 

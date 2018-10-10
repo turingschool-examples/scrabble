@@ -49,5 +49,10 @@ class ScrabbleTest < Minitest::Test
     assert_equal "silence", @game.highest_scoring_word(['home', 'word', 'silence'])
   end
 
+  def test_it_can_pick_first_in_list_if_equal_high_scores
+    assert_equal "word", @game.highest_scoring_word(['hi', 'word', 'ward'])
+  end
+
+
 
 end

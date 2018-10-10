@@ -1,5 +1,6 @@
 class Scrabble
 
+attr_reader :score
 
   def point_values
     {
@@ -40,7 +41,15 @@ class Scrabble
       (@new_calculation.sum + 10) * word_score
     else
       @new_calculation.sum * word_score
-    end 
+    end
+  end
+
+  def highest_scoring_word(word_arr)
+    # run each word through score method
+    # find index position of highest score with .max & .index
+    # return word at index position with greatest value
+    # use if else for tie breakers among word lengths
+
   end
 
 end

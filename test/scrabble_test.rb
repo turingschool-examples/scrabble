@@ -25,5 +25,13 @@ class ScrabbleTest < Minitest::Test
     assert_equal 0, @game.score(nil)
   end
 
+  def test_it_can_use_multipliers
+    assert_equal 9, @game.score_with_multipliers('hello', [1,2,1,1,1])
+  end
+
+  def test_it_can_use_double_word_score
+    assert_equal 18, game.score_with_multipliers('hello', [1,2,1,1,1], 2)
+  end
+
 
 end

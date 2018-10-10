@@ -14,12 +14,29 @@ class Scrabble
   def score(word)
     score = 0
     if word != nil
-      letters = word.upcase.chars
-      letters.each do |letter|
+      split_letters(word).each do |letter|
         score += point_values[letter]
       end
     end
     score
+  end
+
+  def score_with_multipliers(word, multipliers)
+    score = 0
+    if word != nil
+      letter_points = split_letters(word).map do |letter|
+        point_values[letter]
+      end
+
+      letter_points.each_with_index do |points, index|
+        score += points * multipliers[index]
+      end
+    end
+    score
+  end
+
+  def split_letters(word)
+    word.upcase.chars
   end
 
 

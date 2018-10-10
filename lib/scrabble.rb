@@ -20,15 +20,18 @@ class Scrabble
     #binding.pry
     e = element.upcase
 
-      #if e.length == 1
+      if e.length == 1
         point_values[e]
-      #elsif e.length >= 2
-      #  w = e.split(//).to_a
-      #  new_array = w.map do |letter|
-      #    @point_values[letter]
-      #  end
-      #  new_array
-      #end
+      elsif e.length >= 2
+        w = e.split(//).to_a
+        new_array = w.map do |letter|
+          point_values[letter]
+        end
+        #binding.pry
+        sum = 0
+        int_array = new_array.map(&:to_i)
+        sum = int_array.inject(:+)
+      end
   end
 
 end

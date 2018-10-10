@@ -18,8 +18,19 @@ class Scrabble
     valuator =  new_letters.map do |x|
                 LIB[x]
                 end
-    valuator.sum
+    return valuator.sum
   end
   end
+
+  def multipliers(word, multiplier, bonus = 1)
+    new_letters = word.upcase.chars
+    valuator =  new_letters.map do |x|
+                LIB[x]
+                end
+    multiply =  valuator.zip(multiplier).map{|x,y| x * y}
+
+    return  (multiply.sum) * bonus
+  end
+
 
 end

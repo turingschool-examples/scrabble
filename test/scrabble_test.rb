@@ -11,15 +11,25 @@ class ScrabbleTest < Minitest::Test
   end
 
   def test_it_can_score_a_word
+
     assert_equal 8, Scrabble.new.score("hello")
   end
 
   def test_it_can_score_an_empty_string
+
     assert_equal 0, Scrabble.new.score("")
   end
 
   def test_it_can_score_nil
+
     assert_equal 0, Scrabble.new.score(nil)
+  end
+
+  def test_it_can_pass_multipliers
+    game = Scrabble.new
+
+    assert_equal 9, game.multipliers('hello', [1,2,1,1,1])
+
   end
 
 end

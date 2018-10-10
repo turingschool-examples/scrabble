@@ -18,7 +18,7 @@ class Scrabble
     score_by_letter = word.upcase.chars.map do |letter|
       point_values[letter]
     end
-    score_by_letter.sum
+    score_by_letter.sum + seven_letter_bonus(word)
   end
 
   def score_with_multipliers(word, multi_array, multi = 1)
@@ -42,7 +42,7 @@ class Scrabble
     list.sort! { |x, y| x.length <=> y.length }
     scores = []
     scores = list.map do |word|
-      score(word) + seven_letter_bonus(word)
+      score(word)
     end
     list[scores.index(scores.max)]
   end

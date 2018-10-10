@@ -1,4 +1,5 @@
 require 'csv'
+require './lib/scrabble.rb'
 
 class GameReader
   def initialize(file)
@@ -21,12 +22,17 @@ class GameReader
     end
     words[player]
   end
+
+  def score(player)
+    scores = { player_1: 0, player_2: 0 }
+    scrabble = Scrabble.new
+    @words_by_player.each do |line|
+      if line[0] == "1"
+        scores[:player_1] += scrabble.score(line[1])
+      else
+        scores[:player_2] += scrabble.score(line[1])
+      end
+    end
+    scores[player]
+  end
 end
-
-
-# player_id,word
-# 1,hello
-# 2,hi
-# 1,silence
-# 2,snacker
-# 1,fun

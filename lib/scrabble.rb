@@ -1,4 +1,41 @@
+require 'pry'
+
 class Scrabble
+
+  def score(string, multi = nil, double = nil)
+    bonus = 0
+    scores = point_values
+    if string == "" || string == nil
+      return 0
+    end
+
+    if string.length > 7
+      bonus = 10
+    end
+
+    if multi && double
+      return multiply_string(string, multi) * double + bonus
+    elsif multi
+      return multiply_string(string, multi) + bonus
+    else
+      final_score = 0
+      string.split('').each do |letter|
+        final_score += scores[letter.upcase]
+        binding.pry
+      end
+    end
+  end
+
+  def multiply_string(string, multi)
+    final_score = 0
+    scores = point_values
+    string.split('').each_with_index do |letter, index|
+      final_score += scores[letter.upcase] * multi[index]
+    end
+
+    final_score
+  end
+
   def point_values
     {
       "A"=>1, "B"=>3, "C"=>3, "D"=>2,

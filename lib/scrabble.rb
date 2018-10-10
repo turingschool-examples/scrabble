@@ -18,8 +18,8 @@ class Scrabble
     get_letters = @player_input.upcase.split('')
 
     score = get_letters.map do |find_value|
-      @point_values[find_value]
+    @point_values[find_value]
     end
-    score.to_i.join('')
+    score.join('').to_i
   end
 end

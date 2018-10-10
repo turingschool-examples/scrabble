@@ -14,4 +14,9 @@ class ScrabbleTest < Minitest::Test
     assert_equal 8, Scrabble.new.score("hello")
     assert_equal 9, Scrabble.new.score("world")
   end
+
+  def test_it_can_score_a_word_with_mults
+    assert_equal 16, Scrabble.new.score("hello",2)
+    assert_equal 27, Scrabble.new.score("world",3)
+  end
 end

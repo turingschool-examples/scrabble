@@ -9,17 +9,24 @@ class Scrabble
       "U"=>1, "V"=>4, "W"=>4, "X"=>8,
       "Y"=>4, "Z"=>10
     }
-  def score(string)
-    return 0 if string.length == 0
-    if string.length == 1
-      POINTS[string.upcase]
+  def score(str, mults = nil)
+    return score_with_multipliers(str, mults) if mults
+    return 0 if str.length == 0
+    if str.length == 1
+      POINTS[str.upcase]
     else
-      return score_word(string)
+      return score_word(str)
     end
   end
 
   def score_word(word)
     word.chars.map{|c|POINTS[c.upcase]}.sum
   end
+
+  def score_with_multipliers(str, mults)
+    score(str) * mults
+  end
+
+
 
 end

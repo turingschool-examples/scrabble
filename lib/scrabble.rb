@@ -24,4 +24,18 @@ class Scrabble
     return points.sum
   end
 
+  def score_with_multipliers(word, letter_mult, word_mult = 1)
+    if word == nil or word.length == 0
+      return 0
+    else
+      letters = word.upcase.chars
+      points = letters.each_with_index.map do |letter, i|
+        point_values[letter] * letter_mult[i]
+      end
+    end
+    return points.sum * word_mult
+  end
+
+
+
 end

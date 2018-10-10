@@ -30,6 +30,20 @@ class ScrabbleTest < Minitest::Test
     assert_equal 0, game.score(nil)
   end
 
+  def test_it_can_score_with_letter_multipliers
+    game = Scrabble.new
+    actual = game.score_with_multipliers('hello', [1,2,1,1,1])
+    expected = 9
+    assert_equal expected, actual
+  end
+
+  def test_it_can_score_with_letter_and_word_multipliers
+    game = Scrabble.new
+    actual = game.score_with_multipliers('hello', [1,2,1,1,1], 2)
+    expected = 18
+    assert_equal expected, actual
+  end
+
 
 
 end

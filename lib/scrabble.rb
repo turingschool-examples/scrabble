@@ -30,9 +30,7 @@ class Scrabble
 
   def score_word_with_letter_multipliers(word, letter_multipliers)
     letters = word.chars
-    binding.pry
     final_score = letters.each_with_index.reduce(0) do |sum, (letter, index)|
-      # binding.pry
       sum += point_values[letter.upcase] * letter_multipliers[index]
     end
   end

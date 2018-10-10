@@ -34,5 +34,7 @@ class ScrabbleTest < Minitest::Test
     assert_equal 9, @scrabble.score_with_multipliers('hello', [1,2,1,1,1])
   end
 
-  
+  def test_it_can_score_a_word_with_both_multipliers
+    assert_equal 18, @scrabble.score_with_multipliers('hello', [1,2,1,1,1], 2)
+  end
 end

@@ -15,8 +15,12 @@ class ScrabbleTest < Minitest::Test
     assert_equal 0, @scrabble.score(nil)
   end
 
-  def test_it_can_score_words
+  def test_case_doesnt_matter
+    assert_equal 5, @scrabble.score("ape")
     assert_equal 5, @scrabble.score("APE")
+  end
+  def test_it_can_score_words
+    assert_equal 5, @scrabble.score("ape")
     assert_equal 12, @scrabble.score("zoo")
   end
 

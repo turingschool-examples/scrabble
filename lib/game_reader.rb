@@ -6,9 +6,6 @@ class GameReader
     all_lines = CSV.read(file)
     all_lines.shift
     @words_by_player = all_lines
-    # all_lines.each do |line|
-    #   @words_by_player << line.split(",")
-    # end
   end
 
   def word_count(player)

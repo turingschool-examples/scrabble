@@ -23,5 +23,11 @@ class Scrabble
    answer.sum
   end
 
+  def score_with_multipliers(this_needs_to_be_the answer_above, multipliers)
+    #it seems silly to repeat the above...but somehow
+    #these two thing methods have to work together
+    #so that the above score can be multiplied
+  end
+
 
 end

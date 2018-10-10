@@ -12,4 +12,9 @@ class ScrabbleTest < Minitest::Test
   def test_it_can_score_a_word
     assert_equal 8, Scrabble.new.score("hello")
   end
+
+  def test_it_can_score_with_multipliers
+    game = Scrabble.new
+    assert_equal 9, game.score_with_multipliers('hello', [1,2,1,1,1])
+  end
 end

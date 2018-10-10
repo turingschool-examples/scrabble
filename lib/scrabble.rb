@@ -23,16 +23,14 @@ class Scrabble
     elsif letter.length == 1
       @point_values[letter.upcase]
     else
-     letter.upcase.split(" ").map do |element|
-       @point_values[element]
 
-      # else if letter length is greater than 1 split the
-      # string into an array of strings. Iterate through each
-      # element of the string and assign the key/value pair.
-
+     element_array = letter.upcase.chars.map do |element|
+        @point_values[element]
+      end
+      element_array.size do |element|
+          sum += element
+      end
     end
+
   end
-end
-
-
 end

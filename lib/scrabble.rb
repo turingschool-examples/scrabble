@@ -12,7 +12,11 @@ class Scrabble
 
   def score(str, options = {})
     rules = options[:rules] || :official
-    score_official(str, options) if rules == :official
+    if rules == :official
+      score_official(str, options)
+    else
+      score_psuedo(str, options)
+    end
   end
 
   def score_official(str, options)
@@ -20,8 +24,11 @@ class Scrabble
     str.length >= 7 ? result + 50 : result
   end
 
-  def score_psuedo
-
+  def score_psuedo(str, options)
+    result = score_with_options(str, options)
+    mults = options[:mults] || {}
+    w_mult = mults[:W] || 1
+    str.length >= 7 ? result + 10 * w_mult : result
   end
 
   def score_with_options(str, options)

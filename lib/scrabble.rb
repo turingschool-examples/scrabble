@@ -10,24 +10,23 @@ class Scrabble
       "Y"=>4, "Z"=>10
     }
 
-  def score(str, options = nil)
-    # return nil unless str
-    options ? score_with_options(str, options) : score(str, {})
+  def score(str, options = {})
+    result = score_with_options(str, options)
+    str.length >= 7 ? result + 50 : result
   end
 
   def score_with_options(str, options)
+
     mults = options[:mults] || nil
-    recurring = options[:recurring] || false
     return 0 if str.length == 0
     return POINTS[str.upcase] if str.length == 1
-    return score_with_bingo(str) if str.length >= 7 && !recurring
     binding.pry if str == "amazing" && mults == 2
     return score_with_multipliers(str, mults) if mults
 
-    score_word(str)
+    score_word_basic(str)
   end
 
-  def score_word(word)
+  def score_word_basic(word)
     word.chars.map{|c|score(c)}.sum
   end
 
@@ -42,12 +41,7 @@ class Scrabble
     tl_score = tl_inds ? score_letters(tl_inds, str) : 0
     letter_bonus = dl_score + tl_score * 2
     word_multiplier = mults[:W] || 1
-    (score(str) + letter_bonus) * word_multiplier
+    (score_word_basic(str) + letter_bonus) * word_multiplier
   end
-
-  def score_with_bingo(str)
-    score(str, {recurring: true}) + 50
-  end
-
 
 end

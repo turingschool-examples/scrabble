@@ -11,7 +11,8 @@ class Scrabble
     }
 
   def score(str, options = {})
-    score_official(str, options)
+    rules = options[:rules] || :official
+    score_official(str, options) if rules == :official
   end
 
   def score_official(str, options)

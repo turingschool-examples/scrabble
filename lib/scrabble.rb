@@ -11,18 +11,23 @@ class Scrabble
     }
 
   def score(str, options = {})
+    score_official(str, options)
+  end
+
+  def score_official(str, options)
     result = score_with_options(str, options)
     str.length >= 7 ? result + 50 : result
   end
 
-  def score_with_options(str, options)
+  def score_psuedo
 
+  end
+
+  def score_with_options(str, options)
     mults = options[:mults] || nil
     return 0 if str.length == 0
     return POINTS[str.upcase] if str.length == 1
-    binding.pry if str == "amazing" && mults == 2
     return score_with_multipliers(str, mults) if mults
-
     score_word_basic(str)
   end
 

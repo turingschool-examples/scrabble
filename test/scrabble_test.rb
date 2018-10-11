@@ -34,7 +34,7 @@ class ScrabbleTest < Minitest::Test
   def test_it_can_score_a_7_letter_word_with_psuedo_rules
     assert_equal 29, Scrabble.new.score("amazing", {rules: :psuedo})
     assert_equal 58, Scrabble.new.score("amazing", {rules: :psuedo, mults:{W:2}})
-    skip
-    assert_equal 39, Scrabble.new.score("amazing", {rules: :psuedo, mults:{TL:[3]}})
+
+    assert_equal 49, Scrabble.new.score("amazing", {rules: :psuedo, mults:{TL:[3]}})
   end
 end
